@@ -1,9 +1,10 @@
 module github.com/agentplexus/go-elevenlabs
 
-go 1.24.0
+go 1.24.11
 
 require (
 	github.com/agentplexus/ogen-tools v0.1.0
+	github.com/agentplexus/omnivoice v0.1.0
 	github.com/go-faster/errors v0.7.1
 	github.com/go-faster/jx v1.2.0
 	github.com/gorilla/websocket v1.5.3
