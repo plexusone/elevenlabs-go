@@ -1,0 +1,81 @@
+{
+  "ir_version": "1.0",
+  "project": "go-elevenlabs",
+  "repository": "https://github.com/agentplexus/go-elevenlabs",
+  "releases": [
+    {
+      "version": "0.5.0",
+      "date": "2026-01-03",
+      "added": [
+        { "description": "OmniVoice provider integration (`omnivoice/` subpackage)" },
+        { "description": "`omnivoice/tts` - TTS provider implementing `tts.Provider` and `tts.StreamingProvider`" },
+        { "description": "`omnivoice/stt` - STT provider implementing `stt.Provider` and `stt.StreamingProvider`" },
+        { "description": "`omnivoice/agent` - Agent provider implementing `agent.Provider` with session management" },
+        { "description": "`examples/debug-test` - HTTP debugging utilities for API troubleshooting" },
+        { "description": "`examples/simple` - Basic TTS generation example" }
+      ]
+    },
+    {
+      "version": "0.4.0",
+      "date": "2024-12-31",
+      "fixed": [
+        { "description": "JSON decoding errors when API returns `null` for nullable `$ref` fields (affects 205+ fields)" }
+      ],
+      "added": [
+        { "description": "Voice settings presets for platforms: Udemy, Coursera, EdX, Instagram, TikTok, YouTube, Podcast, Audiobook" },
+        { "description": "Integration tests for null handling validation" },
+        { "description": "Audio utilities: `PCMBytesToWAV`, `PCMToWAV`, `ParsePCMSampleRate`" },
+        { "description": "`ogen-tools` post-processing in code generation pipeline" }
+      ]
+    },
+    {
+      "version": "0.3.0",
+      "date": "2024-12-28",
+      "added": [
+        { "description": "WebSocket TTS - Real-time text-to-speech streaming with word-level alignment" },
+        { "description": "WebSocket STT - Real-time speech-to-text with partial results and confidence scores" },
+        { "description": "Speech-to-Speech - Voice conversion with background noise removal" },
+        { "description": "Twilio Integration - Phone call integration for voice agents" },
+        { "description": "Phone Number Management - Manage phone numbers for agents" },
+        { "description": "`gorilla/websocket` dependency for WebSocket support" },
+        { "description": "4 new documentation pages for real-time services" },
+        { "description": "Release notes documentation" }
+      ],
+      "changed": [
+        { "description": "Updated API coverage to ~75 methods" },
+        { "description": "Updated README with real-time service examples" }
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "date": "2024-12-28",
+      "changed": [
+        { "description": "Repository transferred from `grokify/go-elevenlabs` to `agentplexus/go-elevenlabs`" },
+        { "description": "Updated all internal import paths" },
+        { "description": "Updated documentation URLs and references" }
+      ],
+      "added": [
+        { "description": "MkDocs documentation site - 28 pages with Material theme" },
+        { "description": "`cmd/ttsscript` - Command-line tool for TTS script processing" },
+        { "description": "LMS/Udemy course production guide" },
+        { "description": "Pronunciation rules guide" },
+        { "description": "TTS script authoring guide" },
+        { "description": "API coverage tracking with method-level details" }
+      ]
+    },
+    {
+      "version": "0.1.0",
+      "date": "2024-12-28",
+      "added": [
+        { "description": "Initial release of the ElevenLabs Go SDK" },
+        { "description": "15 service wrappers: Text-to-Speech, Speech-to-Text, Voices, Voice Design, Sound Effects, Music, Audio Isolation, Forced Alignment, Text-to-Dialogue, Projects, Pronunciation Dictionaries, Dubbing, History, Models, User" },
+        { "description": "`ttsscript` package - TTS script authoring utilities" },
+        { "description": "`voices` package - Voice constants and metadata" },
+        { "description": "Functional options pattern for client configuration" },
+        { "description": "Automatic API key from environment variable" },
+        { "description": "Comprehensive error handling" },
+        { "description": "Multiple output format support (MP3, PCM, μ-law)" }
+      ]
+    }
+  ]
+}
