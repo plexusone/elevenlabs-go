@@ -25,6 +25,9 @@
         { "description": "Voice settings presets for platforms: Udemy, Coursera, EdX, Instagram, TikTok, YouTube, Podcast, Audiobook" },
         { "description": "Integration tests for null handling validation" },
         { "description": "Audio utilities: `PCMBytesToWAV`, `PCMToWAV`, `ParsePCMSampleRate`" },
+        { "description": "`ParseAPIError()` function for detailed error extraction" },
+        { "description": "`IsForbiddenError()` helper function" },
+        { "description": "Output format validation for TTS requests" },
         { "description": "`ogen-tools` post-processing in code generation pipeline" }
       ]
     },
