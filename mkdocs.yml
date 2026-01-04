@@ -77,6 +77,11 @@ nav:
     - WebSocket TTS: services/websocket-tts.md
     - WebSocket STT: services/websocket-stt.md
     - Twilio Integration: services/twilio.md
+  - OmniVoice:
+    - Overview: omnivoice/index.md
+    - TTS Provider: omnivoice/tts.md
+    - STT Provider: omnivoice/stt.md
+    - Agent Provider: omnivoice/agent.md
   - Guides:
     - LMS/Udemy Courses: guides/lms-courses.md
     - Pronunciation Rules: guides/pronunciation-rules.md
@@ -93,6 +98,7 @@ nav:
   - Contributing:
     - Testing: contributing/testing.md
   - Releases:
+    - v0.5.0: releases/v0.5.0.md
     - v0.4.0: releases/v0.4.0.md
     - v0.3.0: releases/v0.3.0.md
     - v0.2.0: releases/v0.2.0.md
