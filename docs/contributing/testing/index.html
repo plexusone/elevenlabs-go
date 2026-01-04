@@ -12,13 +12,13 @@
         <meta name="author" content="AgentPlexus">
       
       
-        <link rel="canonical" href="https://agentplexus.github.io/go-elevenlabs/services/text-to-speech/">
+        <link rel="canonical" href="https://agentplexus.github.io/go-elevenlabs/contributing/testing/">
       
       
-        <link rel="prev" href="../../getting-started/configuration/">
+        <link rel="prev" href="../../api/coverage/">
       
       
-        <link rel="next" href="../speech-to-text/">
+        <link rel="next" href="../../releases/v0.5.0/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Text-to-Speech - go-elevenlabs</title>
+        <title>Testing - go-elevenlabs</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#text-to-speech" class="md-skip">
+        <a href="#testing" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Text-to-Speech
+              Testing
             
           </span>
         </div>
@@ -262,13 +262,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../services/text-to-speech/" class="md-tabs__link">
           
   
   
@@ -288,7 +286,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../websocket-tts/" class="md-tabs__link">
+        <a href="../../services/websocket-tts/" class="md-tabs__link">
           
   
   
@@ -384,11 +382,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../contributing/testing/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -631,31 +631,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -668,7 +665,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Services
@@ -679,32 +676,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Text-to-Speech
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../services/text-to-speech/" class="md-nav__link">
         
   
   
@@ -715,128 +690,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#basic-usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Basic Usage
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Basic Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#simple-generation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Simple Generation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#full-control" class="md-nav__link">
-    <span class="md-ellipsis">
-      Full Control
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#voice-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Voice Settings
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Voice Settings">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#default-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Default Settings
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#output-formats" class="md-nav__link">
-    <span class="md-ellipsis">
-      Output Formats
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#models" class="md-nav__link">
-    <span class="md-ellipsis">
-      Models
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#streaming" class="md-nav__link">
-    <span class="md-ellipsis">
-      Streaming
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#error-handling" class="md-nav__link">
-    <span class="md-ellipsis">
-      Error Handling
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      Best Practices
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -849,7 +702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../speech-to-text/" class="md-nav__link">
+      <a href="../../services/speech-to-text/" class="md-nav__link">
         
   
   
@@ -872,7 +725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../speech-to-speech/" class="md-nav__link">
+      <a href="../../services/speech-to-speech/" class="md-nav__link">
         
   
   
@@ -895,7 +748,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../voices/" class="md-nav__link">
+      <a href="../../services/voices/" class="md-nav__link">
         
   
   
@@ -918,7 +771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../voice-design/" class="md-nav__link">
+      <a href="../../services/voice-design/" class="md-nav__link">
         
   
   
@@ -941,7 +794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sound-effects/" class="md-nav__link">
+      <a href="../../services/sound-effects/" class="md-nav__link">
         
   
   
@@ -964,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../music/" class="md-nav__link">
+      <a href="../../services/music/" class="md-nav__link">
         
   
   
@@ -987,7 +840,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../audio-isolation/" class="md-nav__link">
+      <a href="../../services/audio-isolation/" class="md-nav__link">
         
   
   
@@ -1010,7 +863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../forced-alignment/" class="md-nav__link">
+      <a href="../../services/forced-alignment/" class="md-nav__link">
         
   
   
@@ -1033,7 +886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../text-to-dialogue/" class="md-nav__link">
+      <a href="../../services/text-to-dialogue/" class="md-nav__link">
         
   
   
@@ -1056,7 +909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/" class="md-nav__link">
+      <a href="../../services/projects/" class="md-nav__link">
         
   
   
@@ -1079,7 +932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pronunciation/" class="md-nav__link">
+      <a href="../../services/pronunciation/" class="md-nav__link">
         
   
   
@@ -1102,7 +955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dubbing/" class="md-nav__link">
+      <a href="../../services/dubbing/" class="md-nav__link">
         
   
   
@@ -1125,7 +978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../history/" class="md-nav__link">
+      <a href="../../services/history/" class="md-nav__link">
         
   
   
@@ -1148,7 +1001,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../models/" class="md-nav__link">
+      <a href="../../services/models/" class="md-nav__link">
         
   
   
@@ -1171,7 +1024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../user/" class="md-nav__link">
+      <a href="../../services/user/" class="md-nav__link">
         
   
   
@@ -1246,7 +1099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../websocket-tts/" class="md-nav__link">
+      <a href="../../services/websocket-tts/" class="md-nav__link">
         
   
   
@@ -1269,7 +1122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../websocket-stt/" class="md-nav__link">
+      <a href="../../services/websocket-stt/" class="md-nav__link">
         
   
   
@@ -1292,7 +1145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../twilio/" class="md-nav__link">
+      <a href="../../services/twilio/" class="md-nav__link">
         
   
   
@@ -1849,28 +1702,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
-        
-          
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
             
   
   
@@ -1883,7 +1739,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             Contributing
@@ -1894,10 +1750,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../contributing/testing/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Testing
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1908,6 +1786,128 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unit-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit Tests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Tests
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-integration-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Integration Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-they-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      How They Work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Available Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-key-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Key Permissions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-integration-tests-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Integration Tests Matter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why Integration Tests Matter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-null-handling-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Null Handling Issue
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-file-location" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test File Location
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2136,28 +2136,64 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#basic-usage" class="md-nav__link">
+  <a href="#unit-tests" class="md-nav__link">
     <span class="md-ellipsis">
-      Basic Usage
+      Unit Tests
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Basic Usage">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Tests
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Tests">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#simple-generation" class="md-nav__link">
+  <a href="#running-integration-tests" class="md-nav__link">
     <span class="md-ellipsis">
-      Simple Generation
+      Running Integration Tests
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#full-control" class="md-nav__link">
+  <a href="#how-they-work" class="md-nav__link">
     <span class="md-ellipsis">
-      Full Control
+      How They Work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Available Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-key-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Key Permissions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI Integration
     </span>
   </a>
   
@@ -2169,19 +2205,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#voice-settings" class="md-nav__link">
+  <a href="#why-integration-tests-matter" class="md-nav__link">
     <span class="md-ellipsis">
-      Voice Settings
+      Why Integration Tests Matter
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Voice Settings">
+    <nav class="md-nav" aria-label="Why Integration Tests Matter">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#default-settings" class="md-nav__link">
+  <a href="#example-null-handling-issue" class="md-nav__link">
     <span class="md-ellipsis">
-      Default Settings
+      Example: Null Handling Issue
     </span>
   </a>
   
@@ -2193,45 +2229,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#output-formats" class="md-nav__link">
+  <a href="#test-file-location" class="md-nav__link">
     <span class="md-ellipsis">
-      Output Formats
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#models" class="md-nav__link">
-    <span class="md-ellipsis">
-      Models
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#streaming" class="md-nav__link">
-    <span class="md-ellipsis">
-      Streaming
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#error-handling" class="md-nav__link">
-    <span class="md-ellipsis">
-      Error Handling
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      Best Practices
+      Test File Location
     </span>
   </a>
   
@@ -2256,174 +2256,105 @@
   
 
 
-<h1 id="text-to-speech">Text-to-Speech<a class="headerlink" href="#text-to-speech" title="Permanent link">&para;</a></h1>
-<p>The Text-to-Speech service converts text into natural-sounding speech.</p>
-<h2 id="basic-usage">Basic Usage<a class="headerlink" href="#basic-usage" title="Permanent link">&para;</a></h2>
-<h3 id="simple-generation">Simple Generation<a class="headerlink" href="#simple-generation" title="Permanent link">&para;</a></h3>
-<div class="language-go highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nx">audio</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">TextToSpeech</span><span class="p">().</span><span class="nx">Simple</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">voiceID</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Your text here&quot;</span><span class="p">)</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1">// audio is an io.Reader - save or stream it</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nx">f</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="s">&quot;output.mp3&quot;</span><span class="p">)</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nx">io</span><span class="p">.</span><span class="nx">Copy</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span><span class="w"> </span><span class="nx">audio</span><span class="p">)</span>
+<h1 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h1>
+<p>This SDK includes both unit tests and integration tests.</p>
+<h2 id="unit-tests">Unit Tests<a class="headerlink" href="#unit-tests" title="Permanent link">&para;</a></h2>
+<p>Run unit tests (no API key required):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>go<span class="w"> </span><span class="nb">test</span><span class="w"> </span>./...
 </span></code></pre></div>
-<h3 id="full-control">Full Control<a class="headerlink" href="#full-control" title="Permanent link">&para;</a></h3>
-<div class="language-go highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nx">resp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">TextToSpeech</span><span class="p">().</span><span class="nx">Generate</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">elevenlabs</span><span class="p">.</span><span class="nx">TTSRequest</span><span class="p">{</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nx">VoiceID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;21m00Tcm4TlvDq8ikWAM&quot;</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nx">Text</span><span class="p">:</span><span class="w">    </span><span class="s">&quot;Hello world!&quot;</span><span class="p">,</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nx">ModelID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;eleven_multilingual_v2&quot;</span><span class="p">,</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nx">VoiceSettings</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">elevenlabs</span><span class="p">.</span><span class="nx">VoiceSettings</span><span class="p">{</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="nx">Stability</span><span class="p">:</span><span class="w">       </span><span class="mf">0.5</span><span class="p">,</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="nx">SimilarityBoost</span><span class="p">:</span><span class="w"> </span><span class="mf">0.75</span><span class="p">,</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="nx">Style</span><span class="p">:</span><span class="w">           </span><span class="mf">0.0</span><span class="p">,</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="nx">SpeakerBoost</span><span class="p">:</span><span class="w">    </span><span class="kc">true</span><span class="p">,</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="nx">OutputFormat</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mp3_44100_128&quot;</span><span class="p">,</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="p">})</span>
+<p>Unit tests use mocked HTTP responses and don't make real API calls.</p>
+<h2 id="integration-tests">Integration Tests<a class="headerlink" href="#integration-tests" title="Permanent link">&para;</a></h2>
+<p>Integration tests make real API calls to verify the SDK works correctly with the ElevenLabs API. They catch issues like:</p>
+<ul>
+<li>Nullable field handling in API responses</li>
+<li>API response format changes</li>
+<li>Authentication and permissions</li>
+</ul>
+<h3 id="running-integration-tests">Running Integration Tests<a class="headerlink" href="#running-integration-tests" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">ELEVENLABS_API_KEY</span><span class="o">=</span>your_key<span class="w"> </span>go<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-v<span class="w"> </span>-tags<span class="o">=</span>integration<span class="w"> </span>./...
 </span></code></pre></div>
-<h2 id="voice-settings">Voice Settings<a class="headerlink" href="#voice-settings" title="Permanent link">&para;</a></h2>
+<h3 id="how-they-work">How They Work<a class="headerlink" href="#how-they-work" title="Permanent link">&para;</a></h3>
+<p>Integration tests use Go build tags to ensure they only run when explicitly requested:</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">//go:build integration</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">package</span><span class="w"> </span><span class="nx">elevenlabs</span>
+</span></code></pre></div>
+<p>They also skip automatically if no API key is set:</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">skipIfNoAPIKey</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;ELEVENLABS_API_KEY&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="nx">t</span><span class="p">.</span><span class="nx">Skip</span><span class="p">(</span><span class="s">&quot;ELEVENLABS_API_KEY not set, skipping integration test&quot;</span><span class="p">)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="available-tests">Available Tests<a class="headerlink" href="#available-tests" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Setting</th>
-<th>Range</th>
-<th>Description</th>
+<th>Test</th>
+<th>Endpoint</th>
+<th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>Stability</code></td>
-<td>0.0-1.0</td>
-<td>Higher = more consistent, lower = more expressive</td>
+<td><code>TestVoicesListNullHandling</code></td>
+<td><code>/v1/voices</code></td>
+<td>Verifies nullable fields in voice responses</td>
 </tr>
 <tr>
-<td><code>SimilarityBoost</code></td>
-<td>0.0-1.0</td>
-<td>Higher = closer to original voice</td>
+<td><code>TestModelsListNullHandling</code></td>
+<td><code>/v1/models</code></td>
+<td>Verifies nullable fields in model responses</td>
 </tr>
 <tr>
-<td><code>Style</code></td>
-<td>0.0-1.0</td>
-<td>Style exaggeration (use sparingly)</td>
+<td><code>TestUserGetNullHandling</code></td>
+<td><code>/v1/user</code></td>
+<td>Verifies nullable fields in user/subscription</td>
 </tr>
 <tr>
-<td><code>SpeakerBoost</code></td>
-<td>bool</td>
-<td>Enhance speaker similarity</td>
-</tr>
-<tr>
-<td><code>Speed</code></td>
-<td>0.7-1.2</td>
-<td>Speech speed multiplier</td>
+<td><code>TestHistoryListNullHandling</code></td>
+<td><code>/v1/history</code></td>
+<td>Verifies nullable fields in history items</td>
 </tr>
 </tbody>
 </table>
-<h3 id="default-settings">Default Settings<a class="headerlink" href="#default-settings" title="Permanent link">&para;</a></h3>
-<div class="language-go highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nx">settings</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">elevenlabs</span><span class="p">.</span><span class="nx">DefaultVoiceSettings</span><span class="p">()</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">// Stability: 0.5, SimilarityBoost: 0.75, Style: 0, SpeakerBoost: true</span>
+<h3 id="api-key-permissions">API Key Permissions<a class="headerlink" href="#api-key-permissions" title="Permanent link">&para;</a></h3>
+<p>Some tests may skip if your API key doesn't have access to certain endpoints. This is expected behavior - the tests handle 401 errors gracefully:</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">skipOn401</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">Contains</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;401&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="nx">t</span><span class="p">.</span><span class="nx">Skipf</span><span class="p">(</span><span class="s">&quot;API key does not have access to this endpoint: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">}</span>
 </span></code></pre></div>
-<h2 id="output-formats">Output Formats<a class="headerlink" href="#output-formats" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Format</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>mp3_44100_128</code></td>
-<td>MP3, 44.1kHz, 128kbps (default)</td>
-</tr>
-<tr>
-<td><code>mp3_44100_192</code></td>
-<td>MP3, 44.1kHz, 192kbps</td>
-</tr>
-<tr>
-<td><code>pcm_16000</code></td>
-<td>PCM, 16kHz</td>
-</tr>
-<tr>
-<td><code>pcm_22050</code></td>
-<td>PCM, 22.05kHz</td>
-</tr>
-<tr>
-<td><code>pcm_24000</code></td>
-<td>PCM, 24kHz</td>
-</tr>
-<tr>
-<td><code>pcm_44100</code></td>
-<td>PCM, 44.1kHz</td>
-</tr>
-<tr>
-<td><code>ulaw_8000</code></td>
-<td>u-law, 8kHz</td>
-</tr>
-</tbody>
-</table>
-<h2 id="models">Models<a class="headerlink" href="#models" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Model ID</th>
-<th>Best For</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>eleven_multilingual_v2</code></td>
-<td>Multiple languages, highest quality</td>
-</tr>
-<tr>
-<td><code>eleven_monolingual_v1</code></td>
-<td>English only, fast</td>
-</tr>
-<tr>
-<td><code>eleven_turbo_v2</code></td>
-<td>Low latency applications</td>
-</tr>
-<tr>
-<td><code>eleven_turbo_v2_5</code></td>
-<td>Lowest latency</td>
-</tr>
-</tbody>
-</table>
-<h2 id="streaming">Streaming<a class="headerlink" href="#streaming" title="Permanent link">&para;</a></h2>
-<p>For real-time applications, use streaming:</p>
-<div class="language-go highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">resp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">TextToSpeech</span><span class="p">().</span><span class="nx">GenerateStream</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">elevenlabs</span><span class="p">.</span><span class="nx">TTSRequest</span><span class="p">{</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nx">VoiceID</span><span class="p">:</span><span class="w"> </span><span class="nx">voiceID</span><span class="p">,</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nx">Text</span><span class="p">:</span><span class="w">    </span><span class="s">&quot;Long text to stream...&quot;</span><span class="p">,</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">})</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">}</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c1">// Stream audio chunks as they arrive</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">for</span><span class="w"> </span><span class="nx">chunk</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">resp</span><span class="p">.</span><span class="nx">Chunks</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="c1">// Process chunk</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="p">}</span>
+<h3 id="ci-integration">CI Integration<a class="headerlink" href="#ci-integration" title="Permanent link">&para;</a></h3>
+<p>For GitHub Actions, add the API key as a secret and run integration tests:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run integration tests</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.ELEVENLABS_API_KEY != &#39;&#39; }}</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="nt">env</span><span class="p">:</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nt">ELEVENLABS_API_KEY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.ELEVENLABS_API_KEY }}</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">go test -v -tags=integration ./...</span>
 </span></code></pre></div>
-<h2 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h2>
-<div class="language-go highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nx">audio</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">TextToSpeech</span><span class="p">().</span><span class="nx">Simple</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">voiceID</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">)</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">elevenlabs</span><span class="p">.</span><span class="nx">IsRateLimitError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="c1">// Wait and retry</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">)</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">elevenlabs</span><span class="p">.</span><span class="nx">IsUnauthorizedError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="c1">// Check API key</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">}</span>
+<h2 id="why-integration-tests-matter">Why Integration Tests Matter<a class="headerlink" href="#why-integration-tests-matter" title="Permanent link">&para;</a></h2>
+<p>The SDK uses <a href="https://github.com/ogen-go/ogen">ogen</a> to generate API client code from the ElevenLabs OpenAPI spec. There's a known issue (<a href="https://github.com/ogen-go/ogen/issues/1358">ogen-go/ogen#1358</a>) where nullable <code>$ref</code> fields don't decode <code>null</code> values correctly.</p>
+<p>We use <a href="https://github.com/agentplexus/ogen-tools">ogen-tools</a> to post-process the generated code, and integration tests verify these fixes work against the real API.</p>
+<h3 id="example-null-handling-issue">Example: Null Handling Issue<a class="headerlink" href="#example-null-handling-issue" title="Permanent link">&para;</a></h3>
+<p>Without the fix, this API response would fail:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">&quot;voices&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nt">&quot;voice_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;abc123&quot;</span><span class="p">,</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Test Voice&quot;</span><span class="p">,</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nt">&quot;fine_tuning&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">      </span><span class="nt">&quot;manual_verification&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">  </span><span class="c1">// This null caused decode errors</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span><span class="p">}]</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="p">}</span>
 </span></code></pre></div>
-<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Reuse the client</strong> - Create one client and reuse it</li>
-<li><strong>Check character limits</strong> - Monitor <code>CharactersRemaining()</code> before generation</li>
-<li><strong>Use appropriate models</strong> - <code>turbo</code> for speed, <code>multilingual_v2</code> for quality</li>
-<li><strong>Batch when possible</strong> - Combine short texts to reduce API calls</li>
-</ol>
+<p>Error:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>decode ManualVerificationResponseModel: &quot;{&quot; expected: unexpected byte 110 &#39;n&#39;
+</span></code></pre></div></p>
+<p>Integration tests catch these issues before users do.</p>
+<h2 id="test-file-location">Test File Location<a class="headerlink" href="#test-file-location" title="Permanent link">&para;</a></h2>
+<p>Integration tests are in <code>integration_test.go</code> at the project root (not in <code>internal/api/</code>) so they won't be overwritten when regenerating ogen code with <code>--clean</code>.</p>
 
 
 

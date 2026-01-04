@@ -2,146 +2,178 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/examples/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/api/client/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/api/coverage/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/api/errors/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
+    </url>
+    <url>
+         <loc>https://agentplexus.github.io/go-elevenlabs/contributing/testing/</loc>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/getting-started/configuration/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/getting-started/installation/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/getting-started/quickstart/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/guides/lms-courses/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/guides/pronunciation-rules/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/guides/ttsscript/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
+    </url>
+    <url>
+         <loc>https://agentplexus.github.io/go-elevenlabs/omnivoice/</loc>
+         <lastmod>2026-01-04</lastmod>
+    </url>
+    <url>
+         <loc>https://agentplexus.github.io/go-elevenlabs/omnivoice/agent/</loc>
+         <lastmod>2026-01-04</lastmod>
+    </url>
+    <url>
+         <loc>https://agentplexus.github.io/go-elevenlabs/omnivoice/stt/</loc>
+         <lastmod>2026-01-04</lastmod>
+    </url>
+    <url>
+         <loc>https://agentplexus.github.io/go-elevenlabs/omnivoice/tts/</loc>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/releases/v0.1.0/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/releases/v0.2.0/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/releases/v0.3.0/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
+    </url>
+    <url>
+         <loc>https://agentplexus.github.io/go-elevenlabs/releases/v0.4.0/</loc>
+         <lastmod>2026-01-04</lastmod>
+    </url>
+    <url>
+         <loc>https://agentplexus.github.io/go-elevenlabs/releases/v0.5.0/</loc>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/services/audio-isolation/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/services/dubbing/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/services/forced-alignment/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/services/history/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/services/models/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/services/music/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/services/projects/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/services/pronunciation/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/services/sound-effects/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/services/speech-to-speech/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/services/speech-to-text/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/services/text-to-dialogue/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/services/text-to-speech/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/services/twilio/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/services/user/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/services/voice-design/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/services/voices/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/services/websocket-stt/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/services/websocket-tts/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/utilities/retryhttp/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/utilities/ttsscript/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
     </url>
     <url>
          <loc>https://agentplexus.github.io/go-elevenlabs/utilities/voices/</loc>
-         <lastmod>2025-12-28</lastmod>
+         <lastmod>2026-01-04</lastmod>
+    </url>
+    <url>
+         <loc>https://agentplexus.github.io/go-elevenlabs/utilities/voicesettings/</loc>
+         <lastmod>2026-01-04</lastmod>
     </url>
 </urlset>
