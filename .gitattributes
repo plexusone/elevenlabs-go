@@ -1,0 +1,3 @@
+# Linguist overrides
+# Mark generated documentation as not counting toward language statistics
+docs/** linguist-documentation
