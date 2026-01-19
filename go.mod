@@ -3,8 +3,8 @@ module github.com/agentplexus/go-elevenlabs
 go 1.24.11
 
 require (
-	github.com/agentplexus/ogen-tools v0.1.0
-	github.com/agentplexus/omnivoice v0.1.0
+	github.com/agentplexus/ogen-tools v0.1.1
+	github.com/agentplexus/omnivoice v0.2.0
 	github.com/go-faster/errors v0.7.1
 	github.com/go-faster/jx v1.2.0
 	github.com/gorilla/websocket v1.5.3
@@ -33,8 +33,8 @@ require (
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.27.1 // indirect
-	golang.org/x/exp v0.0.0-20251219203646-944ab1f22d93 // indirect
-	golang.org/x/net v0.48.0 // indirect
+	golang.org/x/exp v0.0.0-20260112195511-716be5621a96 // indirect
+	golang.org/x/net v0.49.0 // indirect
 	golang.org/x/sync v0.19.0 // indirect
 	golang.org/x/sys v0.40.0 // indirect
 	golang.org/x/text v0.33.0 // indirect
