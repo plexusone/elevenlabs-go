@@ -2,82 +2,139 @@
   "ir_version": "1.0",
   "project": "go-elevenlabs",
   "repository": "https://github.com/agentplexus/go-elevenlabs",
+  "versioning": "semver",
+  "commit_convention": "conventional",
+  "maintainers": ["johncwang@gmail.com"],
   "releases": [
     {
-      "version": "0.5.0",
+      "version": "v0.6.0",
+      "date": "2026-01-19",
+      "highlights": [
+        { "description": "Native telephony audio format support (ulaw, alaw, G.711) for seamless Twilio Media Streams integration" }
+      ],
+      "added": [
+        { "description": "Telephony codec support in OmniVoice format mapping: `ulaw`, `mulaw`, `g711u` -> `ulaw_8000` and `alaw`, `g711a` -> `alaw_8000`", "commit": "4d5cc76" },
+        { "description": "Recognition of `ulaw_`, `alaw_`, `opus_` prefixes as valid ElevenLabs output formats", "commit": "4d5cc76" },
+        { "description": "8kHz PCM output format (`pcm_8000`) for telephony sample rates", "commit": "4d5cc76" }
+      ],
+      "internal": [
+        { "description": "Exclude local `omnivoice/examples/` from version control (examples moved to `agentplexus/omnivoice-examples`)", "commit": "24919bd" }
+      ],
+      "dependencies": [
+        { "description": "Update go.mod dependencies", "commit": "2216d0b" },
+        { "description": "Bump `github.com/grokify/mogo` from 0.72.5 to 0.72.6", "commit": "1f18678" }
+      ],
+      "build": [
+        { "description": "Add `.gitattributes` for `docs/` directory", "commit": "4560e8e" }
+      ]
+    },
+    {
+      "version": "v0.5.0",
       "date": "2026-01-04",
+      "highlights": [
+        { "description": "OmniVoice provider integration - use ElevenLabs as a drop-in TTS/STT/Agent provider in the OmniVoice voice pipeline framework" }
+      ],
       "added": [
-        { "description": "OmniVoice provider integration (`omnivoice/` subpackage)" },
-        { "description": "`omnivoice/tts` - TTS provider implementing `tts.Provider` and `tts.StreamingProvider`" },
-        { "description": "`omnivoice/stt` - STT provider implementing `stt.Provider` and `stt.StreamingProvider`" },
-        { "description": "`omnivoice/agent` - Agent provider implementing `agent.Provider` with session management" },
-        { "description": "`examples/debug-test` - HTTP debugging utilities for API troubleshooting" },
-        { "description": "`examples/simple` - Basic TTS generation example" }
+        { "description": "OmniVoice TTS provider (`omnivoice/tts`) implementing `tts.Provider` and `tts.StreamingProvider` interfaces", "commit": "8988eff" },
+        { "description": "OmniVoice STT provider (`omnivoice/stt`) implementing `stt.Provider` and `stt.StreamingProvider` interfaces", "commit": "8988eff" },
+        { "description": "OmniVoice Agent provider (`omnivoice/agent`) with session management for conversational AI", "commit": "8988eff" },
+        { "description": "Format conversion utilities for mapping OmniVoice configs to ElevenLabs parameters", "commit": "8988eff" },
+        { "description": "Debug and simple TTS examples (`examples/debug-test`, `examples/simple`)", "commit": "052f358" }
+      ],
+      "documentation": [
+        { "description": "OmniVoice integration guide with TTS, STT, and Agent provider documentation", "commit": "2db36b1" },
+        { "description": "Rebuild MkDocs site with OmniVoice section", "commit": "ba3e3b6" }
+      ],
+      "internal": [
+        { "description": "Migrate to structured-changelog format for machine-readable changelog", "commit": "2b6ac84" }
       ]
     },
     {
-      "version": "0.4.0",
-      "date": "2024-12-31",
+      "version": "v0.4.0",
+      "date": "2025-12-31",
+      "highlights": [
+        { "description": "Null handling fix for API responses, voice settings presets for learning platforms, and PCM-to-WAV audio utilities" }
+      ],
       "fixed": [
-        { "description": "JSON decoding errors when API returns `null` for nullable `$ref` fields (affects 205+ fields)" }
+        { "description": "JSON decoding errors for nullable API response fields using ogen-tools post-processing (`ogen-fixnull`, `ogen-fixerror`)", "commit": "0f8818b" }
       ],
       "added": [
-        { "description": "Voice settings presets for platforms: Udemy, Coursera, EdX, Instagram, TikTok, YouTube, Podcast, Audiobook" },
-        { "description": "Integration tests for null handling validation" },
-        { "description": "Audio utilities: `PCMBytesToWAV`, `PCMToWAV`, `ParsePCMSampleRate`" },
-        { "description": "`ParseAPIError()` function for detailed error extraction" },
-        { "description": "`IsForbiddenError()` helper function" },
-        { "description": "Output format validation for TTS requests" },
-        { "description": "`ogen-tools` post-processing in code generation pipeline" }
+        { "description": "Voice settings presets for learning platforms: Udemy, YouTube, TikTok, podcast, audiobook, and more", "commit": "0f8818b" },
+        { "description": "PCM to WAV audio conversion utilities (`PCMBytesToWAV`, `PCMToWAV`)", "commit": "0f8818b" },
+        { "description": "`ParseAPIError()` function for structured error extraction from API responses", "commit": "0f8818b" },
+        { "description": "`IsForbiddenError()` helper for 403 status code detection", "commit": "0f8818b" },
+        { "description": "Output format validation for TTS requests", "commit": "0f8818b" }
+      ],
+      "documentation": [
+        { "description": "Testing documentation for integration tests", "commit": "0f8818b" },
+        { "description": "Voice settings presets guide for LMS courses", "commit": "0f8818b" }
+      ],
+      "dependencies": [
+        { "description": "Update go.mod dependencies", "commit": "3630597" }
       ]
     },
     {
-      "version": "0.3.0",
-      "date": "2024-12-28",
+      "version": "v0.3.0",
+      "date": "2025-12-28",
+      "highlights": [
+        { "description": "Real-time voice agent capabilities: WebSocket STT/TTS streaming, speech-to-speech conversion, and Twilio phone integration" }
+      ],
       "added": [
-        { "description": "WebSocket TTS - Real-time text-to-speech streaming with word-level alignment" },
-        { "description": "WebSocket STT - Real-time speech-to-text with partial results and confidence scores" },
-        { "description": "Speech-to-Speech - Voice conversion with background noise removal" },
-        { "description": "Twilio Integration - Phone call integration for voice agents" },
-        { "description": "Phone Number Management - Manage phone numbers for agents" },
-        { "description": "`gorilla/websocket` dependency for WebSocket support" },
-        { "description": "4 new documentation pages for real-time services" },
-        { "description": "Release notes documentation" }
+        { "description": "WebSocket TTS streaming for real-time text-to-speech synthesis", "commit": "8369b63" },
+        { "description": "WebSocket STT streaming for real-time speech-to-text transcription", "commit": "8369b63" },
+        { "description": "Speech-to-speech conversion service for voice transformation", "commit": "8369b63" },
+        { "description": "Twilio phone integration for telephony voice agents", "commit": "8369b63" },
+        { "description": "`cmd/ttsscript` CLI for batch TTS generation from scripts", "commit": "6e30dd2" }
       ],
       "changed": [
-        { "description": "Updated API coverage to ~75 methods" },
-        { "description": "Updated README with real-time service examples" }
+        { "description": "Transfer repository to `agentplexus` organization", "commit": "89b67c2" }
+      ],
+      "documentation": [
+        { "description": "WebSocket STT/TTS service documentation", "commit": "8369b63" },
+        { "description": "Speech-to-speech and Twilio integration guides", "commit": "8369b63" },
+        { "description": "Examples with custom `*slog.Logger` for debugging", "commit": "5235e85" }
       ]
     },
     {
-      "version": "0.2.0",
-      "date": "2024-12-28",
-      "changed": [
-        { "description": "Repository transferred from `grokify/go-elevenlabs` to `agentplexus/go-elevenlabs`" },
-        { "description": "Updated all internal import paths" },
-        { "description": "Updated documentation URLs and references" }
+      "version": "v0.2.0",
+      "date": "2025-12-27",
+      "highlights": [
+        { "description": "MkDocs documentation site with comprehensive API reference and guides" }
       ],
       "added": [
-        { "description": "MkDocs documentation site - 28 pages with Material theme" },
-        { "description": "`cmd/ttsscript` - Command-line tool for TTS script processing" },
-        { "description": "LMS/Udemy course production guide" },
-        { "description": "Pronunciation rules guide" },
-        { "description": "TTS script authoring guide" },
-        { "description": "API coverage tracking with method-level details" }
+        { "description": "MkDocs documentation site with Material theme", "commit": "db015a4" },
+        { "description": "Comprehensive service documentation for all ElevenLabs APIs", "commit": "db015a4" },
+        { "description": "Getting started guides, examples, and utility documentation", "commit": "db015a4" }
+      ],
+      "dependencies": [
+        { "description": "Bump `github.com/grokify/mogo` from 0.72.4 to 0.72.5", "commit": "53993be" }
       ]
     },
     {
-      "version": "0.1.0",
-      "date": "2024-12-28",
+      "version": "v0.1.0",
+      "date": "2025-12-20",
+      "highlights": [
+        { "description": "Initial release - comprehensive Go client for ElevenLabs API with TTS, STT, voice cloning, and audio generation services" }
+      ],
       "added": [
-        { "description": "Initial release of the ElevenLabs Go SDK" },
-        { "description": "15 service wrappers: Text-to-Speech, Speech-to-Text, Voices, Voice Design, Sound Effects, Music, Audio Isolation, Forced Alignment, Text-to-Dialogue, Projects, Pronunciation Dictionaries, Dubbing, History, Models, User" },
-        { "description": "`ttsscript` package - TTS script authoring utilities" },
-        { "description": "`voices` package - Voice constants and metadata" },
-        { "description": "Functional options pattern for client configuration" },
-        { "description": "Automatic API key from environment variable" },
-        { "description": "Comprehensive error handling" },
-        { "description": "Multiple output format support (MP3, PCM, μ-law)" }
+        { "description": "Text-to-Speech (TTS) service with streaming support and voice settings", "commit": "3f4eb7f" },
+        { "description": "Speech-to-Text (STT) transcription service", "commit": "3f4eb7f" },
+        { "description": "Voice management: list, get, clone, and design voices", "commit": "3f4eb7f" },
+        { "description": "Voice design service for creating custom AI voices", "commit": "3f4eb7f" },
+        { "description": "Text-to-Dialogue service for multi-speaker conversations", "commit": "3f4eb7f" },
+        { "description": "Sound effects generation service", "commit": "3f4eb7f" },
+        { "description": "Music generation service", "commit": "3f4eb7f" },
+        { "description": "Audio isolation service for removing background noise", "commit": "3f4eb7f" },
+        { "description": "Dubbing service for video localization", "commit": "3f4eb7f" },
+        { "description": "Forced alignment service for audio-text synchronization", "commit": "3f4eb7f" },
+        { "description": "Projects service for managing long-form content", "commit": "3f4eb7f" },
+        { "description": "Pronunciation dictionary service with PLS export", "commit": "3f4eb7f" },
+        { "description": "History service for accessing generated audio", "commit": "3f4eb7f" },
+        { "description": "User and subscription management", "commit": "3f4eb7f" },
+        { "description": "Models service for listing available TTS models", "commit": "3f4eb7f" },
+        { "description": "Retry HTTP client wrapper for resilient API calls", "commit": "3f4eb7f" },
+        { "description": "TTSScript compiler for scripted audio generation", "commit": "3f4eb7f" },
+        { "description": "Premade voices package with voice metadata and filtering", "commit": "3f4eb7f" }
       ]
     }
   ]
