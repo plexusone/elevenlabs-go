@@ -103,7 +103,8 @@ func ConfigToWebSocketTTSOptions(config tts.SynthesisConfig) *elevenlabs.WebSock
 // mapOutputFormat maps OmniVoice format names to ElevenLabs format strings.
 func mapOutputFormat(format string, sampleRate int) string {
 	// If already in ElevenLabs format, return as-is
-	if len(format) > 4 && (format[:4] == "mp3_" || format[:4] == "pcm_") {
+	if len(format) > 4 && (format[:4] == "mp3_" || format[:4] == "pcm_" ||
+		format[:5] == "ulaw_" || format[:5] == "alaw_" || format[:5] == "opus_") {
 		return format
 	}
 
@@ -124,6 +125,8 @@ func mapOutputFormat(format string, sampleRate int) string {
 		}
 	case "pcm":
 		switch sampleRate {
+		case 8000:
+			return "pcm_8000"
 		case 16000:
 			return "pcm_16000"
 		case 22050:
@@ -141,6 +144,12 @@ func mapOutputFormat(format string, sampleRate int) string {
 	case "opus":
 		// Fallback to mp3 as ElevenLabs doesn't support opus
 		return "mp3_44100_128"
+	// Telephony formats - critical for Twilio/PSTN integration
+	// ElevenLabs supports these natively, no conversion needed!
+	case "ulaw", "mulaw", "g711u":
+		return "ulaw_8000"
+	case "alaw", "g711a":
+		return "alaw_8000"
 	default:
 		return "mp3_44100_128"
 	}
