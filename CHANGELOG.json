@@ -7,35 +7,44 @@
   "maintainers": ["johncwang@gmail.com"],
   "releases": [
     {
-      "version": "unreleased",
-      "date": "",
+      "version": "v0.7.0",
+      "date": "2026-01-24",
       "highlights": [
-        { "description": "WebSocket STT API migrated to scribe_v2_realtime with breaking changes to options and message formats" }
+        { "description": "WebSocket STT API migrated to scribe_v2_realtime with breaking changes to options and message formats" },
+        { "description": "WebSocket TTS stream completion detection via Done() channel for reliable end-of-stream handling" }
       ],
       "breaking": [
-        { "description": "`WebSocketSTTOptions` fields renamed: `SampleRate`/`Encoding` replaced with `AudioFormat`, `EnableWordTimestamps` replaced with `IncludeTimestamps`, `EnablePartials` removed (partials always enabled)" },
-        { "description": "`WebSocketSTTConnection.EndStream()` removed, use `Commit()` instead" },
-        { "description": "Default model changed from `scribe_v1` to `scribe_v2_realtime`" }
+        { "description": "`WebSocketSTTOptions` fields renamed: `SampleRate`/`Encoding` replaced with `AudioFormat`, `EnableWordTimestamps` replaced with `IncludeTimestamps`, `EnablePartials` removed (partials always enabled)", "commit": "29ec159" },
+        { "description": "`WebSocketSTTConnection.EndStream()` removed, use `Commit()` instead", "commit": "29ec159" },
+        { "description": "Default model changed from `scribe_v1` to `scribe_v2_realtime`", "commit": "29ec159" }
       ],
       "added": [
-        { "description": "`WebSocketSTTOptions.AudioFormat` field for specifying audio encoding (e.g., `pcm_16000`, `ulaw_8000`)" },
-        { "description": "`WebSocketSTTOptions.IncludeTimestamps` field for word-level timing" },
-        { "description": "`WebSocketSTTOptions.IncludeLanguageDetection` field for detected language in responses" },
-        { "description": "`WebSocketSTTOptions.CommitStrategy` field (`manual` or `vad`) for transcript commit control" },
-        { "description": "VAD (Voice Activity Detection) settings: `VADSilenceThresholdSecs`, `VADThreshold`, `MinSpeechDurationMs`, `MinSilenceDurationMs`" },
-        { "description": "`WebSocketSTTConnection.Commit()` method for manual transcript commit" },
-        { "description": "`WebSocketSTTConnection.SendAudioWithCommit()` method for sending audio with optional commit" },
-        { "description": "`WebSocketSTTConnection.SessionID()` method to retrieve server-assigned session ID" },
-        { "description": "OmniVoice STT provider conformance tests" }
+        { "description": "`WebSocketSTTOptions.AudioFormat` field for specifying audio encoding (e.g., `pcm_16000`, `ulaw_8000`)", "commit": "29ec159" },
+        { "description": "`WebSocketSTTOptions.IncludeTimestamps` field for word-level timing", "commit": "29ec159" },
+        { "description": "`WebSocketSTTOptions.IncludeLanguageDetection` field for detected language in responses", "commit": "29ec159" },
+        { "description": "`WebSocketSTTOptions.CommitStrategy` field (`manual` or `vad`) for transcript commit control", "commit": "29ec159" },
+        { "description": "VAD (Voice Activity Detection) settings: `VADSilenceThresholdSecs`, `VADThreshold`, `MinSpeechDurationMs`, `MinSilenceDurationMs`", "commit": "29ec159" },
+        { "description": "`WebSocketSTTConnection.Commit()` method for manual transcript commit", "commit": "29ec159" },
+        { "description": "`WebSocketSTTConnection.SendAudioWithCommit()` method for sending audio with optional commit", "commit": "29ec159" },
+        { "description": "`WebSocketSTTConnection.SessionID()` method to retrieve server-assigned session ID", "commit": "29ec159" },
+        { "description": "`WebSocketTTSConnection.Done()` channel for stream completion detection after `Flush()`", "commit": "b4ac98d" },
+        { "description": "OmniVoice TTS and STT provider conformance tests", "commit": "707d6d2" },
+        { "description": "OmniVoice capabilities documentation with interface implementation matrix", "commit": "e3d4815" }
       ],
       "changed": [
-        { "description": "WebSocket STT now uses query parameters for configuration instead of init message" },
-        { "description": "Audio data sent as `input_audio_chunk` message type with `audio_base_64` field" },
-        { "description": "Response message types: `partial_transcript`, `committed_transcript`, `committed_transcript_with_timestamps`" },
-        { "description": "OmniVoice conversion utilities updated for new STT options structure" }
+        { "description": "WebSocket STT now uses query parameters for configuration instead of init message", "commit": "29ec159" },
+        { "description": "Audio data sent as `input_audio_chunk` message type with `audio_base_64` field", "commit": "29ec159" },
+        { "description": "Response message types: `partial_transcript`, `committed_transcript`, `committed_transcript_with_timestamps`", "commit": "29ec159" },
+        { "description": "OmniVoice conversion utilities updated for new STT options structure", "commit": "29ec159" },
+        { "description": "OmniVoice TTS provider uses `Done()` channel and inactivity timeout for reliable stream completion", "commit": "b4ac98d" },
+        { "description": "OmniVoice TTS `GetVoice()` returns `tts.ErrVoiceNotFound` for invalid voice IDs", "commit": "b4ac98d" }
       ],
       "documentation": [
-        { "description": "`TRD_STT.md` technical requirements document for WebSocket STT migration" }
+        { "description": "`TRD_STT.md` technical requirements document for WebSocket STT migration", "commit": "e3d4815" },
+        { "description": "WebSocket TTS stream completion behavior documentation with usage patterns", "commit": "e3d4815" }
+      ],
+      "dependencies": [
+        { "description": "Bump `github.com/agentplexus/omnivoice` from v0.2.0 to v0.3.0", "commit": "29ec159" }
       ]
     },
     {
