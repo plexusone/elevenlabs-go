@@ -13,6 +13,7 @@
 
 # Go workspace file
 go.work
+go.work.sum
 
 # Dependency directories
 vendor/
@@ -32,6 +33,7 @@ vendor/
 # Environment files
 .env
 .env.local
+.envrc
 
 # Local examples (see agentplexus/omnivoice-examples for published examples)
 omnivoice/examples/
