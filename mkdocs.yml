@@ -79,6 +79,7 @@ nav:
     - Twilio Integration: services/twilio.md
   - OmniVoice:
     - Overview: omnivoice/index.md
+    - Capabilities: omnivoice/capabilities.md
     - TTS Provider: omnivoice/tts.md
     - STT Provider: omnivoice/stt.md
     - Agent Provider: omnivoice/agent.md

@@ -146,6 +146,74 @@ go func() {
 }()
 ```
 
+## Stream Completion Behavior
+
+ElevenLabs WebSocket TTS does **not** send an explicit "end of stream" signal. After calling `Flush()`, the server generates any remaining audio and then waits for more input. If no input arrives within the inactivity timeout (default 20 seconds), the server sends an `input_timeout_exceeded` error and closes the connection.
+
+This behavior has implications for detecting when audio generation is complete:
+
+### Default Behavior
+
+With the default 20-second timeout, your application will wait up to 20 seconds after the last audio chunk before the connection closes:
+
+```go
+conn.Flush()
+
+// This loop will block for up to 20 seconds after last audio
+for audio := range conn.Audio() {
+    player.Write(audio)
+}
+```
+
+### Faster Completion Detection
+
+For applications that need faster stream completion, set a shorter `InactivityTimeout` and treat the timeout as successful completion:
+
+```go
+opts := &elevenlabs.WebSocketTTSOptions{
+    ModelID:           "eleven_turbo_v2_5",
+    OutputFormat:      "pcm_16000",
+    InactivityTimeout: 5, // 5 seconds instead of 20
+}
+
+conn, err := client.WebSocketTTS().Connect(ctx, voiceID, opts)
+if err != nil {
+    log.Fatal(err)
+}
+defer conn.Close()
+
+// Send text and flush
+conn.SendText("Hello, world!")
+conn.Flush()
+
+// Use Done() channel to detect completion
+var receivedAudio bool
+for {
+    select {
+    case audio, ok := <-conn.Audio():
+        if !ok {
+            return // Channel closed
+        }
+        receivedAudio = true
+        player.Write(audio)
+    case <-conn.Done():
+        // All audio received after flush
+        return
+    case err := <-conn.Errors():
+        // Treat timeout as success if we received audio
+        if receivedAudio && strings.Contains(err.Error(), "input_timeout_exceeded") {
+            return // Stream completed successfully
+        }
+        log.Printf("error: %v", err)
+        return
+    }
+}
+```
+
+### OmniVoice Provider
+
+The OmniVoice TTS provider handles this automatically by setting a 5-second inactivity timeout and treating the timeout as successful completion when audio was received after flush.
+
 ## Options Reference
 
 | Option | Type | Default | Description |

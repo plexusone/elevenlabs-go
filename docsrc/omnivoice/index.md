@@ -147,6 +147,7 @@ Use the SDK directly when you need:
 
 ## Provider Details
 
+- [Capabilities](capabilities.md) - Full capability matrix and conformance test status
 - [TTS Provider](tts.md) - Text-to-speech synthesis
 - [STT Provider](stt.md) - Speech-to-text transcription
 - [Agent Provider](agent.md) - Interactive voice sessions
