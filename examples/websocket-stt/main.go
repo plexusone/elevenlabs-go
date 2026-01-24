@@ -44,13 +44,12 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Connect to WebSocket STT
+	// Connect to WebSocket STT with scribe_v2_realtime
 	conn, err := client.WebSocketSTT().Connect(ctx, &elevenlabs.WebSocketSTTOptions{
-		ModelID:              "scribe_v1",
-		SampleRate:           16000,
-		Encoding:             "pcm_s16le",
-		EnablePartials:       true, // Get interim results
-		EnableWordTimestamps: true, // Get word-level timing
+		ModelID:           "scribe_v2_realtime",
+		AudioFormat:       "pcm_16000", // 16kHz PCM audio
+		IncludeTimestamps: true,        // Get word-level timing
+		CommitStrategy:    "manual",    // Manual commit for control
 	})
 	if err != nil {
 		logError(ctx, "Failed to connect WebSocket", err)
@@ -91,8 +90,8 @@ func main() {
 				if len(transcript.Words) > 0 {
 					fmt.Println("  Word timing:")
 					for _, word := range transcript.Words {
-						fmt.Printf("    '%s': %.2fs - %.2fs (conf: %.2f)\n",
-							word.Word, word.Start, word.End, word.Confidence)
+						fmt.Printf("    '%s': %.2fs - %.2fs\n",
+							word.Text, word.Start, word.End)
 					}
 				}
 				if transcript.LanguageCode != "" {
@@ -138,11 +137,11 @@ func main() {
 		time.Sleep(50 * time.Millisecond)
 	}
 
-	// Signal end of audio stream
+	// Signal end of audio stream by committing the final transcript
 	fmt.Println("\n---")
-	logInfo(ctx, "End of audio, waiting for final transcripts...")
-	if err := conn.EndStream(); err != nil {
-		logError(ctx, "Error ending stream", err)
+	logInfo(ctx, "End of audio, committing final transcript...")
+	if err := conn.Commit(); err != nil {
+		logError(ctx, "Error committing transcript", err)
 	}
 
 	// Wait for all transcripts
@@ -170,8 +169,8 @@ func logError(ctx context.Context, msg string, err error, args ...any) {
 //nolint:unused // Example function for documentation
 func streamAudioExample(ctx context.Context, client *elevenlabs.Client) {
 	conn, err := client.WebSocketSTT().Connect(ctx, &elevenlabs.WebSocketSTTOptions{
-		SampleRate:     16000,
-		EnablePartials: true,
+		AudioFormat:       "pcm_16000",
+		IncludeTimestamps: true,
 	})
 	if err != nil {
 		logError(ctx, "Failed to connect", err)
@@ -182,7 +181,7 @@ func streamAudioExample(ctx context.Context, client *elevenlabs.Client) {
 	// Create audio input channel
 	audioStream := make(chan []byte)
 
-	// Use StreamAudio helper - handles EndStream automatically
+	// Use StreamAudio helper - handles Commit automatically
 	transcriptOut, errOut := conn.StreamAudio(ctx, audioStream)
 
 	// Simulate audio capture in goroutine

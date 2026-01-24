@@ -205,12 +205,10 @@ func (s *Session) Start(ctx context.Context) error {
 
 	// Connect STT
 	sttOpts := &elevenlabs.WebSocketSTTOptions{
-		ModelID:              "scribe_v1",
-		SampleRate:           16000,
-		Encoding:             "pcm_s16le",
-		EnablePartials:       true,
-		EnableWordTimestamps: true,
-		LanguageCode:         s.config.Language,
+		ModelID:           "scribe_v2_realtime",
+		AudioFormat:       "pcm_16000",
+		IncludeTimestamps: true,
+		LanguageCode:      s.config.Language,
 	}
 
 	s.sttConn, err = s.client.WebSocketSTT().Connect(ctx, sttOpts)

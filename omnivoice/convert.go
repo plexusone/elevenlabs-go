@@ -167,29 +167,45 @@ func ConfigToWebSocketSTTOptions(config stt.TranscriptionConfig) *elevenlabs.Web
 		opts.LanguageCode = config.Language
 	}
 
-	if config.SampleRate > 0 {
-		opts.SampleRate = config.SampleRate
+	// Map sample rate and encoding to AudioFormat
+	if config.SampleRate > 0 || config.Encoding != "" {
+		opts.AudioFormat = mapAudioFormat(config.Encoding, config.SampleRate)
 	}
 
-	if config.Encoding != "" {
-		opts.Encoding = mapEncoding(config.Encoding)
-	}
-
-	// Enable word timestamps by default if requested
-	opts.EnableWordTimestamps = config.EnableWordTimestamps
+	// Enable word timestamps if requested
+	opts.IncludeTimestamps = config.EnableWordTimestamps
 
 	return opts
 }
 
-// mapEncoding maps OmniVoice encoding names to ElevenLabs encoding strings.
-func mapEncoding(encoding string) string {
-	switch encoding {
-	case "pcm", "pcm_s16le":
-		return "pcm_s16le"
-	case "mulaw", "pcm_mulaw":
-		return "pcm_mulaw"
+// mapAudioFormat maps OmniVoice encoding and sample rate to ElevenLabs audio_format.
+func mapAudioFormat(encoding string, sampleRate int) string {
+	// Default sample rate
+	if sampleRate == 0 {
+		sampleRate = 16000
+	}
+
+	// Handle mulaw encoding
+	if encoding == "mulaw" || encoding == "pcm_mulaw" {
+		return "ulaw_8000"
+	}
+
+	// PCM formats based on sample rate
+	switch sampleRate {
+	case 8000:
+		return "pcm_8000"
+	case 16000:
+		return "pcm_16000"
+	case 22050:
+		return "pcm_22050"
+	case 24000:
+		return "pcm_24000"
+	case 44100:
+		return "pcm_44100"
+	case 48000:
+		return "pcm_48000"
 	default:
-		return "pcm_s16le"
+		return "pcm_16000"
 	}
 }
 
@@ -203,20 +219,25 @@ func TranscriptToStreamEvent(t *elevenlabs.STTTranscript) stt.StreamEvent {
 
 	// Convert words if available
 	if len(t.Words) > 0 {
+		// Calculate start/end time from first and last word
+		var startTime, endTime float64
+		if len(t.Words) > 0 {
+			startTime = t.Words[0].Start
+			endTime = t.Words[len(t.Words)-1].End
+		}
+
 		segment := &stt.Segment{
-			Text:       t.Text,
-			StartTime:  time.Duration(t.StartTime * float64(time.Second)),
-			EndTime:    time.Duration(t.EndTime * float64(time.Second)),
-			Confidence: t.Confidence,
-			Language:   t.LanguageCode,
+			Text:      t.Text,
+			StartTime: time.Duration(startTime * float64(time.Second)),
+			EndTime:   time.Duration(endTime * float64(time.Second)),
+			Language:  t.LanguageCode,
 		}
 
 		for _, w := range t.Words {
 			segment.Words = append(segment.Words, stt.Word{
-				Text:       w.Word,
-				StartTime:  time.Duration(w.Start * float64(time.Second)),
-				EndTime:    time.Duration(w.End * float64(time.Second)),
-				Confidence: w.Confidence,
+				Text:      w.Text,
+				StartTime: time.Duration(w.Start * float64(time.Second)),
+				EndTime:   time.Duration(w.End * float64(time.Second)),
 			})
 		}
 

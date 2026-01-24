@@ -20,48 +20,64 @@ type WebSocketSTTService struct {
 // WebSocketSTTOptions configures the WebSocket STT connection.
 type WebSocketSTTOptions struct {
 	// ModelID is the transcription model to use.
-	// Options: "scribe_v1" (default), "scribe_v1_experimental"
+	// Default: "scribe_v2_realtime"
 	ModelID string
+
+	// AudioFormat specifies the audio encoding format.
+	// Options: "pcm_8000", "pcm_16000", "pcm_22050", "pcm_24000", "pcm_44100", "pcm_48000", "ulaw_8000"
+	// Default: "pcm_16000"
+	AudioFormat string
 
 	// LanguageCode is the expected language (e.g., "en", "es").
 	// If not specified, language will be auto-detected.
 	LanguageCode string
 
-	// SampleRate is the audio sample rate in Hz.
-	// Common values: 8000, 16000, 22050, 44100
-	SampleRate int
+	// IncludeTimestamps enables word-level timing information.
+	IncludeTimestamps bool
 
-	// Encoding is the audio encoding format.
-	// Options: "pcm_s16le" (default), "pcm_mulaw"
-	Encoding string
+	// IncludeLanguageDetection includes detected language in responses.
+	IncludeLanguageDetection bool
 
-	// EnablePartials enables partial/interim transcription results.
-	EnablePartials bool
+	// CommitStrategy determines how transcripts are committed.
+	// Options: "manual" (default), "vad" (voice activity detection)
+	CommitStrategy string
 
-	// EnableWordTimestamps enables word-level timing information.
-	EnableWordTimestamps bool
+	// VAD settings (only used when CommitStrategy is "vad")
 
-	// MaxAlternatives is the maximum number of transcription alternatives.
-	MaxAlternatives int
+	// VADSilenceThresholdSecs is the silence duration to trigger commit in VAD mode.
+	// Default: 1.5
+	VADSilenceThresholdSecs float64
+
+	// VADThreshold is the VAD sensitivity threshold.
+	// Default: 0.4
+	VADThreshold float64
+
+	// MinSpeechDurationMs is the minimum speech duration in milliseconds.
+	// Default: 100
+	MinSpeechDurationMs int
+
+	// MinSilenceDurationMs is the minimum silence duration in milliseconds.
+	// Default: 100
+	MinSilenceDurationMs int
 }
 
 // DefaultWebSocketSTTOptions returns default options for real-time STT.
 func DefaultWebSocketSTTOptions() *WebSocketSTTOptions {
 	return &WebSocketSTTOptions{
-		ModelID:              "scribe_v1",
-		SampleRate:           16000,
-		Encoding:             "pcm_s16le",
-		EnablePartials:       true,
-		EnableWordTimestamps: true,
+		ModelID:           "scribe_v2_realtime",
+		AudioFormat:       "pcm_16000",
+		CommitStrategy:    "manual",
+		IncludeTimestamps: true,
 	}
 }
 
 // WebSocketSTTConnection represents an active WebSocket STT connection.
 type WebSocketSTTConnection struct {
-	conn    *websocket.Conn
-	options *WebSocketSTTOptions
-	mu      sync.Mutex
-	closed  bool
+	conn      *websocket.Conn
+	options   *WebSocketSTTOptions
+	sessionID string
+	mu        sync.Mutex
+	closed    bool
 
 	// Channels for async operation
 	transcriptOut chan *STTTranscript
@@ -75,67 +91,42 @@ type STTTranscript struct {
 	// Text is the transcribed text.
 	Text string `json:"text"`
 
-	// IsFinal indicates if this is a final (non-partial) result.
+	// IsFinal indicates if this is a final (committed) result.
 	IsFinal bool `json:"is_final"`
-
-	// Confidence is the confidence score (0.0 to 1.0).
-	Confidence float64 `json:"confidence,omitempty"`
 
 	// Words contains word-level timing if enabled.
 	Words []STTWord `json:"words,omitempty"`
 
 	// LanguageCode is the detected language.
 	LanguageCode string `json:"language_code,omitempty"`
-
-	// StartTime is the start time in seconds.
-	StartTime float64 `json:"start_time,omitempty"`
-
-	// EndTime is the end time in seconds.
-	EndTime float64 `json:"end_time,omitempty"`
 }
 
 // STTWord represents a single word with timing.
 type STTWord struct {
-	Word       string  `json:"word"`
-	Start      float64 `json:"start"`
-	End        float64 `json:"end"`
-	Confidence float64 `json:"confidence,omitempty"`
+	Text      string  `json:"text"`
+	Start     float64 `json:"start"`
+	End       float64 `json:"end"`
+	Type      string  `json:"type,omitempty"`       // "word" or "spacing"
+	SpeakerID string  `json:"speaker_id,omitempty"` // Speaker identification
 }
 
-// sttWSInitMessage is the initial configuration message.
-type sttWSInitMessage struct {
-	Type                 string `json:"type"`
-	SampleRate           int    `json:"sample_rate,omitempty"`
-	Encoding             string `json:"encoding,omitempty"`
-	LanguageCode         string `json:"language_code,omitempty"`
-	EnablePartials       bool   `json:"enable_partials,omitempty"`
-	EnableWordTimestamps bool   `json:"enable_word_timestamps,omitempty"`
-	MaxAlternatives      int    `json:"max_alternatives,omitempty"`
+// sttInputAudioChunk is the audio data message for v2 API.
+type sttInputAudioChunk struct {
+	MessageType  string `json:"message_type"`
+	AudioBase64  string `json:"audio_base_64"`
+	Commit       bool   `json:"commit,omitempty"`
+	SampleRate   int    `json:"sample_rate,omitempty"`
+	PreviousText string `json:"previous_text,omitempty"`
 }
 
-// sttWSAudioMessage is an audio data message.
-type sttWSAudioMessage struct {
-	Type  string `json:"type"`
-	Audio string `json:"audio"` // Base64 encoded audio
-}
-
-// sttWSControlMessage is a control message.
-type sttWSControlMessage struct {
-	Type string `json:"type"`
-}
-
-// sttWSResponse is the WebSocket response from STT.
-type sttWSResponse struct {
-	Type         string    `json:"type"`
+// sttResponse is a generic response for parsing message_type.
+type sttResponse struct {
+	MessageType  string    `json:"message_type"`
 	Text         string    `json:"text,omitempty"`
-	IsFinal      bool      `json:"is_final,omitempty"`
-	Confidence   float64   `json:"confidence,omitempty"`
-	Words        []STTWord `json:"words,omitempty"`
 	LanguageCode string    `json:"language_code,omitempty"`
-	StartTime    float64   `json:"start_time,omitempty"`
-	EndTime      float64   `json:"end_time,omitempty"`
+	Words        []STTWord `json:"words,omitempty"`
 	Error        string    `json:"error,omitempty"`
-	Message      string    `json:"message,omitempty"`
+	SessionID    string    `json:"session_id,omitempty"`
 }
 
 // Connect establishes a WebSocket connection for real-time STT.
@@ -144,7 +135,7 @@ func (s *WebSocketSTTService) Connect(ctx context.Context, opts *WebSocketSTTOpt
 		opts = DefaultWebSocketSTTOptions()
 	}
 
-	// Build WebSocket URL
+	// Build WebSocket URL with all configuration as query parameters
 	wsURL, err := s.buildWebSocketURL(opts)
 	if err != nil {
 		return nil, err
@@ -155,7 +146,7 @@ func (s *WebSocketSTTService) Connect(ctx context.Context, opts *WebSocketSTTOpt
 		HandshakeTimeout: 0, // Use context timeout
 	}
 
-	// Add headers
+	// Add headers for authentication
 	headers := http.Header{}
 	headers.Set("xi-api-key", s.client.apiKey)
 
@@ -171,12 +162,6 @@ func (s *WebSocketSTTService) Connect(ctx context.Context, opts *WebSocketSTTOpt
 		transcriptOut: make(chan *STTTranscript, 100),
 		errChan:       make(chan error, 1),
 		closeChan:     make(chan struct{}),
-	}
-
-	// Send initial configuration
-	if err := wsc.sendInit(); err != nil {
-		conn.Close()
-		return nil, err
 	}
 
 	// Start reading responses
@@ -205,34 +190,47 @@ func (s *WebSocketSTTService) buildWebSocketURL(opts *WebSocketSTTOptions) (stri
 
 	u.Path = "/v1/speech-to-text/realtime"
 
-	// Add query parameters
+	// Add query parameters (v2 API uses query params for configuration)
 	q := u.Query()
+
 	if opts.ModelID != "" {
 		q.Set("model_id", opts.ModelID)
 	}
+	if opts.AudioFormat != "" {
+		q.Set("audio_format", opts.AudioFormat)
+	}
+	if opts.LanguageCode != "" {
+		q.Set("language_code", opts.LanguageCode)
+	}
+	if opts.IncludeTimestamps {
+		q.Set("include_timestamps", "true")
+	}
+	if opts.IncludeLanguageDetection {
+		q.Set("include_language_detection", "true")
+	}
+	if opts.CommitStrategy != "" {
+		q.Set("commit_strategy", opts.CommitStrategy)
+	}
+
+	// VAD settings (only relevant when using VAD commit strategy)
+	if opts.CommitStrategy == "vad" {
+		if opts.VADSilenceThresholdSecs > 0 {
+			q.Set("vad_silence_threshold_secs", fmt.Sprintf("%.2f", opts.VADSilenceThresholdSecs))
+		}
+		if opts.VADThreshold > 0 {
+			q.Set("vad_threshold", fmt.Sprintf("%.2f", opts.VADThreshold))
+		}
+		if opts.MinSpeechDurationMs > 0 {
+			q.Set("min_speech_duration_ms", fmt.Sprintf("%d", opts.MinSpeechDurationMs))
+		}
+		if opts.MinSilenceDurationMs > 0 {
+			q.Set("min_silence_duration_ms", fmt.Sprintf("%d", opts.MinSilenceDurationMs))
+		}
+	}
+
 	u.RawQuery = q.Encode()
 
 	return u.String(), nil
-}
-
-func (wsc *WebSocketSTTConnection) sendInit() error {
-	msg := sttWSInitMessage{
-		Type:                 "config",
-		SampleRate:           wsc.options.SampleRate,
-		Encoding:             wsc.options.Encoding,
-		EnablePartials:       wsc.options.EnablePartials,
-		EnableWordTimestamps: wsc.options.EnableWordTimestamps,
-	}
-
-	if wsc.options.LanguageCode != "" {
-		msg.LanguageCode = wsc.options.LanguageCode
-	}
-
-	if wsc.options.MaxAlternatives > 0 {
-		msg.MaxAlternatives = wsc.options.MaxAlternatives
-	}
-
-	return wsc.sendJSON(msg)
 }
 
 func (wsc *WebSocketSTTConnection) sendJSON(msg any) error {
@@ -267,7 +265,8 @@ func (wsc *WebSocketSTTConnection) readLoop() {
 			return
 		}
 
-		var resp sttWSResponse
+		// Parse message to determine type
+		var resp sttResponse
 		if err := json.Unmarshal(message, &resp); err != nil {
 			select {
 			case wsc.errChan <- fmt.Errorf("failed to parse response: %w", err):
@@ -276,35 +275,68 @@ func (wsc *WebSocketSTTConnection) readLoop() {
 			continue
 		}
 
-		// Check for errors
-		if resp.Error != "" || (resp.Type == "error" && resp.Message != "") {
-			errMsg := resp.Error
-			if errMsg == "" {
-				errMsg = resp.Message
-			}
-			select {
-			case wsc.errChan <- fmt.Errorf("server error: %s", errMsg):
-			default:
-			}
-			continue
-		}
+		switch resp.MessageType {
+		case "session_started":
+			// Session established, store session ID
+			wsc.mu.Lock()
+			wsc.sessionID = resp.SessionID
+			wsc.mu.Unlock()
 
-		// Handle transcript responses
-		if resp.Type == "transcript" || resp.Text != "" {
+		case "partial_transcript":
+			// Partial (interim) transcription result
 			transcript := &STTTranscript{
-				Text:         resp.Text,
-				IsFinal:      resp.IsFinal,
-				Confidence:   resp.Confidence,
-				Words:        resp.Words,
-				LanguageCode: resp.LanguageCode,
-				StartTime:    resp.StartTime,
-				EndTime:      resp.EndTime,
+				Text:    resp.Text,
+				IsFinal: false,
 			}
 			select {
 			case wsc.transcriptOut <- transcript:
 			case <-wsc.closeChan:
 				return
 			}
+
+		case "committed_transcript":
+			// Final transcription result (without timestamps)
+			transcript := &STTTranscript{
+				Text:    resp.Text,
+				IsFinal: true,
+			}
+			select {
+			case wsc.transcriptOut <- transcript:
+			case <-wsc.closeChan:
+				return
+			}
+
+		case "committed_transcript_with_timestamps":
+			// Final transcription result with word-level timestamps
+			transcript := &STTTranscript{
+				Text:         resp.Text,
+				IsFinal:      true,
+				LanguageCode: resp.LanguageCode,
+				Words:        resp.Words,
+			}
+			select {
+			case wsc.transcriptOut <- transcript:
+			case <-wsc.closeChan:
+				return
+			}
+
+		case "error", "auth_error", "quota_exceeded", "rate_limited",
+			"input_error", "transcriber_error", "chunk_size_exceeded",
+			"insufficient_audio_activity", "session_time_limit_exceeded",
+			"resource_exhausted", "queue_overflow", "commit_throttled",
+			"unaccepted_terms":
+			// Error response
+			errMsg := resp.Error
+			if errMsg == "" {
+				errMsg = resp.MessageType
+			}
+			select {
+			case wsc.errChan <- fmt.Errorf("server error (%s): %s", resp.MessageType, errMsg):
+			default:
+			}
+
+		default:
+			// Unknown message type, ignore
 		}
 	}
 }
@@ -317,26 +349,42 @@ func (wsc *WebSocketSTTConnection) closeChannels() {
 }
 
 // SendAudio sends audio data for transcription.
-// The audio should be in the format specified in WebSocketSTTOptions.
+// The audio should be in the format specified in WebSocketSTTOptions.AudioFormat.
 func (wsc *WebSocketSTTConnection) SendAudio(audio []byte) error {
 	if len(audio) == 0 {
 		return nil
 	}
 
-	msg := sttWSAudioMessage{
-		Type:  "audio",
-		Audio: base64.StdEncoding.EncodeToString(audio),
+	msg := sttInputAudioChunk{
+		MessageType: "input_audio_chunk",
+		AudioBase64: base64.StdEncoding.EncodeToString(audio),
 	}
 
 	return wsc.sendJSON(msg)
 }
 
-// EndStream signals that no more audio will be sent.
-// This allows the server to finalize any pending transcription.
-func (wsc *WebSocketSTTConnection) EndStream() error {
-	msg := sttWSControlMessage{
-		Type: "end_of_stream",
+// SendAudioWithCommit sends audio data and optionally commits the transcript.
+// When commit is true, the server will finalize the current transcript segment.
+// This is useful for manual commit strategy.
+func (wsc *WebSocketSTTConnection) SendAudioWithCommit(audio []byte, commit bool) error {
+	msg := sttInputAudioChunk{
+		MessageType: "input_audio_chunk",
+		AudioBase64: base64.StdEncoding.EncodeToString(audio),
+		Commit:      commit,
 	}
+
+	return wsc.sendJSON(msg)
+}
+
+// Commit forces a commit of the current transcript segment.
+// This sends an empty audio chunk with commit=true.
+func (wsc *WebSocketSTTConnection) Commit() error {
+	msg := sttInputAudioChunk{
+		MessageType: "input_audio_chunk",
+		AudioBase64: "",
+		Commit:      true,
+	}
+
 	return wsc.sendJSON(msg)
 }
 
@@ -350,6 +398,14 @@ func (wsc *WebSocketSTTConnection) Errors() <-chan error {
 	return wsc.errChan
 }
 
+// SessionID returns the session ID assigned by the server.
+// This is available after the connection is established.
+func (wsc *WebSocketSTTConnection) SessionID() string {
+	wsc.mu.Lock()
+	defer wsc.mu.Unlock()
+	return wsc.sessionID
+}
+
 // Close closes the WebSocket connection gracefully.
 func (wsc *WebSocketSTTConnection) Close() error {
 	wsc.mu.Lock()
@@ -360,16 +416,13 @@ func (wsc *WebSocketSTTConnection) Close() error {
 	wsc.closed = true
 	wsc.mu.Unlock()
 
-	// Send end of stream
-	_ = wsc.EndStream()
-
 	// Close the connection
 	wsc.closeChannels()
 	return wsc.conn.Close()
 }
 
 // StreamAudio is a convenience method that streams audio from a channel.
-// It handles ending the stream automatically when the input channel closes.
+// It handles committing automatically when the input channel closes.
 func (wsc *WebSocketSTTConnection) StreamAudio(ctx context.Context, audioStream <-chan []byte) (<-chan *STTTranscript, <-chan error) {
 	transcriptOut := make(chan *STTTranscript, 100)
 	errOut := make(chan error, 1)
@@ -396,10 +449,9 @@ func (wsc *WebSocketSTTConnection) StreamAudio(ctx context.Context, audioStream 
 			select {
 			case audio, ok := <-audioStream:
 				if !ok {
-					// Input stream closed, end stream and wait for remaining transcripts
-					if err := wsc.EndStream(); err != nil {
-						errOut <- err
-						return
+					// Input stream closed, commit final transcript and wait
+					if err := wsc.Commit(); err != nil {
+						// Commit error is non-fatal, connection might be closing
 					}
 					<-done
 					return

@@ -209,7 +209,7 @@ func (w *streamWriter) Write(p []byte) (n int, err error) {
 	return len(p), nil
 }
 
-// Close signals end of stream and closes the connection.
+// Close commits the final transcript and closes the connection.
 func (w *streamWriter) Close() error {
 	w.mu.Lock()
 	defer w.mu.Unlock()
@@ -219,9 +219,9 @@ func (w *streamWriter) Close() error {
 	}
 	w.closed = true
 
-	// Signal end of stream
-	if err := w.conn.EndStream(); err != nil {
-		// Log but don't fail
+	// Commit the final transcript
+	if err := w.conn.Commit(); err != nil {
+		// Log but don't fail - connection might already be closing
 		_ = err
 	}
 
