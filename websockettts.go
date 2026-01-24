@@ -13,6 +13,18 @@ import (
 )
 
 // WebSocketTTSService handles real-time text-to-speech via WebSocket.
+//
+// # Stream Completion Behavior
+//
+// ElevenLabs WebSocket TTS does not send an explicit "end of stream" signal.
+// After calling Flush(), the server generates remaining audio and then waits
+// for more input. If no input arrives within the inactivity timeout (default
+// 20 seconds), the server sends an "input_timeout_exceeded" error and closes
+// the connection.
+//
+// For applications that need faster stream completion detection, set a shorter
+// InactivityTimeout in WebSocketTTSOptions (e.g., 5 seconds) and treat the
+// timeout as a successful completion if audio was received after flush.
 type WebSocketTTSService struct {
 	client *Client
 }
@@ -67,13 +79,16 @@ type WebSocketTTSConnection struct {
 	options *WebSocketTTSOptions
 	mu      sync.Mutex
 	closed  bool
+	flushed bool // tracks if Flush() has been called
 
 	// Channels for async operation
 	audioOut  chan []byte
 	alignOut  chan *TTSAlignment
 	errChan   chan error
+	doneChan  chan struct{} // signals when all audio is received after flush
 	closeChan chan struct{}
 	closeOnce sync.Once
+	doneOnce  sync.Once
 }
 
 // TTSAlignment contains word-level timing information.
@@ -156,6 +171,7 @@ func (s *WebSocketTTSService) Connect(ctx context.Context, voiceID string, opts 
 		audioOut:  make(chan []byte, 100),
 		alignOut:  make(chan *TTSAlignment, 100),
 		errChan:   make(chan error, 1),
+		doneChan:  make(chan struct{}),
 		closeChan: make(chan struct{}),
 	}
 
@@ -328,6 +344,20 @@ func (wsc *WebSocketTTSConnection) readLoop() {
 			default:
 			}
 		}
+
+		// Check if this is the final response after flush
+		if resp.IsFinal {
+			wsc.mu.Lock()
+			flushed := wsc.flushed
+			wsc.mu.Unlock()
+
+			if flushed {
+				// Signal that all audio has been received
+				wsc.doneOnce.Do(func() {
+					close(wsc.doneChan)
+				})
+			}
+		}
 	}
 }
 
@@ -378,7 +408,12 @@ func (wsc *WebSocketTTSConnection) TriggerGeneration() error {
 
 // Flush signals that no more text will be sent and flushes remaining audio.
 // This should be called when the text stream is complete.
+// After calling Flush, use Done() to wait for all audio to be received.
 func (wsc *WebSocketTTSConnection) Flush() error {
+	wsc.mu.Lock()
+	wsc.flushed = true
+	wsc.mu.Unlock()
+
 	msg := ttsWSMessage{
 		Text:  "",
 		Flush: true,
@@ -399,6 +434,12 @@ func (wsc *WebSocketTTSConnection) Alignments() <-chan *TTSAlignment {
 // Errors returns a channel that receives errors from the connection.
 func (wsc *WebSocketTTSConnection) Errors() <-chan error {
 	return wsc.errChan
+}
+
+// Done returns a channel that is closed when all audio has been received after Flush().
+// Use this to wait for completion before closing the connection.
+func (wsc *WebSocketTTSConnection) Done() <-chan struct{} {
+	return wsc.doneChan
 }
 
 // Close closes the WebSocket connection gracefully.

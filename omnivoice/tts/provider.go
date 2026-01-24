@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"strings"
 	"sync"
 
 	elevenlabs "github.com/agentplexus/go-elevenlabs"
@@ -123,6 +124,11 @@ func (p *Provider) Synthesize(ctx context.Context, text string, config tts.Synth
 // SynthesizeStream converts text to speech with streaming output.
 func (p *Provider) SynthesizeStream(ctx context.Context, text string, config tts.SynthesisConfig) (<-chan tts.StreamChunk, error) {
 	opts := omnivoice.ConfigToWebSocketTTSOptions(config)
+	// Use shorter inactivity timeout - ElevenLabs closes connection on timeout
+	// which signals end of audio stream
+	if opts.InactivityTimeout == 0 {
+		opts.InactivityTimeout = 5 // 5 seconds
+	}
 
 	conn, err := p.client.WebSocketTTS().Connect(ctx, config.VoiceID, opts)
 	if err != nil {
@@ -134,6 +140,8 @@ func (p *Provider) SynthesizeStream(ctx context.Context, text string, config tts
 	go func() {
 		defer close(out)
 		defer func() { _ = conn.Close() }()
+
+		var receivedAudio bool
 
 		// Send the text
 		if err := conn.SendText(text); err != nil {
@@ -147,36 +155,62 @@ func (p *Provider) SynthesizeStream(ctx context.Context, text string, config tts
 			return
 		}
 
-		// Forward audio chunks
-		for audio := range conn.Audio() {
+		// Forward audio chunks until done
+		for {
 			select {
-			case out <- tts.StreamChunk{Audio: audio}:
+			case audio, ok := <-conn.Audio():
+				if !ok {
+					// Audio channel closed
+					out <- tts.StreamChunk{IsFinal: true}
+					return
+				}
+				receivedAudio = true
+				out <- tts.StreamChunk{Audio: audio}
+			case <-conn.Done():
+				// All audio received after flush - drain any remaining audio
+				for audio := range conn.Audio() {
+					out <- tts.StreamChunk{Audio: audio}
+				}
+				out <- tts.StreamChunk{IsFinal: true}
+				return
+			case err := <-conn.Errors():
+				// ElevenLabs signals end of stream via inactivity timeout
+				// If we received audio and flushed, treat timeout as success
+				if receivedAudio && isInactivityTimeout(err) {
+					out <- tts.StreamChunk{IsFinal: true}
+					return
+				}
+				if err != nil {
+					out <- tts.StreamChunk{Error: err}
+				}
+				return
 			case <-ctx.Done():
 				out <- tts.StreamChunk{Error: ctx.Err()}
 				return
 			}
 		}
-
-		// Check for errors
-		select {
-		case err := <-conn.Errors():
-			if err != nil {
-				out <- tts.StreamChunk{Error: err}
-			}
-		default:
-		}
-
-		// Send final chunk
-		out <- tts.StreamChunk{IsFinal: true}
 	}()
 
 	return out, nil
+}
+
+// isInactivityTimeout checks if the error is an ElevenLabs inactivity timeout.
+func isInactivityTimeout(err error) bool {
+	if err == nil {
+		return false
+	}
+	return strings.Contains(err.Error(), "input_timeout_exceeded")
 }
 
 // SynthesizeFromReader reads text from a reader and streams audio output.
 // This is useful for streaming LLM output directly to TTS.
 func (p *Provider) SynthesizeFromReader(ctx context.Context, reader io.Reader, config tts.SynthesisConfig) (<-chan tts.StreamChunk, error) {
 	opts := omnivoice.ConfigToWebSocketTTSOptions(config)
+	// Use shorter inactivity timeout - ElevenLabs closes connection on timeout
+	// which signals end of audio stream
+	if opts.InactivityTimeout == 0 {
+		opts.InactivityTimeout = 5 // 5 seconds
+	}
 
 	conn, err := p.client.WebSocketTTS().Connect(ctx, config.VoiceID, opts)
 	if err != nil {
@@ -188,6 +222,8 @@ func (p *Provider) SynthesizeFromReader(ctx context.Context, reader io.Reader, c
 	go func() {
 		defer close(out)
 		defer func() { _ = conn.Close() }()
+
+		var receivedAudio bool
 
 		// Read text in chunks and send
 		buf := make([]byte, 1024)
@@ -214,27 +250,40 @@ func (p *Provider) SynthesizeFromReader(ctx context.Context, reader io.Reader, c
 			return
 		}
 
-		// Forward audio chunks
-		for audio := range conn.Audio() {
+		// Forward audio chunks until done
+		for {
 			select {
-			case out <- tts.StreamChunk{Audio: audio}:
+			case audio, ok := <-conn.Audio():
+				if !ok {
+					// Audio channel closed
+					out <- tts.StreamChunk{IsFinal: true}
+					return
+				}
+				receivedAudio = true
+				out <- tts.StreamChunk{Audio: audio}
+			case <-conn.Done():
+				// All audio received after flush - drain any remaining audio
+				for audio := range conn.Audio() {
+					out <- tts.StreamChunk{Audio: audio}
+				}
+				out <- tts.StreamChunk{IsFinal: true}
+				return
+			case err := <-conn.Errors():
+				// ElevenLabs signals end of stream via inactivity timeout
+				// If we received audio and flushed, treat timeout as success
+				if receivedAudio && isInactivityTimeout(err) {
+					out <- tts.StreamChunk{IsFinal: true}
+					return
+				}
+				if err != nil {
+					out <- tts.StreamChunk{Error: err}
+				}
+				return
 			case <-ctx.Done():
 				out <- tts.StreamChunk{Error: ctx.Err()}
 				return
 			}
 		}
-
-		// Check for errors
-		select {
-		case err := <-conn.Errors():
-			if err != nil {
-				out <- tts.StreamChunk{Error: err}
-			}
-		default:
-		}
-
-		// Send final chunk
-		out <- tts.StreamChunk{IsFinal: true}
 	}()
 
 	return out, nil
@@ -275,6 +324,12 @@ func (p *Provider) ListVoices(ctx context.Context) ([]tts.Voice, error) {
 func (p *Provider) GetVoice(ctx context.Context, voiceID string) (*tts.Voice, error) {
 	voice, err := p.client.Voices().Get(ctx, voiceID)
 	if err != nil {
+		// Parse the error to get API-level details
+		apiErr := elevenlabs.ParseAPIError(err)
+		if apiErr != nil && (apiErr.StatusCode == 404 || apiErr.StatusCode == 400) {
+			// ElevenLabs returns 400 or 404 for invalid voice IDs
+			return nil, tts.ErrVoiceNotFound
+		}
 		return nil, fmt.Errorf("failed to get voice: %w", err)
 	}
 
