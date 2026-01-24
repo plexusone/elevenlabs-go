@@ -7,6 +7,38 @@
   "maintainers": ["johncwang@gmail.com"],
   "releases": [
     {
+      "version": "unreleased",
+      "date": "",
+      "highlights": [
+        { "description": "WebSocket STT API migrated to scribe_v2_realtime with breaking changes to options and message formats" }
+      ],
+      "breaking": [
+        { "description": "`WebSocketSTTOptions` fields renamed: `SampleRate`/`Encoding` replaced with `AudioFormat`, `EnableWordTimestamps` replaced with `IncludeTimestamps`, `EnablePartials` removed (partials always enabled)" },
+        { "description": "`WebSocketSTTConnection.EndStream()` removed, use `Commit()` instead" },
+        { "description": "Default model changed from `scribe_v1` to `scribe_v2_realtime`" }
+      ],
+      "added": [
+        { "description": "`WebSocketSTTOptions.AudioFormat` field for specifying audio encoding (e.g., `pcm_16000`, `ulaw_8000`)" },
+        { "description": "`WebSocketSTTOptions.IncludeTimestamps` field for word-level timing" },
+        { "description": "`WebSocketSTTOptions.IncludeLanguageDetection` field for detected language in responses" },
+        { "description": "`WebSocketSTTOptions.CommitStrategy` field (`manual` or `vad`) for transcript commit control" },
+        { "description": "VAD (Voice Activity Detection) settings: `VADSilenceThresholdSecs`, `VADThreshold`, `MinSpeechDurationMs`, `MinSilenceDurationMs`" },
+        { "description": "`WebSocketSTTConnection.Commit()` method for manual transcript commit" },
+        { "description": "`WebSocketSTTConnection.SendAudioWithCommit()` method for sending audio with optional commit" },
+        { "description": "`WebSocketSTTConnection.SessionID()` method to retrieve server-assigned session ID" },
+        { "description": "OmniVoice STT provider conformance tests" }
+      ],
+      "changed": [
+        { "description": "WebSocket STT now uses query parameters for configuration instead of init message" },
+        { "description": "Audio data sent as `input_audio_chunk` message type with `audio_base_64` field" },
+        { "description": "Response message types: `partial_transcript`, `committed_transcript`, `committed_transcript_with_timestamps`" },
+        { "description": "OmniVoice conversion utilities updated for new STT options structure" }
+      ],
+      "documentation": [
+        { "description": "`TRD_STT.md` technical requirements document for WebSocket STT migration" }
+      ]
+    },
+    {
       "version": "v0.6.0",
       "date": "2026-01-19",
       "highlights": [
