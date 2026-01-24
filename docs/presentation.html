@@ -852,7 +852,7 @@ section.section-divider p {
 ├── ttsscript/             # TTS script authoring package
 ├── voices/                # Voice reference package
 ├── internal/api/          # ogen-generated API client (~330K lines)
-└── docsrc/                # MkDocs documentation site (32 pages)
+└── docs/                # MkDocs documentation site (32 pages)
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-style="/* Mermaid diagram styling */
@@ -4590,7 +4590,7 @@ At the root level, we have the client.go which is the main entry point. &lt;brea
 Each service has its own file like texttospeech.go, voices.go, and so on. &lt;break time=&quot;500ms&quot;/&gt;
 Error handling is centralized in errors.go. &lt;break time=&quot;500ms&quot;/&gt;
 The internal/api directory contains the ogen-generated API client with over 330,000 lines. &lt;break time=&quot;500ms&quot;/&gt;
-The docsrc directory contains the MkDocs documentation site. &lt;break time=&quot;500ms&quot;/&gt;
+The docs directory contains the MkDocs documentation site. &lt;break time=&quot;500ms&quot;/&gt;
 And the examples directory has usage examples. &lt;break time=&quot;800ms&quot;/&gt;</p></div><div class="bespoke-marp-note" data-index="5" tabindex="0"><p>Let me walk you through the key design decisions. &lt;break time=&quot;600ms&quot;/&gt;
 First, we chose ogen for API client generation. &lt;break time=&quot;500ms&quot;/&gt;
 ogen provides type-safe code with no reflection, &lt;break time=&quot;400ms&quot;/&gt;

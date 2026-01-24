@@ -15,6 +15,9 @@
 go.work
 go.work.sum
 
+# MkDocs build output
+site/
+
 # Dependency directories
 vendor/
 

@@ -196,7 +196,7 @@ At the root level, we have the client.go which is the main entry point. <break t
 Each service has its own file like texttospeech.go, voices.go, and so on. <break time="500ms"/>
 Error handling is centralized in errors.go. <break time="500ms"/>
 The internal/api directory contains the ogen-generated API client with over 330,000 lines. <break time="500ms"/>
-The docsrc directory contains the MkDocs documentation site. <break time="500ms"/>
+The docs directory contains the MkDocs documentation site. <break time="500ms"/>
 And the examples directory has usage examples. <break time="800ms"/>
 -->
 
@@ -215,7 +215,7 @@ go-elevenlabs/
 ├── ttsscript/             # TTS script authoring package
 ├── voices/                # Voice reference package
 ├── internal/api/          # ogen-generated API client (~330K lines)
-└── docsrc/                # MkDocs documentation site (32 pages)
+└── docs/                # MkDocs documentation site (32 pages)
 ```
 
 ---

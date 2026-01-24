@@ -6,8 +6,6 @@ site_url: https://agentplexus.github.io/go-elevenlabs/
 repo_name: agentplexus/go-elevenlabs
 repo_url: https://github.com/agentplexus/go-elevenlabs
 
-docs_dir: docsrc
-
 theme:
   name: material
   palette:
