@@ -90,13 +90,8 @@ func (p *Provider) Transcribe(ctx context.Context, audio []byte, config stt.Tran
 	// Base64 encode the audio
 	encoded := base64.StdEncoding.EncodeToString(audio)
 
-	req := &elevenlabs.TranscriptionRequest{
-		FileContent:  encoded,
-		LanguageCode: config.Language,
-		Diarize:      config.EnableSpeakerDiarization,
-		NumSpeakers:  config.MaxSpeakers,
-		ModelID:      config.Model,
-	}
+	req := configToTranscriptionRequest(config)
+	req.FileContent = encoded
 
 	resp, err := p.client.SpeechToText().Transcribe(ctx, req)
 	if err != nil {
@@ -119,13 +114,8 @@ func (p *Provider) TranscribeFile(ctx context.Context, filePath string, config s
 
 // TranscribeURL transcribes audio from a URL.
 func (p *Provider) TranscribeURL(ctx context.Context, url string, config stt.TranscriptionConfig) (*stt.TranscriptionResult, error) {
-	req := &elevenlabs.TranscriptionRequest{
-		FileURL:      url,
-		LanguageCode: config.Language,
-		Diarize:      config.EnableSpeakerDiarization,
-		NumSpeakers:  config.MaxSpeakers,
-		ModelID:      config.Model,
-	}
+	req := configToTranscriptionRequest(config)
+	req.FileURL = url
 
 	resp, err := p.client.SpeechToText().Transcribe(ctx, req)
 	if err != nil {
@@ -133,6 +123,28 @@ func (p *Provider) TranscribeURL(ctx context.Context, url string, config stt.Tra
 	}
 
 	return omnivoice.TranscriptionResultFromResponse(resp), nil
+}
+
+// configToTranscriptionRequest converts OmniVoice config to ElevenLabs request.
+func configToTranscriptionRequest(config stt.TranscriptionConfig) *elevenlabs.TranscriptionRequest {
+	req := &elevenlabs.TranscriptionRequest{
+		LanguageCode: config.Language,
+		Diarize:      config.EnableSpeakerDiarization,
+		NumSpeakers:  config.MaxSpeakers,
+		ModelID:      config.Model,
+	}
+
+	// Apply ElevenLabs-specific extensions
+	if GetTagAudioEvents(config) {
+		req.TagAudioEvents = true
+	}
+
+	// NumSpeakers extension overrides MaxSpeakers if set
+	if numSpeakers := GetNumSpeakers(config); numSpeakers > 0 {
+		req.NumSpeakers = numSpeakers
+	}
+
+	return req
 }
 
 // TranscribeStream starts a streaming transcription session.

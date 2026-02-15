@@ -1,11 +1,19 @@
 package omnivoice
 
 import (
+	"fmt"
 	"time"
 
 	elevenlabs "github.com/agentplexus/go-elevenlabs"
 	"github.com/agentplexus/omnivoice/stt"
 	"github.com/agentplexus/omnivoice/tts"
+)
+
+// Extension keys for ElevenLabs-specific TTS settings.
+// These match the keys defined in the tts sub-package extensions.go.
+const (
+	extStyle        = "elevenlabs.style"
+	extSpeakerBoost = "elevenlabs.speaker_boost"
 )
 
 // VoiceToOmniVoice converts an ElevenLabs Voice to an OmniVoice Voice.
@@ -42,9 +50,12 @@ func VoiceToOmniVoice(v *elevenlabs.Voice) tts.Voice {
 
 // ConfigToTTSRequest converts an OmniVoice SynthesisConfig to an ElevenLabs TTSRequest.
 func ConfigToTTSRequest(text string, config tts.SynthesisConfig) *elevenlabs.TTSRequest {
+	// Apply pitch adjustment via SSML if specified
+	processedText := applyPitchSSML(text, config.Pitch)
+
 	req := &elevenlabs.TTSRequest{
 		VoiceID: config.VoiceID,
-		Text:    text,
+		Text:    processedText,
 		ModelID: config.Model,
 	}
 
@@ -53,8 +64,12 @@ func ConfigToTTSRequest(text string, config tts.SynthesisConfig) *elevenlabs.TTS
 		req.OutputFormat = mapOutputFormat(config.OutputFormat, config.SampleRate)
 	}
 
-	// Set voice settings if any are specified
-	if config.Stability > 0 || config.SimilarityBoost > 0 || config.Speed > 0 {
+	// Get extension values
+	style := getStyleFromExtensions(config.Extensions)
+	speakerBoost := getSpeakerBoostFromExtensions(config.Extensions)
+
+	// Set voice settings if any are specified (core or extensions)
+	if config.Stability > 0 || config.SimilarityBoost > 0 || config.Speed > 0 || style > 0 || speakerBoost {
 		settings := elevenlabs.DefaultVoiceSettings()
 		if config.Stability > 0 {
 			settings.Stability = config.Stability
@@ -65,10 +80,55 @@ func ConfigToTTSRequest(text string, config tts.SynthesisConfig) *elevenlabs.TTS
 		if config.Speed > 0 {
 			settings.Speed = config.Speed
 		}
+		// Apply ElevenLabs-specific extensions
+		if style > 0 {
+			settings.Style = style
+		}
+		if speakerBoost {
+			settings.UseSpeakerBoost = true
+		}
 		req.VoiceSettings = settings
 	}
 
 	return req
+}
+
+// getStyleFromExtensions extracts style from extensions map.
+func getStyleFromExtensions(extensions map[string]any) float64 {
+	if extensions == nil {
+		return 0.0
+	}
+	if v, ok := extensions[extStyle].(float64); ok {
+		return v
+	}
+	return 0.0
+}
+
+// getSpeakerBoostFromExtensions extracts speaker boost setting from extensions map.
+func getSpeakerBoostFromExtensions(extensions map[string]any) bool {
+	if extensions == nil {
+		return false
+	}
+	if v, ok := extensions[extSpeakerBoost].(bool); ok {
+		return v
+	}
+	return false
+}
+
+// applyPitchSSML wraps text in SSML prosody tags if pitch is specified.
+// OmniVoice pitch range: -1.0 to 1.0 (0 = normal)
+// SSML pitch: percentage like "+20%" or "-30%"
+func applyPitchSSML(text string, pitch float64) string {
+	if pitch == 0 {
+		return text
+	}
+	// Convert -1.0 to 1.0 range to percentage (-50% to +50%)
+	// This provides a reasonable pitch adjustment range
+	percentage := int(pitch * 50)
+	if percentage > 0 {
+		return fmt.Sprintf(`<speak><prosody pitch="+%d%%">%s</prosody></speak>`, percentage, text)
+	}
+	return fmt.Sprintf(`<speak><prosody pitch="%d%%">%s</prosody></speak>`, percentage, text)
 }
 
 // ConfigToWebSocketTTSOptions converts OmniVoice SynthesisConfig to ElevenLabs WebSocket options.
@@ -83,7 +143,12 @@ func ConfigToWebSocketTTSOptions(config tts.SynthesisConfig) *elevenlabs.WebSock
 		opts.OutputFormat = mapOutputFormat(config.OutputFormat, config.SampleRate)
 	}
 
-	if config.Stability > 0 || config.SimilarityBoost > 0 || config.Speed > 0 {
+	// Get extension values
+	style := getStyleFromExtensions(config.Extensions)
+	speakerBoost := getSpeakerBoostFromExtensions(config.Extensions)
+
+	// Set voice settings if any are specified (core or extensions)
+	if config.Stability > 0 || config.SimilarityBoost > 0 || config.Speed > 0 || style > 0 || speakerBoost {
 		settings := elevenlabs.DefaultVoiceSettings()
 		if config.Stability > 0 {
 			settings.Stability = config.Stability
@@ -93,6 +158,13 @@ func ConfigToWebSocketTTSOptions(config tts.SynthesisConfig) *elevenlabs.WebSock
 		}
 		if config.Speed > 0 {
 			settings.Speed = config.Speed
+		}
+		// Apply ElevenLabs-specific extensions
+		if style > 0 {
+			settings.Style = style
+		}
+		if speakerBoost {
+			settings.UseSpeakerBoost = true
 		}
 		opts.VoiceSettings = settings
 	}
