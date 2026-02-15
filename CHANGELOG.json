@@ -1,11 +1,47 @@
 {
-  "ir_version": "1.0",
+  "irVersion": "1.0",
   "project": "go-elevenlabs",
   "repository": "https://github.com/agentplexus/go-elevenlabs",
   "versioning": "semver",
-  "commit_convention": "conventional",
+  "commitConvention": "conventional",
   "maintainers": ["johncwang@gmail.com"],
   "releases": [
+    {
+      "version": "v0.8.0",
+      "date": "2026-02-13",
+      "highlights": [
+        { "description": "New Cobra-based CLI (`elevenlabs`) with `tts` and `ttsscript` subcommands for text-to-speech generation" },
+        { "description": "YAML configuration file support with presets for oratory, podcast, and audiobook styles" }
+      ],
+      "added": [
+        { "description": "Cobra CLI framework with `elevenlabs` command and subcommands", "commit": "6bb1bb9" },
+        { "description": "`elevenlabs tts` command for generating speech from text files with SSML and emotion tag support", "commit": "6bb1bb9" },
+        { "description": "`elevenlabs ttsscript` command migrated from standalone `cmd/ttsscript`", "commit": "6bb1bb9" },
+        { "description": "YAML configuration file support (`--config`) for reusable TTS settings", "commit": "6bb1bb9" },
+        { "description": "Built-in presets (`--preset`): `oratory`, `podcast`, `audiobook` with optimized voice settings", "commit": "6bb1bb9" },
+        { "description": "Config save functionality (`--save-config`) to export current settings to YAML", "commit": "6bb1bb9" },
+        { "description": "Voice settings CLI flags: `--stability`, `--similarity`, `--style`, `--speed`", "commit": "6bb1bb9" },
+        { "description": "Automatic output format detection: `.mp3`, `.wav`, `.opus`, `.raw` based on format parameter", "commit": "6bb1bb9" },
+        { "description": "`ttsconfig` subpackage with `Config` and `VoiceSettings` types for programmatic TTS configuration", "commit": "3137a14" },
+        { "description": "`ttsconfig.Load()` and `ttsconfig.Save()` functions for YAML config file I/O", "commit": "3137a14" },
+        { "description": "`ttsconfig.Oratory()`, `ttsconfig.Podcast()`, `ttsconfig.Audiobook()` preset functions", "commit": "3137a14" },
+        { "description": "`ttsconfig.EstimateCredits()` and `ttsconfig.FormatDuration()` utility functions for credit calculation", "commit": "3137a14" },
+        { "description": "`ttsconfig.StripMarkup()` for removing SSML and emotion tags from text", "commit": "3137a14" },
+        { "description": "`--estimate` flag for credit estimation without calling API (shows words, duration, estimated credits)", "commit": "6bb1bb9" }
+      ],
+      "changed": [
+        { "description": "CLI uses `slog.Logger` for structured logging instead of `fmt.Printf`", "commit": "6bb1bb9" },
+        { "description": "Default TTS model changed to `eleven_v3` for new CLI commands", "commit": "6bb1bb9" },
+        { "description": "Migrated `cmd/ttsscript` standalone CLI to `elevenlabs ttsscript` subcommand", "commit": "f5d5d6f" }
+      ],
+      "removed": [
+        { "description": "Standalone `cmd/ttsscript/main.go` (functionality moved to `elevenlabs ttsscript`)", "commit": "f5d5d6f" }
+      ],
+      "dependencies": [
+        { "description": "Add `github.com/spf13/cobra` v1.10.2 for CLI framework", "commit": "a345867" },
+        { "description": "Add `gopkg.in/yaml.v3` v3.0.1 for YAML config support", "commit": "a345867" }
+      ]
+    },
     {
       "version": "v0.7.0",
       "date": "2026-01-24",
