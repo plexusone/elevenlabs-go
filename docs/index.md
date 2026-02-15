@@ -21,6 +21,12 @@ A Go SDK for the [ElevenLabs](https://elevenlabs.io/) AI Audio API.
 - **Twilio Integration** - Phone call integration for voice agents
 - **Phone Numbers** - Manage phone numbers for conversational AI
 
+### Command Line Interface
+
+- **`elevenlabs tts`** - Generate speech from text files with YAML config support
+- **`elevenlabs ttsscript`** - Batch TTS from JSON scripts with per-slide output
+- **Presets** - Built-in configurations for oratory, podcast, audiobook styles
+
 ## Installation
 
 ```bash
@@ -72,6 +78,7 @@ This SDK is particularly well-suited for:
 ## Documentation
 
 - [Getting Started](getting-started/installation.md) - Installation and setup
+- [CLI](cli/index.md) - Command-line interface for TTS generation
 - [Services](services/text-to-speech.md) - API service documentation
 - [Guides](guides/lms-courses.md) - Use case guides
 - [Examples](examples.md) - Code examples

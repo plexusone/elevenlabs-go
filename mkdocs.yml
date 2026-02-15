@@ -54,6 +54,11 @@ nav:
     - Installation: getting-started/installation.md
     - Quick Start: getting-started/quickstart.md
     - Configuration: getting-started/configuration.md
+  - CLI:
+    - Overview: cli/index.md
+    - tts: cli/tts.md
+    - ttsscript: cli/ttsscript.md
+    - Configuration: cli/configuration.md
   - Services:
     - Text-to-Speech: services/text-to-speech.md
     - Speech-to-Text: services/speech-to-text.md
@@ -88,6 +93,7 @@ nav:
   - Utilities:
     - Voice Settings Presets: utilities/voicesettings.md
     - Voice Reference: utilities/voices.md
+    - TTS Config Package: utilities/ttsconfig.md
     - TTS Script Package: utilities/ttsscript.md
     - Retry HTTP Transport: utilities/retryhttp.md
   - API Reference:
@@ -97,6 +103,7 @@ nav:
   - Contributing:
     - Testing: contributing/testing.md
   - Releases:
+    - v0.8.0: releases/v0.8.0.md
     - v0.7.0: releases/v0.7.0.md
     - v0.6.0: releases/v0.6.0.md
     - v0.5.0: releases/v0.5.0.md
