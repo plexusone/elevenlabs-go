@@ -7,6 +7,19 @@
   "maintainers": ["johncwang@gmail.com"],
   "releases": [
     {
+      "version": "v0.8.1",
+      "date": "2026-02-14",
+      "highlights": [
+        { "description": "STT conformance tests for `TranscribeFile` and `TranscribeURL` batch transcription methods" }
+      ],
+      "tests": [
+        { "description": "`TranscribeFile` and `TranscribeURL` conformance tests with Ferris Bueller test audio", "commit": "3f8444d" }
+      ],
+      "dependencies": [
+        { "description": "Bump `github.com/agentplexus/omnivoice` from v0.4.0 to v0.4.1", "commit": "3f8444d" }
+      ]
+    },
+    {
       "version": "v0.8.0",
       "date": "2026-02-14",
       "highlights": [
