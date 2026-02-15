@@ -30,10 +30,28 @@ Go SDK for the [ElevenLabs API](https://elevenlabs.io/).
 - 📞 **Twilio Integration**: Phone call integration for conversational AI agents
 - 📱 **Phone Numbers**: Manage phone numbers for voice agents
 
+### Command Line Interface
+
+- 🖥️ **`elevenlabs tts`**: Generate speech from text files with YAML config support
+- 📜 **`elevenlabs ttsscript`**: Batch TTS from JSON scripts with per-slide output
+- 🎛️ **Presets**: Built-in configurations for oratory, podcast, audiobook styles
+
+### OmniVoice Integration
+
+- 🔌 **[OmniVoice](https://github.com/agentplexus/omnivoice) Providers**: Use ElevenLabs as a drop-in backend for the vendor-agnostic OmniVoice interface
+- 🔄 **Portable Code**: Swap voice providers (ElevenLabs, OpenAI, Google) without changing application logic
+- 🧪 **TTS, STT, Agent**: Full provider implementations for text-to-speech, speech-to-text, and voice agents
+
 ## Installation
 
 ```bash
 go get github.com/agentplexus/go-elevenlabs
+```
+
+### CLI Installation
+
+```bash
+go install github.com/agentplexus/go-elevenlabs/cmd/elevenlabs@latest
 ```
 
 ## Quick Start
@@ -364,6 +382,75 @@ See the [`examples/`](https://github.com/agentplexus/go-elevenlabs/tree/main/exa
 export ELEVENLABS_API_KEY="your-api-key"
 go run examples/basic/main.go
 ```
+
+## Command Line Interface
+
+The `elevenlabs` CLI provides text-to-speech generation from the command line.
+
+### Basic Usage
+
+```bash
+# Generate speech from a text file
+elevenlabs tts -v <voice-id> speech.txt
+
+# Use a preset (oratory, podcast, audiobook)
+elevenlabs tts -v <voice-id> --preset oratory speech.txt
+
+# High-quality PCM output
+elevenlabs tts -v <voice-id> -f pcm_48000 -o output.wav speech.txt
+
+# Estimate credits without calling API
+elevenlabs tts -v <voice-id> --estimate speech.txt
+```
+
+### Configuration Files
+
+Save and reuse TTS settings with YAML config files:
+
+```bash
+# Use config file
+elevenlabs tts --config tts-config.yaml speech.txt
+
+# Save current settings to config
+elevenlabs tts -v <voice-id> --preset oratory --save-config my-config.yaml speech.txt
+```
+
+Example config file:
+
+```yaml
+voice_id: IT8nQhZJj9jzRwmC46Ko
+model_id: eleven_v3
+output_format: pcm_48000
+
+voice_settings:
+  stability: 0.4        # Lower = more expressive
+  similarity_boost: 0.75
+  style: 0.3            # Higher = more dramatic
+  speed: 0.95           # Slightly slower for gravitas
+```
+
+### Presets
+
+| Preset | Stability | Style | Speed | Format | Use Case |
+|--------|-----------|-------|-------|--------|----------|
+| `oratory` | 0.4 | 0.3 | 0.95 | pcm_48000 | Speeches, presentations |
+| `podcast` | 0.5 | 0.0 | 1.0 | mp3_44100_128 | Conversational content |
+| `audiobook` | 0.6 | 0.1 | 0.95 | pcm_48000 | Long-form narration |
+
+### Input Format
+
+Text files support ElevenLabs formatting:
+
+```
+[calm] <break time="1s"/>
+There are moments in history when humanity TRANSFORMS.
+<break time="0.5s"/>
+[excited] This is AMAZING news!
+```
+
+- SSML `<break>` tags for pauses
+- Emotion tags (`[calm]`, `[excited]`, `[firm]`) for v3 model
+- CAPITALIZED words for emphasis
 
 ## Error Handling
 
