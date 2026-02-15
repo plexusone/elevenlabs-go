@@ -8,7 +8,7 @@
   "releases": [
     {
       "version": "v0.8.0",
-      "date": "2026-02-13",
+      "date": "2026-02-14",
       "highlights": [
         { "description": "New Cobra-based CLI (`elevenlabs`) with `tts` and `ttsscript` subcommands for text-to-speech generation" },
         { "description": "YAML configuration file support with presets for oratory, podcast, and audiobook styles" }
