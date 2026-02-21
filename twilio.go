@@ -31,7 +31,7 @@ func (s *TwilioService) postJSON(ctx context.Context, path string, req any, resu
 	httpReq.Header.Set("Content-Type", "application/json")
 	httpReq.Header.Set("xi-api-key", s.client.apiKey)
 
-	resp, err := http.DefaultClient.Do(httpReq)
+	resp, err := http.DefaultClient.Do(httpReq) //nolint:gosec // G704: API client, URL is fixed ElevenLabs endpoint
 	if err != nil {
 		return fmt.Errorf("request failed: %w", err)
 	}
@@ -238,7 +238,7 @@ func (s *PhoneNumberService) List(ctx context.Context) ([]PhoneNumber, error) {
 
 	httpReq.Header.Set("xi-api-key", s.client.apiKey)
 
-	resp, err := http.DefaultClient.Do(httpReq)
+	resp, err := http.DefaultClient.Do(httpReq) //nolint:gosec // G704: API client, URL is fixed ElevenLabs endpoint
 	if err != nil {
 		return nil, fmt.Errorf("request failed: %w", err)
 	}
@@ -275,7 +275,7 @@ func (s *PhoneNumberService) Get(ctx context.Context, phoneNumberID string) (*Ph
 
 	httpReq.Header.Set("xi-api-key", s.client.apiKey)
 
-	resp, err := http.DefaultClient.Do(httpReq)
+	resp, err := http.DefaultClient.Do(httpReq) //nolint:gosec // G704: API client, URL is fixed ElevenLabs endpoint
 	if err != nil {
 		return nil, fmt.Errorf("request failed: %w", err)
 	}
@@ -327,7 +327,7 @@ func (s *PhoneNumberService) Update(ctx context.Context, phoneNumberID string, r
 	httpReq.Header.Set("Content-Type", "application/json")
 	httpReq.Header.Set("xi-api-key", s.client.apiKey)
 
-	resp, err := http.DefaultClient.Do(httpReq)
+	resp, err := http.DefaultClient.Do(httpReq) //nolint:gosec // G704: API client, URL is fixed ElevenLabs endpoint
 	if err != nil {
 		return nil, fmt.Errorf("request failed: %w", err)
 	}
@@ -364,7 +364,7 @@ func (s *PhoneNumberService) Delete(ctx context.Context, phoneNumberID string) e
 
 	httpReq.Header.Set("xi-api-key", s.client.apiKey)
 
-	resp, err := http.DefaultClient.Do(httpReq)
+	resp, err := http.DefaultClient.Do(httpReq) //nolint:gosec // G704: API client, URL is fixed ElevenLabs endpoint
 	if err != nil {
 		return fmt.Errorf("request failed: %w", err)
 	}

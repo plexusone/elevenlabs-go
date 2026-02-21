@@ -138,7 +138,7 @@ func (c *authHTTPClient) Do(req *http.Request) (*http.Response, error) {
 	req.Header.Set("X-ElevenLabs-SDK-Version", Version)
 	req.Header.Set("X-ElevenLabs-SDK-Lang", "go")
 
-	return c.client.Do(req)
+	return c.client.Do(req) //nolint:gosec // G704: HTTP client library, URL is caller-controlled by design
 }
 
 // API returns the underlying ogen-generated API client for advanced usage.

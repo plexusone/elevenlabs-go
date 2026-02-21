@@ -58,7 +58,7 @@ func main() {
 	defer conn.Close()
 
 	// Open audio file
-	audioFile, err := os.Open(audioPath)
+	audioFile, err := os.Open(audioPath) //nolint:gosec // G703: Example CLI, user-specified path is expected
 	if err != nil {
 		logError(ctx, "Failed to open audio file", err, "path", audioPath)
 		os.Exit(1)

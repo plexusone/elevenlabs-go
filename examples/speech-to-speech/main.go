@@ -65,7 +65,7 @@ func main() {
 	logInfo(ctx, "Converting to voice", "name", targetVoice.Name, "id", targetVoice.VoiceID)
 
 	// Open input file
-	inputFile, err := os.Open(inputPath)
+	inputFile, err := os.Open(inputPath) //nolint:gosec // G703: Example CLI, user-specified path is expected
 	if err != nil {
 		logError(ctx, "Failed to open input file", err, "path", inputPath)
 		os.Exit(1)
@@ -101,7 +101,7 @@ func main() {
 	}
 
 	// Save output
-	outputFile, err := os.Create(outputPath)
+	outputFile, err := os.Create(outputPath) //nolint:gosec // G703: Example CLI, user-specified path is expected
 	if err != nil {
 		logError(ctx, "Failed to create output file", err, "path", outputPath)
 		os.Exit(1)

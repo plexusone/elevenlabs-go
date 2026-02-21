@@ -13,7 +13,7 @@ import (
 
 func main() {
 	if len(os.Args) != 3 {
-		fmt.Fprintf(os.Stderr, "Usage: %s <input-v3.1.json> <output-v3.0.json>\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Usage: %s <input-v3.1.json> <output-v3.0.json>\n", os.Args[0]) //nolint:gosec // G705: CLI tool writing to stderr, not browser context
 		os.Exit(1)
 	}
 
@@ -21,7 +21,7 @@ func main() {
 	outputFile := os.Args[2]
 
 	// Read raw JSON
-	data, err := os.ReadFile(inputFile)
+	data, err := os.ReadFile(inputFile) //nolint:gosec // G703: CLI tool, user-specified path is expected
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error reading file: %v\n", err)
 		os.Exit(1)
@@ -54,7 +54,7 @@ func main() {
 	}
 
 	// Write output
-	if err := os.WriteFile(outputFile, output, 0600); err != nil {
+	if err := os.WriteFile(outputFile, output, 0600); err != nil { //nolint:gosec // G703: CLI tool, user-specified path is expected
 		fmt.Fprintf(os.Stderr, "Error writing file: %v\n", err)
 		os.Exit(1)
 	}

@@ -160,7 +160,7 @@ func (s *SpeechToSpeechService) Convert(ctx context.Context, req *SpeechToSpeech
 	httpReq.Header.Set("Content-Type", writer.FormDataContentType())
 	httpReq.Header.Set("xi-api-key", s.client.apiKey)
 
-	resp, err := http.DefaultClient.Do(httpReq)
+	resp, err := http.DefaultClient.Do(httpReq) //nolint:gosec // G704: API client, URL is fixed ElevenLabs endpoint
 	if err != nil {
 		return nil, fmt.Errorf("request failed: %w", err)
 	}
@@ -255,7 +255,7 @@ func (s *SpeechToSpeechService) ConvertStream(ctx context.Context, req *SpeechTo
 	httpReq.Header.Set("Content-Type", writer.FormDataContentType())
 	httpReq.Header.Set("xi-api-key", s.client.apiKey)
 
-	resp, err := http.DefaultClient.Do(httpReq)
+	resp, err := http.DefaultClient.Do(httpReq) //nolint:gosec // G704: API client, URL is fixed ElevenLabs endpoint
 	if err != nil {
 		return nil, fmt.Errorf("request failed: %w", err)
 	}

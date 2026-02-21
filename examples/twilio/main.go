@@ -154,7 +154,7 @@ func handleIncomingCall(w http.ResponseWriter, r *http.Request) {
 
 	// Return TwiML to Twilio
 	w.Header().Set("Content-Type", "application/xml")
-	if _, err := w.Write([]byte(resp.TwiML)); err != nil {
+	if _, err := w.Write([]byte(resp.TwiML)); err != nil { //nolint:gosec // G705: TwiML XML response to Twilio callback, not browser
 		logError(ctx, "Failed to write TwiML response", err)
 	}
 }
