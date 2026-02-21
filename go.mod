@@ -8,7 +8,7 @@ require (
 	github.com/go-faster/errors v0.7.1
 	github.com/go-faster/jx v1.2.0
 	github.com/gorilla/websocket v1.5.3
-	github.com/grokify/mogo v0.73.1
+	github.com/grokify/mogo v0.73.2
 	github.com/ogen-go/ogen v1.19.0
 	github.com/spf13/cobra v1.10.2
 	go.opentelemetry.io/otel v1.40.0
