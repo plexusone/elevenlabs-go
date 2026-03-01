@@ -1,10 +1,10 @@
-site_name: go-elevenlabs
+site_name: elevenlabs-go
 site_description: Go SDK for ElevenLabs AI Audio API
-site_author: AgentPlexus
-site_url: https://agentplexus.github.io/go-elevenlabs/
+site_author: PlexusOne
+site_url: https://plexusone.github.io/elevenlabs-go/
 
-repo_name: agentplexus/go-elevenlabs
-repo_url: https://github.com/agentplexus/go-elevenlabs
+repo_name: plexusone/elevenlabs-go
+repo_url: https://github.com/plexusone/elevenlabs-go
 
 theme:
   name: material
@@ -103,6 +103,7 @@ nav:
   - Contributing:
     - Testing: contributing/testing.md
   - Releases:
+    - v0.9.0: releases/v0.9.0.md
     - v0.8.1: releases/v0.8.1.md
     - v0.8.0: releases/v0.8.0.md
     - v0.7.0: releases/v0.7.0.md
