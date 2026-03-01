@@ -3,7 +3,7 @@ package elevenlabs
 import (
 	"context"
 
-	"github.com/agentplexus/go-elevenlabs/internal/api"
+	"github.com/plexusone/elevenlabs-go/internal/api"
 )
 
 // VoicesService handles voice operations.

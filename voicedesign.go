@@ -4,7 +4,7 @@ import (
 	"context"
 	"io"
 
-	"github.com/agentplexus/go-elevenlabs/internal/api"
+	"github.com/plexusone/elevenlabs-go/internal/api"
 )
 
 // VoiceDesignService handles AI voice generation and design.

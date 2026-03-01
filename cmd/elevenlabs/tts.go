@@ -9,8 +9,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	elevenlabs "github.com/agentplexus/go-elevenlabs"
-	"github.com/agentplexus/go-elevenlabs/ttsconfig"
+	elevenlabs "github.com/plexusone/elevenlabs-go"
+	"github.com/plexusone/elevenlabs-go/ttsconfig"
 	"github.com/spf13/cobra"
 )
 

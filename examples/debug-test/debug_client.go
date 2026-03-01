@@ -14,7 +14,7 @@ import (
 	"net/http/httputil"
 	"os"
 
-	elevenlabs "github.com/agentplexus/go-elevenlabs"
+	elevenlabs "github.com/plexusone/elevenlabs-go"
 )
 
 type debugTransport struct {

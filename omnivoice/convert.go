@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"time"
 
-	elevenlabs "github.com/agentplexus/go-elevenlabs"
-	"github.com/agentplexus/omnivoice/stt"
-	"github.com/agentplexus/omnivoice/tts"
+	elevenlabs "github.com/plexusone/elevenlabs-go"
+	"github.com/plexusone/omnivoice-core/stt"
+	"github.com/plexusone/omnivoice-core/tts"
 )
 
 // Extension keys for ElevenLabs-specific TTS settings.

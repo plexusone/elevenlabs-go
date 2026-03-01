@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/agentplexus/ogen-tools/ogenerror"
+	"github.com/plexusone/ogen-tools/ogenerror"
 )
 
 // Common errors

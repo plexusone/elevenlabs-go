@@ -9,9 +9,9 @@ import (
 	"os"
 	"sync"
 
-	elevenlabs "github.com/agentplexus/go-elevenlabs"
-	"github.com/agentplexus/go-elevenlabs/omnivoice"
-	"github.com/agentplexus/omnivoice/stt"
+	elevenlabs "github.com/plexusone/elevenlabs-go"
+	"github.com/plexusone/elevenlabs-go/omnivoice"
+	"github.com/plexusone/omnivoice-core/stt"
 )
 
 // Verify interface compliance at compile time.

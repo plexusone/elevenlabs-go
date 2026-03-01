@@ -17,8 +17,8 @@ import (
 	"os"
 	"time"
 
-	elevenlabs "github.com/agentplexus/go-elevenlabs"
 	"github.com/grokify/mogo/log/slogutil"
+	elevenlabs "github.com/plexusone/elevenlabs-go"
 )
 
 func main() {

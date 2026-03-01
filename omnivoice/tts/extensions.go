@@ -1,7 +1,7 @@
 package tts
 
 import (
-	"github.com/agentplexus/omnivoice/tts"
+	"github.com/plexusone/omnivoice-core/tts"
 )
 
 // Extension keys for ElevenLabs-specific TTS settings.

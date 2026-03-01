@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/agentplexus/omnivoice/tts/providertest"
+	"github.com/plexusone/omnivoice-core/tts/providertest"
 )
 
 // TestConformance runs the OmniVoice TTS provider conformance tests.

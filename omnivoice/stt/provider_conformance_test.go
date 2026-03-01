@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/agentplexus/omnivoice/stt/providertest"
+	"github.com/plexusone/omnivoice-core/stt/providertest"
 )
 
 // testAudioURL is Deepgram's public test audio file (works with any STT provider).

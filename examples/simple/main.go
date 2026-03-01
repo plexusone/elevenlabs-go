@@ -7,9 +7,9 @@ import (
 	"log"
 	"os"
 
-	elevenlabs "github.com/agentplexus/go-elevenlabs"
 	"github.com/grokify/mogo/os/osutil"
 	"github.com/grokify/mogo/text/stringcase"
+	elevenlabs "github.com/plexusone/elevenlabs-go"
 )
 
 const (

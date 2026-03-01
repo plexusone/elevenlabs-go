@@ -15,8 +15,8 @@ import (
 	"log"
 	"os"
 
-	elevenlabs "github.com/agentplexus/go-elevenlabs"
-	"github.com/agentplexus/go-elevenlabs/ttsscript"
+	elevenlabs "github.com/plexusone/elevenlabs-go"
+	"github.com/plexusone/elevenlabs-go/ttsscript"
 )
 
 func main() {

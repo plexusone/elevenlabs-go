@@ -6,8 +6,8 @@
 // # Quick Start
 //
 //	import (
-//	    "github.com/agentplexus/omnivoice/tts"
-//	    eleventts "github.com/agentplexus/go-elevenlabs/omnivoice/tts"
+//	    "github.com/plexusone/omnivoice-core/tts"
+//	    eleventts "github.com/plexusone/elevenlabs-go/omnivoice/tts"
 //	)
 //
 //	// Create provider

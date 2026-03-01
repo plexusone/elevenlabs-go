@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/agentplexus/go-elevenlabs/internal/api"
+	"github.com/plexusone/elevenlabs-go/internal/api"
 )
 
 // UserService handles user and subscription operations.

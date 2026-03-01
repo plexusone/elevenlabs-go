@@ -10,7 +10,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/agentplexus/go-elevenlabs/internal/api"
+	"github.com/plexusone/elevenlabs-go/internal/api"
 )
 
 // Version is the SDK version.

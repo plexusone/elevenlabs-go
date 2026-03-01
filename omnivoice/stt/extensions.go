@@ -1,7 +1,7 @@
 package stt
 
 import (
-	"github.com/agentplexus/omnivoice/stt"
+	"github.com/plexusone/omnivoice-core/stt"
 )
 
 // Extension keys for ElevenLabs-specific STT settings.

@@ -11,9 +11,9 @@ import (
 	"os"
 	"time"
 
-	elevenlabs "github.com/agentplexus/go-elevenlabs"
-	"github.com/agentplexus/go-elevenlabs/voices"
 	"github.com/grokify/mogo/net/http/retryhttp"
+	elevenlabs "github.com/plexusone/elevenlabs-go"
+	"github.com/plexusone/elevenlabs-go/voices"
 )
 
 func main() {

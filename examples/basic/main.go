@@ -12,7 +12,7 @@ import (
 	"log"
 	"os"
 
-	elevenlabs "github.com/agentplexus/go-elevenlabs"
+	elevenlabs "github.com/plexusone/elevenlabs-go"
 )
 
 func main() {
