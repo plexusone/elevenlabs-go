@@ -1,11 +1,39 @@
 {
   "irVersion": "1.0",
-  "project": "go-elevenlabs",
-  "repository": "https://github.com/agentplexus/go-elevenlabs",
+  "project": "elevenlabs-go",
+  "repository": "https://github.com/plexusone/elevenlabs-go",
   "versioning": "semver",
   "commitConvention": "conventional",
   "maintainers": ["johncwang@gmail.com"],
   "releases": [
+    {
+      "version": "v0.9.0",
+      "date": "2026-02-28",
+      "highlights": [
+        { "description": "Organization rename from agentplexus to plexusone with updated module naming convention" }
+      ],
+      "changed": [
+        { "description": "**Breaking**: Module path changed from `github.com/agentplexus/go-elevenlabs` to `github.com/plexusone/elevenlabs-go`", "commit": "cc5299a" }
+      ],
+      "dependencies": [
+        { "description": "Bump `github.com/ogen-go/ogen` from 1.19.0 to 1.20.0", "commit": "f039293" },
+        { "description": "Update to `github.com/plexusone/ogen-tools` v0.2.0 (was agentplexus)", "commit": "cc5299a" },
+        { "description": "Update to `github.com/plexusone/omnivoice-core` v0.5.0 (was agentplexus/omnivoice)", "commit": "cc5299a" }
+      ]
+    },
+    {
+      "version": "v0.8.2",
+      "date": "2026-02-15",
+      "dependencies": [
+        { "description": "Bump `golang.org/x/exp` indirect dependency", "commit": "cd6f8e6" },
+        { "description": "Bump `github.com/grokify/mogo` from 0.73.1 to 0.73.2", "commit": "4ad94f1" },
+        { "description": "Bump `github.com/ogen-go/ogen` from 1.18.0 to 1.19.0", "commit": "747e8ab" },
+        { "description": "Bump `github.com/agentplexus/omnivoice` from 0.4.1 to 0.4.3", "commit": "dede6a1" }
+      ],
+      "fixed": [
+        { "description": "Add nolint directives for gosec false positives", "commit": "d6ae537" }
+      ]
+    },
     {
       "version": "v0.8.1",
       "date": "2026-02-14",
