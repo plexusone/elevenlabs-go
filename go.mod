@@ -7,7 +7,7 @@ require (
 	github.com/go-faster/jx v1.2.0
 	github.com/gorilla/websocket v1.5.3
 	github.com/grokify/mogo v0.73.2
-	github.com/ogen-go/ogen v1.20.0
+	github.com/ogen-go/ogen v1.20.1
 	github.com/plexusone/ogen-tools v0.2.0
 	github.com/plexusone/omnivoice-core v0.5.0
 	github.com/spf13/cobra v1.10.2
@@ -38,7 +38,7 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.27.1 // indirect
 	golang.org/x/exp v0.0.0-20260218203240-3dfff04db8fa // indirect
-	golang.org/x/net v0.50.0 // indirect
+	golang.org/x/net v0.51.0 // indirect
 	golang.org/x/sync v0.19.0 // indirect
 	golang.org/x/sys v0.41.0 // indirect
 	golang.org/x/text v0.34.0 // indirect
