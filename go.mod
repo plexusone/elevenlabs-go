@@ -11,9 +11,9 @@ require (
 	github.com/plexusone/ogen-tools v0.2.0
 	github.com/plexusone/omnivoice-core v0.5.0
 	github.com/spf13/cobra v1.10.2
-	go.opentelemetry.io/otel v1.41.0
-	go.opentelemetry.io/otel/metric v1.41.0
-	go.opentelemetry.io/otel/trace v1.41.0
+	go.opentelemetry.io/otel v1.42.0
+	go.opentelemetry.io/otel/metric v1.42.0
+	go.opentelemetry.io/otel/trace v1.42.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
