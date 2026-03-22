@@ -8,7 +8,7 @@ require (
 	github.com/gorilla/websocket v1.5.3
 	github.com/grokify/mogo v0.74.0
 	github.com/ogen-go/ogen v1.20.1
-	github.com/plexusone/ogen-tools v0.2.0
+	github.com/plexusone/ogen-tools v0.2.1
 	github.com/plexusone/omnivoice-core v0.6.0
 	github.com/spf13/cobra v1.10.2
 	go.opentelemetry.io/otel v1.42.0

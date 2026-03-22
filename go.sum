@@ -36,8 +36,8 @@ github.com/mattn/go-isatty v0.0.20 h1:xfD0iDuEKnDkl03q4limB+vH+GxLEtL/jb4xVJSWWE
 github.com/mattn/go-isatty v0.0.20/go.mod h1:W+V8PltTTMOvKvAeJH7IuucS94S2C6jfK/D7dTCTo3Y=
 github.com/ogen-go/ogen v1.20.1 h1:AFpIeI2rS37TNIMRQTHhAkThICQpa1p+Pceu7HP7xsA=
 github.com/ogen-go/ogen v1.20.1/go.mod h1:eXQeqzIfw9qUjXdpqNtkX+XCvhlWNymqU1bm7S7y8iU=
-github.com/plexusone/ogen-tools v0.2.0 h1:NOlYZK20cruWCzWqf/JGSffnO+wWlw/lZ8ZDbwshZNk=
-github.com/plexusone/ogen-tools v0.2.0/go.mod h1:RLIFaoJt2xj6cswC5FwGgXfkJtMSPYYwRt3a0nX29Vs=
+github.com/plexusone/ogen-tools v0.2.1 h1:S9QAKhWzjlJD1t5GbRhoxQziORiQZKBo/W0/49OiXKY=
+github.com/plexusone/ogen-tools v0.2.1/go.mod h1:vVWHWJbGjYjowi7aZu3DoZTDK4MVf9x05pk4p+cYnAI=
 github.com/plexusone/omnivoice-core v0.6.0 h1:3Iy+tHsplFX5DlCi4ZrhEiesPptb7mF/uzT1DTD53BI=
 github.com/plexusone/omnivoice-core v0.6.0/go.mod h1:oFa3AOIKDv9lMd7M0cG1HBZOBKK6H9GAVhi7aiR9nYA=
 github.com/russross/blackfriday/v2 v2.1.0/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
