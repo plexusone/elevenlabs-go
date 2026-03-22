@@ -97,15 +97,16 @@ func handleIncomingCall(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Parse Twilio parameters
+	// Parse Twilio parameters (limit body to 64KB for webhook)
+	r.Body = http.MaxBytesReader(w, r.Body, 64<<10)
 	if err := r.ParseForm(); err != nil {
 		http.Error(w, "Invalid form data", http.StatusBadRequest)
 		return
 	}
 
-	callerNumber := r.FormValue("From")
-	calledNumber := r.FormValue("To")
-	callSid := r.FormValue("CallSid")
+	callerNumber := r.Form.Get("From")
+	calledNumber := r.Form.Get("To")
+	callSid := r.Form.Get("CallSid")
 
 	logInfo(ctx, "Incoming call", "from", callerNumber, "to", calledNumber, "sid", callSid)
 
