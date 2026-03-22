@@ -117,7 +117,7 @@ func main() {
 	*/
 
 	filename := stringcase.ToKebabCase(quoteText) + ".mp3"
-	err = osutil.WriteFileReader(filename, resp.Audio)
+	err = osutil.WriteFileReader(filename, resp.Audio, 0600)
 	if err != nil {
 		log.Fatal(err)
 	}
