@@ -97,6 +97,8 @@ func handleError(err error) {
 }
 
 // Example: Using retry policy for automatic retries
+//
+//nolint:unused // Example function for users to copy
 func shouldRetry(operationID string, err error) bool {
 	// Check if the operation is safe to retry
 	if !ax.IsRetryable(operationID) {
@@ -122,6 +124,8 @@ func shouldRetry(operationID string, err error) bool {
 }
 
 // Example: Pre-flight validation using required fields
+//
+//nolint:unused // Example function for users to copy
 func validateRequest(operationID string, fields map[string]bool) error {
 	if msg := ax.ValidateFields(operationID, fields); msg != "" {
 		return fmt.Errorf("validation failed: %s", msg)
