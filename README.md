@@ -57,20 +57,28 @@ Go SDK for the [ElevenLabs API](https://elevenlabs.io/).
 
 ### OmniVoice Integration
 
-- 🔌 **[OmniVoice](https://github.com/agentplexus/omnivoice) Providers**: Use ElevenLabs as a drop-in backend for the vendor-agnostic OmniVoice interface
+- 🔌 **[OmniVoice](https://github.com/plexusone/omnivoice-core) Providers**: Use ElevenLabs as a drop-in backend for the vendor-agnostic OmniVoice interface
 - 🔄 **Portable Code**: Swap voice providers (ElevenLabs, OpenAI, Google) without changing application logic
 - 🧪 **TTS, STT, Agent**: Full provider implementations for text-to-speech, speech-to-text, and voice agents
+
+### Agent Experience (AX)
+
+- 🤖 **Machine-Readable Errors**: Error codes (`DOCUMENT_NOT_FOUND`, `NOT_LOGGED_IN`) for programmatic handling
+- 🔄 **Automatic Retry**: TTS provider retries transient errors (429, 500) with exponential backoff
+- 📊 **Error Classification**: 8 categories (auth, validation, rate_limit, etc.) for smart error handling
+- ✅ **Pre-flight Validation**: Check required fields before making API calls
+- 🔧 **Retry Policies**: Know which operations are safe to retry automatically
 
 ## Installation
 
 ```bash
-go get github.com/agentplexus/go-elevenlabs
+go get github.com/plexusone/elevenlabs-go
 ```
 
 ### CLI Installation
 
 ```bash
-go install github.com/agentplexus/go-elevenlabs/cmd/elevenlabs@latest
+go install github.com/plexusone/elevenlabs-go/cmd/elevenlabs@latest
 ```
 
 ## Quick Start
@@ -86,7 +94,7 @@ import (
     "log"
     "os"
 
-    elevenlabs "github.com/agentplexus/go-elevenlabs"
+    elevenlabs "github.com/plexusone/elevenlabs-go"
 )
 
 func main() {
@@ -385,11 +393,12 @@ numbers, err := client.PhoneNumbers().List(ctx)
 
 ## Examples
 
-See the [`examples/`](https://github.com/agentplexus/go-elevenlabs/tree/main/examples) directory for runnable examples:
+See the [`examples/`](https://github.com/plexusone/elevenlabs-go/tree/main/examples) directory for runnable examples:
 
 | Example | Description |
 |---------|-------------|
 | `basic/` | Common SDK operations |
+| `ax-error-handling/` | AX error codes for machine-readable error handling |
 | `websocket-tts/` | Real-time TTS streaming for LLM integration |
 | `websocket-stt/` | Live transcription with partial results |
 | `speech-to-speech/` | Voice conversion |
@@ -473,6 +482,8 @@ There are moments in history when humanity TRANSFORMS.
 
 ## Error Handling
 
+### Basic Error Handling
+
 ```go
 audio, err := client.TextToSpeech().Simple(ctx, voiceID, text)
 if err != nil {
@@ -489,13 +500,41 @@ if err != nil {
 }
 ```
 
+### AX Error Codes (Machine-Readable)
+
+For AI agents and automated systems, use AX error codes for precise error handling:
+
+```go
+import "github.com/plexusone/elevenlabs-go/ax"
+
+_, err := client.Voices().Get(ctx, voiceID)
+if err != nil {
+    // Extract AX error code
+    if code, ok := elevenlabs.GetAXErrorCode(err); ok {
+        switch code {
+        case ax.ErrDocumentNotFound:
+            // Handle not found - try alternative resource
+        case ax.ErrNotLoggedIn, ax.ErrNeedsAuthorization:
+            // Handle auth - re-authenticate
+        case ax.ErrInvalidUID:
+            // Handle validation - fix input
+        }
+
+        // Get error metadata
+        if info := ax.GetErrorInfo(code); info != nil {
+            log.Printf("Category: %s, Retryable: %v", info.Category, info.Retryable)
+        }
+    }
+}
+```
+
 ## Environment Variables
 
 - `ELEVENLABS_API_KEY`: Your ElevenLabs API key (used automatically if not provided via `WithAPIKey`)
 
 ## Documentation
 
-- [API Reference](https://agentplexus.github.io/go-elevenlabs/)
+- [API Reference](https://plexusone.github.io/elevenlabs-go/)
 - [ElevenLabs API Docs](https://elevenlabs.io/docs)
 
 ## Contributing
