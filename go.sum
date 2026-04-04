@@ -42,8 +42,8 @@ github.com/mattn/go-colorable v0.1.14 h1:9A9LHSqF/7dyVVX6g0U9cwm9pG3kP9gSzcuIPHP
 github.com/mattn/go-colorable v0.1.14/go.mod h1:6LmQG8QLFO4G5z1gPvYEzlUgJ2wF+stgPZH1UqBm1s8=
 github.com/mattn/go-isatty v0.0.20 h1:xfD0iDuEKnDkl03q4limB+vH+GxLEtL/jb4xVJSWWEY=
 github.com/mattn/go-isatty v0.0.20/go.mod h1:W+V8PltTTMOvKvAeJH7IuucS94S2C6jfK/D7dTCTo3Y=
-github.com/ogen-go/ogen v1.20.1 h1:AFpIeI2rS37TNIMRQTHhAkThICQpa1p+Pceu7HP7xsA=
-github.com/ogen-go/ogen v1.20.1/go.mod h1:eXQeqzIfw9qUjXdpqNtkX+XCvhlWNymqU1bm7S7y8iU=
+github.com/ogen-go/ogen v1.20.2 h1:mEZGPST7ZeX84AkqRlFawDLwcwuzcLO5PtYpAXLT1YE=
+github.com/ogen-go/ogen v1.20.2/go.mod h1:sJ1pJVp4S1RcSZlYIiMLo0QSMSt2pls4zfrc+hNKnzk=
 github.com/plexusone/ogen-tools v0.2.1 h1:S9QAKhWzjlJD1t5GbRhoxQziORiQZKBo/W0/49OiXKY=
 github.com/plexusone/ogen-tools v0.2.1/go.mod h1:vVWHWJbGjYjowi7aZu3DoZTDK4MVf9x05pk4p+cYnAI=
 github.com/plexusone/omnivoice-core v0.7.0 h1:FlCabWLokAsjiRjTWdADoYauSVZ2X0SNbXpDMPX3aIY=
