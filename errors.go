@@ -4,7 +4,9 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"strings"
 
+	"github.com/plexusone/elevenlabs-go/ax"
 	"github.com/plexusone/ogen-tools/ogenerror"
 )
 
@@ -58,6 +60,36 @@ func (e *APIError) Error() string {
 	return fmt.Sprintf("elevenlabs: API error (status %d): %s", e.StatusCode, e.Message)
 }
 
+// AXErrorCode extracts the AX error code from the API error, if present.
+// Returns the error code constant (e.g., ax.ErrDocumentNotFound) and true if found.
+// Use this for machine-readable error handling:
+//
+//	if apiErr := ParseAPIError(err); apiErr != nil {
+//	    if code, ok := apiErr.AXErrorCode(); ok {
+//	        switch code {
+//	        case ax.ErrDocumentNotFound:
+//	            // Handle document not found
+//	        case ax.ErrNeedsAuthorization:
+//	            // Handle auth required
+//	        }
+//	    }
+//	}
+func (e *APIError) AXErrorCode() (string, bool) {
+	// Check Message and Detail for known error codes
+	for _, code := range ax.AllErrorCodes {
+		if strings.Contains(e.Message, code) || strings.Contains(e.Detail, code) {
+			return code, true
+		}
+	}
+	return "", false
+}
+
+// HasAXCode checks if the API error contains a specific AX error code.
+func (e *APIError) HasAXCode(code string) bool {
+	axCode, ok := e.AXErrorCode()
+	return ok && axCode == code
+}
+
 // IsNotFoundError returns true if the error is a 404 Not Found error.
 func IsNotFoundError(err error) bool {
 	var apiErr *APIError
@@ -92,6 +124,46 @@ func IsForbiddenError(err error) bool {
 		return apiErr.StatusCode == 403
 	}
 	return false
+}
+
+// IsAXError checks if an error contains a specific AX error code.
+// This works with any error type by first trying to parse it as an APIError.
+//
+// Usage:
+//
+//	if IsAXError(err, ax.ErrDocumentNotFound) {
+//	    // Handle document not found
+//	}
+func IsAXError(err error, code string) bool {
+	if err == nil {
+		return false
+	}
+
+	// Try to get as APIError first for structured checking
+	apiErr := ParseAPIError(err)
+	if apiErr != nil {
+		return apiErr.HasAXCode(code)
+	}
+
+	// Fall back to string matching
+	return ax.IsErrorCode(err, code)
+}
+
+// GetAXErrorCode extracts the AX error code from any error.
+// Returns the error code and true if found, empty string and false otherwise.
+func GetAXErrorCode(err error) (string, bool) {
+	if err == nil {
+		return "", false
+	}
+
+	// Try structured extraction first
+	apiErr := ParseAPIError(err)
+	if apiErr != nil {
+		return apiErr.AXErrorCode()
+	}
+
+	// Fall back to string matching
+	return ax.ContainsErrorCode(err)
 }
 
 // ParseAPIError extracts API error details from an error returned by the SDK.
