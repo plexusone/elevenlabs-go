@@ -99,7 +99,10 @@ nav:
   - API Reference:
     - Client: api/client.md
     - Errors: api/errors.md
+    - AX Package: api/ax.md
     - Coverage: api/coverage.md
+  - Case Studies:
+    - AX Integration: case-studies/ax-integration.md
   - Contributing:
     - Testing: contributing/testing.md
   - Releases:
