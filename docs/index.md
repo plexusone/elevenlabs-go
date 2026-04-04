@@ -1,4 +1,4 @@
-# go-elevenlabs
+# elevenlabs-go
 
 A Go SDK for the [ElevenLabs](https://elevenlabs.io/) AI Audio API.
 
@@ -21,6 +21,13 @@ A Go SDK for the [ElevenLabs](https://elevenlabs.io/) AI Audio API.
 - **Twilio Integration** - Phone call integration for voice agents
 - **Phone Numbers** - Manage phone numbers for conversational AI
 
+### Agent Experience (AX)
+
+- **Machine-Readable Errors** - Error codes for programmatic error handling
+- **Automatic Retry** - TTS provider retries transient errors with exponential backoff
+- **Error Classification** - 8 categories (auth, validation, rate_limit, etc.)
+- **Pre-flight Validation** - Check required fields before API calls
+
 ### Command Line Interface
 
 - **`elevenlabs tts`** - Generate speech from text files with YAML config support
@@ -30,7 +37,7 @@ A Go SDK for the [ElevenLabs](https://elevenlabs.io/) AI Audio API.
 ## Installation
 
 ```bash
-go get github.com/agentplexus/go-elevenlabs
+go get github.com/plexusone/elevenlabs-go
 ```
 
 ## Quick Example
@@ -43,7 +50,7 @@ import (
     "io"
     "os"
 
-    elevenlabs "github.com/agentplexus/go-elevenlabs"
+    elevenlabs "github.com/plexusone/elevenlabs-go"
 )
 
 func main() {
@@ -80,9 +87,10 @@ This SDK is particularly well-suited for:
 - [Getting Started](getting-started/installation.md) - Installation and setup
 - [CLI](cli/index.md) - Command-line interface for TTS generation
 - [Services](services/text-to-speech.md) - API service documentation
+- [AX Package](api/ax.md) - Agent Experience error handling
 - [Guides](guides/lms-courses.md) - Use case guides
 - [Examples](examples.md) - Code examples
 
 ## License
 
-MIT License - see [LICENSE](https://github.com/agentplexus/go-elevenlabs/blob/main/LICENSE) for details.
+MIT License - see [LICENSE](https://github.com/plexusone/elevenlabs-go/blob/main/LICENSE) for details.

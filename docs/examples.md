@@ -1,6 +1,6 @@
 # Examples
 
-The `go-elevenlabs` SDK includes working examples in the [`examples/`](https://github.com/agentplexus/go-elevenlabs/tree/main/examples) directory.
+The `go-elevenlabs` SDK includes working examples in the [`examples/`](https://github.com/plexusone/elevenlabs-go/tree/main/examples) directory.
 
 ## Running Examples
 
@@ -18,7 +18,7 @@ go run main.go
 
 ### Basic Usage
 
-**Location:** [`examples/basic/`](https://github.com/agentplexus/go-elevenlabs/tree/main/examples/basic)
+**Location:** [`examples/basic/`](https://github.com/plexusone/elevenlabs-go/tree/main/examples/basic)
 
 Demonstrates common SDK operations: listing voices, models, checking subscription, generating speech, and working with projects.
 
@@ -28,7 +28,7 @@ go run examples/basic/main.go
 
 ### WebSocket TTS (Real-Time)
 
-**Location:** [`examples/websocket-tts/`](https://github.com/agentplexus/go-elevenlabs/tree/main/examples/websocket-tts)
+**Location:** [`examples/websocket-tts/`](https://github.com/plexusone/elevenlabs-go/tree/main/examples/websocket-tts)
 
 Real-time text-to-speech streaming via WebSocket. Ideal for LLM integration.
 
@@ -41,7 +41,7 @@ go run examples/websocket-tts/main.go
 
 ### WebSocket STT (Real-Time)
 
-**Location:** [`examples/websocket-stt/`](https://github.com/agentplexus/go-elevenlabs/tree/main/examples/websocket-stt)
+**Location:** [`examples/websocket-stt/`](https://github.com/plexusone/elevenlabs-go/tree/main/examples/websocket-stt)
 
 Real-time speech-to-text transcription with partial results and word timing.
 
@@ -53,7 +53,7 @@ go run examples/websocket-stt/main.go <audio-file.wav>
 
 ### Speech-to-Speech
 
-**Location:** [`examples/speech-to-speech/`](https://github.com/agentplexus/go-elevenlabs/tree/main/examples/speech-to-speech)
+**Location:** [`examples/speech-to-speech/`](https://github.com/plexusone/elevenlabs-go/tree/main/examples/speech-to-speech)
 
 Voice conversion - transform audio from one voice to another.
 
@@ -65,7 +65,7 @@ go run examples/speech-to-speech/main.go input.mp3 output.mp3
 
 ### Twilio Integration
 
-**Location:** [`examples/twilio/`](https://github.com/agentplexus/go-elevenlabs/tree/main/examples/twilio)
+**Location:** [`examples/twilio/`](https://github.com/plexusone/elevenlabs-go/tree/main/examples/twilio)
 
 Phone call integration for voice agent applications.
 
@@ -79,7 +79,7 @@ go run examples/twilio/main.go
 
 ### TTS Script
 
-**Location:** [`examples/ttsscript/`](https://github.com/agentplexus/go-elevenlabs/tree/main/examples/ttsscript)
+**Location:** [`examples/ttsscript/`](https://github.com/plexusone/elevenlabs-go/tree/main/examples/ttsscript)
 
 Multi-voice, multi-chapter audio content with SSML-like markup.
 
@@ -91,7 +91,7 @@ go run examples/ttsscript/main.go
 
 ### Retry HTTP Transport
 
-**Location:** [`examples/retryhttp/`](https://github.com/agentplexus/go-elevenlabs/tree/main/examples/retryhttp)
+**Location:** [`examples/retryhttp/`](https://github.com/plexusone/elevenlabs-go/tree/main/examples/retryhttp)
 
 Retry-capable HTTP transport for resilient API calls.
 
@@ -100,6 +100,18 @@ go run examples/retryhttp/main.go
 ```
 
 **Related docs:** [Retry HTTP Transport](utilities/retryhttp.md)
+
+### AX Error Handling
+
+**Location:** [`examples/ax-error-handling/`](https://github.com/plexusone/elevenlabs-go/tree/main/examples/ax-error-handling)
+
+Machine-readable error handling using AX error codes. Essential for AI agents that need programmatic error handling.
+
+```bash
+go run examples/ax-error-handling/main.go
+```
+
+**Related docs:** [AX Package](api/ax.md)
 
 ---
 
@@ -117,7 +129,7 @@ import (
     "log"
     "os"
 
-    elevenlabs "github.com/agentplexus/go-elevenlabs"
+    elevenlabs "github.com/plexusone/elevenlabs-go"
 )
 
 func main() {
@@ -315,6 +327,32 @@ if err != nil {
         log.Fatal("Voice not found")
     } else {
         log.Fatalf("Error: %v", err)
+    }
+}
+```
+
+### AX Error Handling (Machine-Readable)
+
+```go
+import "github.com/plexusone/elevenlabs-go/ax"
+
+_, err := client.Voices().Get(ctx, voiceID)
+if err != nil {
+    // Extract AX error code for programmatic handling
+    if code, ok := elevenlabs.GetAXErrorCode(err); ok {
+        switch code {
+        case ax.ErrDocumentNotFound:
+            // Try alternative resource
+        case ax.ErrNotLoggedIn, ax.ErrNeedsAuthorization:
+            // Re-authenticate
+        case ax.ErrInvalidUID:
+            // Fix input and retry
+        }
+
+        // Get error metadata
+        if info := ax.GetErrorInfo(code); info != nil {
+            log.Printf("Category: %s, Retryable: %v", info.Category, info.Retryable)
+        }
     }
 }
 ```
