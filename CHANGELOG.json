@@ -7,6 +7,42 @@
   "maintainers": ["johncwang@gmail.com"],
   "releases": [
     {
+      "version": "v0.10.0",
+      "date": "2026-04-04",
+      "highlights": [
+        { "description": "Agent Experience (AX) integration for intelligent error handling and retry logic" },
+        { "description": "OmniVoice provider enhancements with error classification and automatic retry" },
+        { "description": "New `ax/omnivoice.go` helper functions for seamless OmniVoice-core integration" }
+      ],
+      "added": [
+        { "description": "`omnivoice.Classifier` for ElevenLabs-specific error classification using AX metadata and HTTP status codes", "file": "omnivoice/classifier.go" },
+        { "description": "`omnivoice.DefaultRetryConfig()` and `omnivoice.RetryConfigWithCallback()` for configurable retry behavior", "file": "omnivoice/classifier.go" },
+        { "description": "TTS provider retry logic with exponential backoff, respecting error retryability", "file": "omnivoice/tts/provider.go" },
+        { "description": "`ax.CategoryForCode()` - Maps AX error codes to `resilience.ErrorCategory`", "file": "ax/omnivoice.go" },
+        { "description": "`ax.IsRetryableCode()` - Checks if an AX error code is retryable", "file": "ax/omnivoice.go" },
+        { "description": "`ax.SuggestionForCode()` - Returns helpful recovery suggestions for each error code", "file": "ax/omnivoice.go" },
+        { "description": "`ax.OperationRequiredFields()` - Returns required fields for 10 ElevenLabs operations", "file": "ax/omnivoice.go" },
+        { "description": "`ax.ToErrorInfo()` - Converts AX code to `resilience.ErrorInfo`", "file": "ax/omnivoice.go" },
+        { "description": "`ax.ClassifyHTTPStatus()` - Classifies HTTP status codes to error categories", "file": "ax/omnivoice.go" },
+        { "description": "`ax.AllCategories()` and `ax.CodesByCategory()` for error code discovery", "file": "ax/omnivoice.go" },
+        { "description": "Integration tests with mock API server for retry scenarios", "file": "omnivoice/integration_test.go" },
+        { "description": "Performance benchmarks for error classification and retry decisions", "file": "omnivoice/benchmark_test.go" }
+      ],
+      "changed": [
+        { "description": "TTS provider now automatically retries on transient errors (429, 500, 502, 503) with exponential backoff" },
+        { "description": "TTS provider wraps all errors in `resilience.ProviderError` with classification metadata" },
+        { "description": "Auth errors (401, 403), validation errors (400, 422), and not-found errors (404) are not retried" }
+      ],
+      "dependencies": [
+        { "description": "Requires `github.com/plexusone/omnivoice-core` v0.8.0+ for resilience package" }
+      ],
+      "tests": [
+        { "description": "8 integration tests covering retry scenarios (rate limit, auth, server errors, exhausted retries, context cancellation)" },
+        { "description": "14 benchmarks validating performance targets (<1ms classification, <0.1ms retry decision)" },
+        { "description": "7 classifier unit tests and 17 ax/omnivoice helper tests" }
+      ]
+    },
+    {
       "version": "v0.9.0",
       "date": "2026-02-28",
       "highlights": [
