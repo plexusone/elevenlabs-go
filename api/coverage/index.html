@@ -1,0 +1,4812 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Go SDK for ElevenLabs AI Audio API">
+      
+      
+        <meta name="author" content="PlexusOne">
+      
+      
+        <link rel="canonical" href="https://plexusone.github.io/elevenlabs-go/api/coverage/">
+      
+      
+        <link rel="prev" href="../ax/">
+      
+      
+        <link rel="next" href="../../case-studies/ax-integration/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Coverage - elevenlabs-go</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://plexusone.dev/css/plexusone-mkdocs.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-coverage" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+<!-- PlexusOne Unified Navigation -->
+<div id="plexus-nav-root"></div>
+<script src="https://plexusone.dev/js/plexus-nav.js"></script>
+
+
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="elevenlabs-go" class="md-header__button md-logo" aria-label="elevenlabs-go" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            elevenlabs-go
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Coverage
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/plexusone/elevenlabs-go" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    plexusone/elevenlabs-go
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="elevenlabs-go" class="md-nav__button md-logo" aria-label="elevenlabs-go" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    elevenlabs-go
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/plexusone/elevenlabs-go" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    plexusone/elevenlabs-go
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CLI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    tts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/ttsscript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ttsscript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Services
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Services
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/text-to-speech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Text-to-Speech
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/speech-to-text/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speech-to-Text
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/speech-to-speech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speech-to-Speech
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/voices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Voices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/voice-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Voice Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/sound-effects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sound Effects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/music/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Music
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/audio-isolation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio Isolation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/forced-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Forced Alignment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/text-to-dialogue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Text-to-Dialogue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects (Studio)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/pronunciation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pronunciation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/dubbing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dubbing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-Time
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Real-Time
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/websocket-tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WebSocket TTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/websocket-stt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WebSocket STT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/twilio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Twilio Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OmniVoice
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OmniVoice
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../omnivoice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../omnivoice/capabilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../omnivoice/tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS Provider
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../omnivoice/stt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STT Provider
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../omnivoice/agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent Provider
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/lms-courses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LMS/Udemy Courses
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/pronunciation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pronunciation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/ttsscript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS Script Authoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Utilities
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Utilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilities/voicesettings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Voice Settings Presets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilities/voices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Voice Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilities/ttsconfig/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS Config Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilities/ttsscript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS Script Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilities/retryhttp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retry HTTP Transport
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Errors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AX Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coverage
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coverage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#coverage-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coverage Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#covered-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Covered APIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Covered APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#text-to-speech-4-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text-to-Speech (4 methods) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websocket-tts-1-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WebSocket TTS (1 method) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speech-to-text-2-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speech-to-Text (2 methods) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websocket-stt-1-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WebSocket STT (1 method) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speech-to-speech-2-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speech-to-Speech (2 methods) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voices-9-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voices (9 methods) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#models-1-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Models (1 method) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#history-5-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        History (5 methods) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-1-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User (1 method) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sound-effects-1-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sound Effects (1 method) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forced-alignment-1-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Forced Alignment (1 method) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio-isolation-2-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audio Isolation (2 methods) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-to-dialogue-4-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text-to-Dialogue (4 methods) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voice-design-8-methods-partial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice Design (8 methods) - Partial ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#music-5-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Music (5 methods) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pronunciation-6-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pronunciation (6 methods) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#projects-studio-14-methods-partial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projects / Studio (14 methods) - Partial ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dubbing-14-methods-partial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dubbing (14 methods) - Partial ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phone-twilio-7-methods-partial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phone / Twilio (7 methods) - Partial ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#not-covered-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Not Covered APIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Not Covered APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#professional-voice-cloning-pvc-12-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Professional Voice Cloning - PVC (12 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voice-library-5-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice Library (5 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversational-ai-26-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversational AI (26 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#knowledge-base-rag-15-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge Base / RAG (15 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whatsapp-integration-6-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WhatsApp Integration (6 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workspace-management-20-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workspace Management (20 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webhooks-4-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Webhooks (4 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mcp-tools-5-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MCP / Tools (5 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio-native-3-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audio Native (3 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transcription-4-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transcription (4 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-6-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Miscellaneous (6 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contributing
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case Studies
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Case Studies
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../case-studies/ax-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AX Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contributing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Releases
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Releases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/v0.10.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.10.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/v0.9.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.9.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/v0.8.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.8.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/v0.8.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.8.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/v0.7.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.7.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/v0.6.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.6.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/v0.5.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.5.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/v0.4.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.4.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/v0.3.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.3.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/v0.2.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.2.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/v0.1.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.1.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#coverage-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coverage Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#covered-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Covered APIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Covered APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#text-to-speech-4-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text-to-Speech (4 methods) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websocket-tts-1-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WebSocket TTS (1 method) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speech-to-text-2-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speech-to-Text (2 methods) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websocket-stt-1-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WebSocket STT (1 method) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speech-to-speech-2-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speech-to-Speech (2 methods) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voices-9-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voices (9 methods) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#models-1-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Models (1 method) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#history-5-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        History (5 methods) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-1-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User (1 method) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sound-effects-1-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sound Effects (1 method) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forced-alignment-1-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Forced Alignment (1 method) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio-isolation-2-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audio Isolation (2 methods) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-to-dialogue-4-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text-to-Dialogue (4 methods) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voice-design-8-methods-partial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice Design (8 methods) - Partial ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#music-5-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Music (5 methods) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pronunciation-6-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pronunciation (6 methods) ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#projects-studio-14-methods-partial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projects / Studio (14 methods) - Partial ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dubbing-14-methods-partial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dubbing (14 methods) - Partial ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phone-twilio-7-methods-partial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phone / Twilio (7 methods) - Partial ✓
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#not-covered-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Not Covered APIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Not Covered APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#professional-voice-cloning-pvc-12-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Professional Voice Cloning - PVC (12 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voice-library-5-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice Library (5 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversational-ai-26-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversational AI (26 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#knowledge-base-rag-15-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge Base / RAG (15 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whatsapp-integration-6-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WhatsApp Integration (6 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workspace-management-20-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workspace Management (20 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webhooks-4-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Webhooks (4 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mcp-tools-5-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MCP / Tools (5 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio-native-3-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audio Native (3 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transcription-4-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transcription (4 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-6-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Miscellaneous (6 methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contributing
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="api-coverage">API Coverage<a class="headerlink" href="#api-coverage" title="Permanent link">&para;</a></h1>
+<p>This page documents the ElevenLabs API coverage in this Go SDK.</p>
+<p><strong>Total API Methods:</strong> 204
+<strong>SDK Status:</strong> Core functionality covered, advanced features in progress</p>
+<h2 id="coverage-summary">Coverage Summary<a class="headerlink" href="#coverage-summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>API Methods</th>
+<th>SDK Coverage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Text-to-Speech</td>
+<td>4</td>
+<td>✓ Full</td>
+</tr>
+<tr>
+<td>WebSocket TTS</td>
+<td>1</td>
+<td>✓ Full</td>
+</tr>
+<tr>
+<td>Speech-to-Text</td>
+<td>2</td>
+<td>✓ Full</td>
+</tr>
+<tr>
+<td>WebSocket STT</td>
+<td>1</td>
+<td>✓ Full</td>
+</tr>
+<tr>
+<td>Speech-to-Speech</td>
+<td>2</td>
+<td>✓ Full</td>
+</tr>
+<tr>
+<td>Voices</td>
+<td>9</td>
+<td>✓ Full</td>
+</tr>
+<tr>
+<td>Models</td>
+<td>1</td>
+<td>✓ Full</td>
+</tr>
+<tr>
+<td>History</td>
+<td>5</td>
+<td>✓ Full</td>
+</tr>
+<tr>
+<td>User</td>
+<td>1</td>
+<td>✓ Full</td>
+</tr>
+<tr>
+<td>Sound Effects</td>
+<td>1</td>
+<td>✓ Full</td>
+</tr>
+<tr>
+<td>Forced Alignment</td>
+<td>1</td>
+<td>✓ Full</td>
+</tr>
+<tr>
+<td>Audio Isolation</td>
+<td>2</td>
+<td>✓ Full</td>
+</tr>
+<tr>
+<td>Text-to-Dialogue</td>
+<td>4</td>
+<td>✓ Full</td>
+</tr>
+<tr>
+<td>Voice Design</td>
+<td>8</td>
+<td>✓ Partial</td>
+</tr>
+<tr>
+<td>Music</td>
+<td>5</td>
+<td>✓ Full</td>
+</tr>
+<tr>
+<td>Pronunciation</td>
+<td>6</td>
+<td>✓ Full</td>
+</tr>
+<tr>
+<td>Projects (Studio)</td>
+<td>14</td>
+<td>✓ Partial</td>
+</tr>
+<tr>
+<td>Dubbing</td>
+<td>14</td>
+<td>✓ Partial</td>
+</tr>
+<tr>
+<td>Phone / Twilio</td>
+<td>7</td>
+<td>✓ Partial</td>
+</tr>
+<tr>
+<td>Professional Voice Cloning</td>
+<td>12</td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td>Voice Library</td>
+<td>5</td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td>Conversational AI</td>
+<td>26</td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td>Knowledge Base / RAG</td>
+<td>15</td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td>Workspace Management</td>
+<td>20</td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td>MCP / Tools</td>
+<td>5</td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td>Audio Native</td>
+<td>3</td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td>Transcription</td>
+<td>4</td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td>Miscellaneous</td>
+<td>6</td>
+<td>✗ Not covered</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="covered-apis">Covered APIs<a class="headerlink" href="#covered-apis" title="Permanent link">&para;</a></h2>
+<h3 id="text-to-speech-4-methods">Text-to-Speech (4 methods) ✓<a class="headerlink" href="#text-to-speech-4-methods" title="Permanent link">&para;</a></h3>
+<p>Full coverage of text-to-speech functionality.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>SDK Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TextToSpeechFull</code></td>
+<td>✓ <code>TextToSpeech().Generate()</code></td>
+</tr>
+<tr>
+<td><code>TextToSpeechStream</code></td>
+<td>✓ <code>TextToSpeech().GenerateStream()</code></td>
+</tr>
+<tr>
+<td><code>TextToSpeechFullWithTimestamps</code></td>
+<td>✓ <code>TextToSpeech().GenerateWithTimestamps()</code></td>
+</tr>
+<tr>
+<td><code>TextToSpeechStreamWithTimestamps</code></td>
+<td>✓ <code>TextToSpeech().GenerateStreamWithTimestamps()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="websocket-tts-1-method">WebSocket TTS (1 method) ✓<a class="headerlink" href="#websocket-tts-1-method" title="Permanent link">&para;</a></h3>
+<p>Real-time text-to-speech streaming via WebSocket for low-latency voice synthesis.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>SDK Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TextToSpeechWebSocket</code></td>
+<td>✓ <code>WebSocketTTS().Connect()</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li>Stream text to speech in real-time (ideal for LLM output)</li>
+<li>Low-latency audio generation with configurable optimization</li>
+<li>Word-level timing alignment</li>
+<li>SSML parsing support</li>
+</ul>
+<h3 id="speech-to-text-2-methods">Speech-to-Text (2 methods) ✓<a class="headerlink" href="#speech-to-text-2-methods" title="Permanent link">&para;</a></h3>
+<p>Full coverage of transcription functionality.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>SDK Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SpeechToText</code></td>
+<td>✓ <code>SpeechToText().Transcribe()</code></td>
+</tr>
+<tr>
+<td><code>Transcribe</code></td>
+<td>✓ <code>SpeechToText().TranscribeURL()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="websocket-stt-1-method">WebSocket STT (1 method) ✓<a class="headerlink" href="#websocket-stt-1-method" title="Permanent link">&para;</a></h3>
+<p>Real-time speech-to-text streaming via WebSocket for live transcription.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>SDK Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SpeechToTextWebSocket</code></td>
+<td>✓ <code>WebSocketSTT().Connect()</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li>Stream audio for real-time transcription</li>
+<li>Partial (interim) results for responsive UIs</li>
+<li>Word-level timing with confidence scores</li>
+<li>Automatic language detection</li>
+</ul>
+<h3 id="speech-to-speech-2-methods">Speech-to-Speech (2 methods) ✓<a class="headerlink" href="#speech-to-speech-2-methods" title="Permanent link">&para;</a></h3>
+<p>Voice conversion - transform speech from one voice to another.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>SDK Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SpeechToSpeechFull</code></td>
+<td>✓ <code>SpeechToSpeech().Convert()</code></td>
+</tr>
+<tr>
+<td><code>SpeechToSpeechStream</code></td>
+<td>✓ <code>SpeechToSpeech().ConvertStream()</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li>Convert voice while preserving speech content</li>
+<li>Background noise removal option</li>
+<li>Seed audio for consistent conversions</li>
+<li>Configurable voice settings</li>
+</ul>
+<h3 id="voices-9-methods">Voices (9 methods) ✓<a class="headerlink" href="#voices-9-methods" title="Permanent link">&para;</a></h3>
+<p>Full coverage of voice management.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>SDK Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GetVoices</code></td>
+<td>✓ <code>Voices().List()</code></td>
+</tr>
+<tr>
+<td><code>GetVoiceByID</code></td>
+<td>✓ <code>Voices().Get()</code></td>
+</tr>
+<tr>
+<td><code>AddVoice</code></td>
+<td>✓ <code>Voices().Add()</code></td>
+</tr>
+<tr>
+<td><code>EditVoice</code></td>
+<td>✓ <code>Voices().Edit()</code></td>
+</tr>
+<tr>
+<td><code>DeleteVoice</code></td>
+<td>✓ <code>Voices().Delete()</code></td>
+</tr>
+<tr>
+<td><code>GetVoiceSettings</code></td>
+<td>✓ <code>Voices().GetSettings()</code></td>
+</tr>
+<tr>
+<td><code>EditVoiceSettings</code></td>
+<td>✓ <code>Voices().EditSettings()</code></td>
+</tr>
+<tr>
+<td><code>GetVoiceSettingsDefault</code></td>
+<td>✓ <code>Voices().GetDefaultSettings()</code></td>
+</tr>
+<tr>
+<td><code>GetUserVoicesV2</code></td>
+<td>✓ <code>Voices().ListUserVoices()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="models-1-method">Models (1 method) ✓<a class="headerlink" href="#models-1-method" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>SDK Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GetModels</code></td>
+<td>✓ <code>Models().List()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="history-5-methods">History (5 methods) ✓<a class="headerlink" href="#history-5-methods" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>SDK Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GetSpeechHistory</code></td>
+<td>✓ <code>History().List()</code></td>
+</tr>
+<tr>
+<td><code>GetSpeechHistoryItemByID</code></td>
+<td>✓ <code>History().Get()</code></td>
+</tr>
+<tr>
+<td><code>DeleteSpeechHistoryItem</code></td>
+<td>✓ <code>History().Delete()</code></td>
+</tr>
+<tr>
+<td><code>DownloadSpeechHistoryItems</code></td>
+<td>✓ <code>History().Download()</code></td>
+</tr>
+<tr>
+<td><code>GetAudioFullFromSpeechHistoryItem</code></td>
+<td>✓ <code>History().GetAudio()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="user-1-method">User (1 method) ✓<a class="headerlink" href="#user-1-method" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>SDK Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GetUserInfo</code></td>
+<td>✓ <code>User().Get()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="sound-effects-1-method">Sound Effects (1 method) ✓<a class="headerlink" href="#sound-effects-1-method" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>SDK Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SoundGeneration</code></td>
+<td>✓ <code>SoundEffects().Generate()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="forced-alignment-1-method">Forced Alignment (1 method) ✓<a class="headerlink" href="#forced-alignment-1-method" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>SDK Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ForcedAlignment</code></td>
+<td>✓ <code>ForcedAlignment().Align()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="audio-isolation-2-methods">Audio Isolation (2 methods) ✓<a class="headerlink" href="#audio-isolation-2-methods" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>SDK Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AudioIsolation</code></td>
+<td>✓ <code>AudioIsolation().Isolate()</code></td>
+</tr>
+<tr>
+<td><code>AudioIsolationStream</code></td>
+<td>✓ <code>AudioIsolation().IsolateStream()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="text-to-dialogue-4-methods">Text-to-Dialogue (4 methods) ✓<a class="headerlink" href="#text-to-dialogue-4-methods" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>SDK Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TextToDialogue</code></td>
+<td>✓ <code>TextToDialogue().Generate()</code></td>
+</tr>
+<tr>
+<td><code>TextToDialogueStream</code></td>
+<td>✓ <code>TextToDialogue().GenerateStream()</code></td>
+</tr>
+<tr>
+<td><code>TextToDialogueFullWithTimestamps</code></td>
+<td>✓ <code>TextToDialogue().GenerateWithTimestamps()</code></td>
+</tr>
+<tr>
+<td><code>TextToDialogueStreamWithTimestamps</code></td>
+<td>✓ Planned</td>
+</tr>
+</tbody>
+</table>
+<h3 id="voice-design-8-methods-partial">Voice Design (8 methods) - Partial ✓<a class="headerlink" href="#voice-design-8-methods-partial" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>SDK Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GenerateRandomVoice</code></td>
+<td>✓ <code>VoiceDesign().GeneratePreview()</code></td>
+</tr>
+<tr>
+<td><code>CreateVoiceOld</code></td>
+<td>✓ <code>VoiceDesign().SaveVoice()</code></td>
+</tr>
+<tr>
+<td><code>CreateVoice</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>TextToVoice</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>TextToVoiceDesign</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>TextToVoicePreviewStream</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>TextToVoiceRemix</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>GetGenerateVoiceParameters</code></td>
+<td>✗ Not covered</td>
+</tr>
+</tbody>
+</table>
+<h3 id="music-5-methods">Music (5 methods) ✓<a class="headerlink" href="#music-5-methods" title="Permanent link">&para;</a></h3>
+<p>Full coverage of music generation and stem separation.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>SDK Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Generate</code></td>
+<td>✓ <code>Music().Generate()</code></td>
+</tr>
+<tr>
+<td><code>StreamCompose</code></td>
+<td>✓ <code>Music().GenerateStream()</code></td>
+</tr>
+<tr>
+<td><code>ComposeDetailed</code></td>
+<td>✓ <code>Music().GenerateDetailed()</code></td>
+</tr>
+<tr>
+<td><code>ComposePlan</code></td>
+<td>✓ <code>Music().GeneratePlan()</code></td>
+</tr>
+<tr>
+<td><code>SeparateSongStems</code></td>
+<td>✓ <code>Music().SeparateStems()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="pronunciation-6-methods">Pronunciation (6 methods) ✓<a class="headerlink" href="#pronunciation-6-methods" title="Permanent link">&para;</a></h3>
+<p>Full coverage of pronunciation dictionary management.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>SDK Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AddFromFile</code></td>
+<td>✓ <code>Pronunciation().Create()</code></td>
+</tr>
+<tr>
+<td><code>GetPronunciationDictionariesMetadata</code></td>
+<td>✓ <code>Pronunciation().List()</code></td>
+</tr>
+<tr>
+<td><code>GetPronunciationDictionaryMetadata</code></td>
+<td>✓ <code>Pronunciation().Get()</code></td>
+</tr>
+<tr>
+<td><code>PatchPronunciationDictionary</code></td>
+<td>✓ <code>Pronunciation().Rename()</code>, <code>Pronunciation().Archive()</code></td>
+</tr>
+<tr>
+<td><code>RemoveRules</code></td>
+<td>✓ <code>Pronunciation().RemoveRules()</code></td>
+</tr>
+<tr>
+<td><code>GetPronunciationDictionaryVersionPls</code></td>
+<td>✓ <code>Pronunciation().GetVersionPLS()</code>, <code>Pronunciation().DownloadLatestPLS()</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>UpdatePronunciationDictionaries</code> is a Projects API method that associates dictionaries with a project, not a pronunciation dictionary method.</p>
+</div>
+<h3 id="projects-studio-14-methods-partial">Projects / Studio (14 methods) - Partial ✓<a class="headerlink" href="#projects-studio-14-methods-partial" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>SDK Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AddProject</code></td>
+<td>✓ <code>Projects().Create()</code></td>
+</tr>
+<tr>
+<td><code>GetProjects</code></td>
+<td>✓ <code>Projects().List()</code></td>
+</tr>
+<tr>
+<td><code>DeleteProject</code></td>
+<td>✓ <code>Projects().Delete()</code></td>
+</tr>
+<tr>
+<td><code>ConvertProjectEndpoint</code></td>
+<td>✓ <code>Projects().Convert()</code></td>
+</tr>
+<tr>
+<td><code>EditProject</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>EditProjectContent</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>GetChapters</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>ConvertChapterEndpoint</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>DeleteChapterEndpoint</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>GetChapterSnapshots</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>GetChapterSnapshotEndpoint</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>GetProjectSnapshots</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>GetProjectSnapshotEndpoint</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>StreamProjectSnapshotArchiveEndpoint</code></td>
+<td>✗ Not covered</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dubbing-14-methods-partial">Dubbing (14 methods) - Partial ✓<a class="headerlink" href="#dubbing-14-methods-partial" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>SDK Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CreateDubbing</code></td>
+<td>✓ <code>Dubbing().Create()</code></td>
+</tr>
+<tr>
+<td><code>DeleteDubbing</code></td>
+<td>✓ <code>Dubbing().Delete()</code></td>
+</tr>
+<tr>
+<td><code>GetDubbingResource</code></td>
+<td>✓ <code>Dubbing().GetStatus()</code></td>
+</tr>
+<tr>
+<td><code>Dub</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>AddLanguage</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>CreateSpeaker</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>UpdateSpeaker</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>GetSpeakerAudio</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>GetSimilarVoicesForSpeaker</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>StartSpeakerSeparation</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>CreateClip</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>DeleteSegment</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>UpdateSegmentLanguage</code></td>
+<td>✗ Not covered</td>
+</tr>
+<tr>
+<td><code>MigrateSegments</code></td>
+<td>✗ Not covered</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phone-twilio-7-methods-partial">Phone / Twilio (7 methods) - Partial ✓<a class="headerlink" href="#phone-twilio-7-methods-partial" title="Permanent link">&para;</a></h3>
+<p>Phone call and Twilio integration for conversational AI agents.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>SDK Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RegisterTwilioCall</code></td>
+<td>✓ <code>Twilio().RegisterCall()</code></td>
+</tr>
+<tr>
+<td><code>HandleTwilioOutboundCall</code></td>
+<td>✓ <code>Twilio().OutboundCall()</code></td>
+</tr>
+<tr>
+<td><code>HandleSipTrunkOutboundCall</code></td>
+<td>✓ <code>Twilio().SIPOutboundCall()</code></td>
+</tr>
+<tr>
+<td><code>ListPhoneNumbersRoute</code></td>
+<td>✓ <code>PhoneNumbers().List()</code></td>
+</tr>
+<tr>
+<td><code>GetPhoneNumberRoute</code></td>
+<td>✓ <code>PhoneNumbers().Get()</code></td>
+</tr>
+<tr>
+<td><code>UpdatePhoneNumberRoute</code></td>
+<td>✓ <code>PhoneNumbers().Update()</code></td>
+</tr>
+<tr>
+<td><code>DeletePhoneNumberRoute</code></td>
+<td>✓ <code>PhoneNumbers().Delete()</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li>Register incoming Twilio calls with ElevenLabs agents</li>
+<li>Initiate outbound calls via Twilio or SIP trunks</li>
+<li>Manage phone numbers associated with agents</li>
+<li>Dynamic variables and prompt overrides per call</li>
+</ul>
+<hr />
+<h2 id="not-covered-apis">Not Covered APIs<a class="headerlink" href="#not-covered-apis" title="Permanent link">&para;</a></h2>
+<h3 id="professional-voice-cloning-pvc-12-methods">Professional Voice Cloning - PVC (12 methods)<a class="headerlink" href="#professional-voice-cloning-pvc-12-methods" title="Permanent link">&para;</a></h3>
+<p>Professional-grade voice cloning with training.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CreatePvcVoice</code></td>
+<td>Create a PVC voice</td>
+</tr>
+<tr>
+<td><code>EditPvcVoice</code></td>
+<td>Edit PVC voice settings</td>
+</tr>
+<tr>
+<td><code>AddPvcVoiceSamples</code></td>
+<td>Add training samples</td>
+</tr>
+<tr>
+<td><code>DeletePvcVoiceSample</code></td>
+<td>Delete a sample</td>
+</tr>
+<tr>
+<td><code>EditPvcVoiceSample</code></td>
+<td>Edit sample metadata</td>
+</tr>
+<tr>
+<td><code>GetPvcSampleAudio</code></td>
+<td>Get sample audio</td>
+</tr>
+<tr>
+<td><code>GetPvcSampleSpeakers</code></td>
+<td>Get detected speakers</td>
+</tr>
+<tr>
+<td><code>GetPvcSampleVisualWaveform</code></td>
+<td>Get waveform visualization</td>
+</tr>
+<tr>
+<td><code>GetPvcVoiceCaptcha</code></td>
+<td>Get verification captcha</td>
+</tr>
+<tr>
+<td><code>VerifyPvcVoiceCaptcha</code></td>
+<td>Verify captcha</td>
+</tr>
+<tr>
+<td><code>RequestPvcManualVerification</code></td>
+<td>Request manual verification</td>
+</tr>
+<tr>
+<td><code>RunPvcVoiceTraining</code></td>
+<td>Start voice training</td>
+</tr>
+</tbody>
+</table>
+<h3 id="voice-library-5-methods">Voice Library (5 methods)<a class="headerlink" href="#voice-library-5-methods" title="Permanent link">&para;</a></h3>
+<p>Community voice discovery and sharing.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GetLibraryVoices</code></td>
+<td>Browse community voices</td>
+</tr>
+<tr>
+<td><code>GetSimilarLibraryVoices</code></td>
+<td>Find similar voices</td>
+</tr>
+<tr>
+<td><code>AddSharingVoice</code></td>
+<td>Add a shared voice to your library</td>
+</tr>
+<tr>
+<td><code>ShareResourceEndpoint</code></td>
+<td>Share a resource</td>
+</tr>
+<tr>
+<td><code>UnshareResourceEndpoint</code></td>
+<td>Unshare a resource</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conversational-ai-26-methods">Conversational AI (26 methods)<a class="headerlink" href="#conversational-ai-26-methods" title="Permanent link">&para;</a></h3>
+<p>AI agents and conversational interfaces.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GetAgentsRoute</code></td>
+<td>List agents</td>
+</tr>
+<tr>
+<td><code>DeleteAgentRoute</code></td>
+<td>Delete an agent</td>
+</tr>
+<tr>
+<td><code>DuplicateAgentRoute</code></td>
+<td>Duplicate an agent</td>
+</tr>
+<tr>
+<td><code>PostAgentAvatarRoute</code></td>
+<td>Upload agent avatar</td>
+</tr>
+<tr>
+<td><code>GetAgentLinkRoute</code></td>
+<td>Get shareable agent link</td>
+</tr>
+<tr>
+<td><code>GetAgentKnowledgeBaseSize</code></td>
+<td>Get KB size</td>
+</tr>
+<tr>
+<td><code>GetAgentKnowledgeBaseSummariesRoute</code></td>
+<td>Get KB summaries</td>
+</tr>
+<tr>
+<td><code>GetAgentLlmExpectedCostCalculation</code></td>
+<td>Estimate LLM costs</td>
+</tr>
+<tr>
+<td><code>CreateAgentResponseTestRoute</code></td>
+<td>Create response test</td>
+</tr>
+<tr>
+<td><code>GetAgentResponseTestRoute</code></td>
+<td>Get test results</td>
+</tr>
+<tr>
+<td><code>UpdateAgentResponseTestRoute</code></td>
+<td>Update test</td>
+</tr>
+<tr>
+<td><code>GetAgentResponseTestsSummariesRoute</code></td>
+<td>Get test summaries</td>
+</tr>
+<tr>
+<td><code>DeleteConversationRoute</code></td>
+<td>Delete conversation</td>
+</tr>
+<tr>
+<td><code>GetConversationHistoriesRoute</code></td>
+<td>List conversations</td>
+</tr>
+<tr>
+<td><code>GetConversationAudioRoute</code></td>
+<td>Get conversation audio</td>
+</tr>
+<tr>
+<td><code>GetConversationSignedLink</code></td>
+<td>Get signed link</td>
+</tr>
+<tr>
+<td><code>PostConversationFeedbackRoute</code></td>
+<td>Submit feedback</td>
+</tr>
+<tr>
+<td><code>CreateBatchCall</code></td>
+<td>Create batch call job</td>
+</tr>
+<tr>
+<td><code>GetBatchCall</code></td>
+<td>Get batch call status</td>
+</tr>
+<tr>
+<td><code>CancelBatchCall</code></td>
+<td>Cancel batch call</td>
+</tr>
+<tr>
+<td><code>RetryBatchCall</code></td>
+<td>Retry failed calls</td>
+</tr>
+<tr>
+<td><code>GetWorkspaceBatchCalls</code></td>
+<td>List workspace batch calls</td>
+</tr>
+<tr>
+<td><code>GetLiveCount</code></td>
+<td>Get live call count</td>
+</tr>
+<tr>
+<td><code>GetLivekitToken</code></td>
+<td>Get LiveKit token</td>
+</tr>
+<tr>
+<td><code>ListChatResponseTestsRoute</code></td>
+<td>List chat tests</td>
+</tr>
+<tr>
+<td><code>DeleteChatResponseTestRoute</code></td>
+<td>Delete chat test</td>
+</tr>
+</tbody>
+</table>
+<h3 id="knowledge-base-rag-15-methods">Knowledge Base / RAG (15 methods)<a class="headerlink" href="#knowledge-base-rag-15-methods" title="Permanent link">&para;</a></h3>
+<p>Document management and retrieval-augmented generation.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AddDocumentationToKnowledgeBase</code></td>
+<td>Add documentation</td>
+</tr>
+<tr>
+<td><code>CreateFileDocumentRoute</code></td>
+<td>Create from file</td>
+</tr>
+<tr>
+<td><code>CreateTextDocumentRoute</code></td>
+<td>Create from text</td>
+</tr>
+<tr>
+<td><code>CreateURLDocumentRoute</code></td>
+<td>Create from URL</td>
+</tr>
+<tr>
+<td><code>DeleteKnowledgeBaseDocument</code></td>
+<td>Delete document</td>
+</tr>
+<tr>
+<td><code>GetDocumentationFromKnowledgeBase</code></td>
+<td>Get documentation</td>
+</tr>
+<tr>
+<td><code>GetDocumentationChunkFromKnowledgeBase</code></td>
+<td>Get chunk</td>
+</tr>
+<tr>
+<td><code>GetKnowledgeBaseContent</code></td>
+<td>Get KB content</td>
+</tr>
+<tr>
+<td><code>GetKnowledgeBaseListRoute</code></td>
+<td>List knowledge bases</td>
+</tr>
+<tr>
+<td><code>UpdateDocumentRoute</code></td>
+<td>Update document</td>
+</tr>
+<tr>
+<td><code>GetOrCreateRagIndexes</code></td>
+<td>Get/create RAG indexes</td>
+</tr>
+<tr>
+<td><code>GetRagIndexes</code></td>
+<td>List RAG indexes</td>
+</tr>
+<tr>
+<td><code>GetRagIndexOverview</code></td>
+<td>Get index overview</td>
+</tr>
+<tr>
+<td><code>DeleteRagIndex</code></td>
+<td>Delete index</td>
+</tr>
+<tr>
+<td><code>RagIndexStatus</code></td>
+<td>Get index status</td>
+</tr>
+</tbody>
+</table>
+<h3 id="whatsapp-integration-6-methods">WhatsApp Integration (6 methods)<a class="headerlink" href="#whatsapp-integration-6-methods" title="Permanent link">&para;</a></h3>
+<p>WhatsApp call and messaging integration.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GetWhatsappAccount</code></td>
+<td>Get WhatsApp account</td>
+</tr>
+<tr>
+<td><code>ListWhatsappAccounts</code></td>
+<td>List accounts</td>
+</tr>
+<tr>
+<td><code>ImportWhatsappAccount</code></td>
+<td>Import account</td>
+</tr>
+<tr>
+<td><code>UpdateWhatsappAccount</code></td>
+<td>Update account</td>
+</tr>
+<tr>
+<td><code>DeleteWhatsappAccount</code></td>
+<td>Delete account</td>
+</tr>
+<tr>
+<td><code>WhatsappOutboundCall</code></td>
+<td>Make WhatsApp call</td>
+</tr>
+</tbody>
+</table>
+<h3 id="workspace-management-20-methods">Workspace Management (20 methods)<a class="headerlink" href="#workspace-management-20-methods" title="Permanent link">&para;</a></h3>
+<p>Team, permissions, and workspace settings.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SearchGroups</code></td>
+<td>Search user groups</td>
+</tr>
+<tr>
+<td><code>AddMember</code></td>
+<td>Add group member</td>
+</tr>
+<tr>
+<td><code>RemoveMember</code></td>
+<td>Remove member</td>
+</tr>
+<tr>
+<td><code>InviteUser</code></td>
+<td>Invite user</td>
+</tr>
+<tr>
+<td><code>InviteUsersBulk</code></td>
+<td>Bulk invite</td>
+</tr>
+<tr>
+<td><code>DeleteInvite</code></td>
+<td>Delete invitation</td>
+</tr>
+<tr>
+<td><code>UpdateWorkspaceMember</code></td>
+<td>Update member</td>
+</tr>
+<tr>
+<td><code>CreateSecretRoute</code></td>
+<td>Create secret</td>
+</tr>
+<tr>
+<td><code>GetSecretsRoute</code></td>
+<td>List secrets</td>
+</tr>
+<tr>
+<td><code>UpdateSecretRoute</code></td>
+<td>Update secret</td>
+</tr>
+<tr>
+<td><code>DeleteSecretRoute</code></td>
+<td>Delete secret</td>
+</tr>
+<tr>
+<td><code>GetWorkspaceServiceAccounts</code></td>
+<td>List service accounts</td>
+</tr>
+<tr>
+<td><code>CreateServiceAccountAPIKey</code></td>
+<td>Create API key</td>
+</tr>
+<tr>
+<td><code>EditServiceAccountAPIKey</code></td>
+<td>Edit API key</td>
+</tr>
+<tr>
+<td><code>DeleteServiceAccountAPIKey</code></td>
+<td>Delete API key</td>
+</tr>
+<tr>
+<td><code>GetServiceAccountAPIKeysRoute</code></td>
+<td>List API keys</td>
+</tr>
+<tr>
+<td><code>GetSettingsRoute</code></td>
+<td>Get settings</td>
+</tr>
+<tr>
+<td><code>UpdateSettingsRoute</code></td>
+<td>Update settings</td>
+</tr>
+<tr>
+<td><code>GetDashboardSettingsRoute</code></td>
+<td>Get dashboard settings</td>
+</tr>
+<tr>
+<td><code>UpdateDashboardSettingsRoute</code></td>
+<td>Update dashboard</td>
+</tr>
+</tbody>
+</table>
+<h3 id="webhooks-4-methods">Webhooks (4 methods)<a class="headerlink" href="#webhooks-4-methods" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CreateWorkspaceWebhookRoute</code></td>
+<td>Create webhook</td>
+</tr>
+<tr>
+<td><code>GetWorkspaceWebhooksRoute</code></td>
+<td>List webhooks</td>
+</tr>
+<tr>
+<td><code>EditWorkspaceWebhookRoute</code></td>
+<td>Edit webhook</td>
+</tr>
+<tr>
+<td><code>DeleteWorkspaceWebhookRoute</code></td>
+<td>Delete webhook</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mcp-tools-5-methods">MCP / Tools (5 methods)<a class="headerlink" href="#mcp-tools-5-methods" title="Permanent link">&para;</a></h3>
+<p>Model Context Protocol and tool integrations.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DeleteMcpServerRoute</code></td>
+<td>Delete MCP server</td>
+</tr>
+<tr>
+<td><code>ListMcpServerToolsRoute</code></td>
+<td>List MCP tools</td>
+</tr>
+<tr>
+<td><code>GetMcpToolConfigOverrideRoute</code></td>
+<td>Get tool config</td>
+</tr>
+<tr>
+<td><code>DeleteToolRoute</code></td>
+<td>Delete tool</td>
+</tr>
+<tr>
+<td><code>GetToolDependentAgentsRoute</code></td>
+<td>Get dependent agents</td>
+</tr>
+</tbody>
+</table>
+<h3 id="audio-native-3-methods">Audio Native (3 methods)<a class="headerlink" href="#audio-native-3-methods" title="Permanent link">&para;</a></h3>
+<p>Audio Native project embedding.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CreateAudioNativeProject</code></td>
+<td>Create project</td>
+</tr>
+<tr>
+<td><code>AudioNativeProjectUpdateContentEndpoint</code></td>
+<td>Update content</td>
+</tr>
+<tr>
+<td><code>GetAudioNativeProjectSettingsEndpoint</code></td>
+<td>Get settings</td>
+</tr>
+</tbody>
+</table>
+<h3 id="transcription-4-methods">Transcription (4 methods)<a class="headerlink" href="#transcription-4-methods" title="Permanent link">&para;</a></h3>
+<p>Advanced transcription features.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GetTranscriptByID</code></td>
+<td>Get transcript</td>
+</tr>
+<tr>
+<td><code>DeleteTranscriptByID</code></td>
+<td>Delete transcript</td>
+</tr>
+<tr>
+<td><code>GetDubbedTranscriptFile</code></td>
+<td>Get dubbed transcript</td>
+</tr>
+<tr>
+<td><code>Translate</code></td>
+<td>Translate content</td>
+</tr>
+</tbody>
+</table>
+<h3 id="miscellaneous-6-methods">Miscellaneous (6 methods)<a class="headerlink" href="#miscellaneous-6-methods" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UsageCharacters</code></td>
+<td>Get character usage stats</td>
+</tr>
+<tr>
+<td><code>GetSingleUseToken</code></td>
+<td>Get single-use token</td>
+</tr>
+<tr>
+<td><code>GetResourceMetadata</code></td>
+<td>Get resource metadata</td>
+</tr>
+<tr>
+<td><code>GetSignedURLDeprecated</code></td>
+<td>Get signed URL (deprecated)</td>
+</tr>
+<tr>
+<td><code>GetPublicLlmExpectedCostCalculation</code></td>
+<td>Public LLM cost calc</td>
+</tr>
+<tr>
+<td><code>RedirectToMintlify</code></td>
+<td>Redirect to docs</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
+<p>Want to help expand SDK coverage? Contributions are welcome! Priority areas:</p>
+<ol>
+<li><strong>Conversational AI Agents</strong> - Agent management and conversation APIs</li>
+<li><strong>Voice Library</strong> - Community voice discovery and sharing</li>
+<li><strong>Professional Voice Cloning</strong> - Premium voice training features</li>
+<li><strong>Knowledge Base / RAG</strong> - Document management for agent context</li>
+</ol>
+<p>See the <a href="https://github.com/agentplexus/go-elevenlabs/blob/main/CONTRIBUTING.md">Contributing Guide</a> for details.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
