@@ -7,6 +7,33 @@
   "maintainers": ["johncwang@gmail.com"],
   "releases": [
     {
+      "version": "v0.14.0",
+      "date": "2026-10-28",
+      "highlights": [
+        { "description": "OmniVoice TTS `SynthesisResult.SampleRate` is the rate of the returned audio: a `mulaw` request reports 8000, not 44100", "commit": "9d2fca9" }
+      ],
+      "fixed": [
+        { "description": "[omnivoice] `Synthesize` reported the requested `SampleRate`, or 44100 by default, instead of the rate of the ElevenLabs format sent", "commit": "9d2fca9" }
+      ],
+      "added": [
+        { "description": "[omnivoice] `OutputSampleRate` returns the sample rate of the audio returned for a synthesis config", "commit": "9d2fca9" }
+      ],
+      "tests": [
+        { "description": "[omnivoice] Sample rate of each output format", "commit": "750a2d4" }
+      ],
+      "documentation": [
+        { "description": "[omnivoice] TTS guide lists output formats and the sample rate each reports", "commit": "ad5f03c" }
+      ],
+      "dependencies": [
+        { "description": "Bumped `github.com/plexusone/omnivoice-core` from v0.14.0 to v0.16.0", "commit": "089cf8f" },
+        { "description": "Bumped `github.com/ogen-go/ogen` from v1.22.0 to v1.24.0", "commit": "85406ba" },
+        { "description": "Bumped `github.com/go-faster/errors` from v0.7.1 to v0.8.0", "commit": "8825d3a" },
+        { "description": "Bumped `go.opentelemetry.io/otel`, `otel/metric`, and `otel/trace` from v1.44.0 to v1.46.0", "commit": "d946f23" },
+        { "description": "Bumped `github.com/grokify/mogo` from v0.74.6 to v0.74.9", "commit": "82fabf2" },
+        { "description": "Updated indirect dependencies", "commit": "58a1667" }
+      ]
+    },
+    {
       "version": "v0.13.0",
       "date": "2026-06-21",
       "highlights": [
