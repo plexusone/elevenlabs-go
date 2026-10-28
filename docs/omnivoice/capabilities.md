@@ -30,7 +30,7 @@ This page documents OmniVoice interface capabilities and their implementation st
 |--------------|-------------|:---------:|
 | `VoiceID` | Voice identifier | :white_check_mark: |
 | `Model` | TTS model (e.g., `eleven_turbo_v2_5`) | :white_check_mark: |
-| `OutputFormat` | Audio format (`mp3`, `pcm`, `wav`, `opus`) | :white_check_mark: |
+| `OutputFormat` | Audio format (`mp3`, `pcm`, `wav`, `opus`, `mulaw`, `alaw`, or an ElevenLabs name such as `ulaw_8000`) | :white_check_mark: |
 | `SampleRate` | Audio sample rate | :white_check_mark: |
 | `Speed` | Speech speed multiplier | :white_check_mark: |
 | `Pitch` | Voice pitch adjustment | :x: Not supported by ElevenLabs |

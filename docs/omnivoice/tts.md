@@ -51,6 +51,28 @@ if err != nil {
 os.WriteFile("output.mp3", result.Audio, 0644)
 ```
 
+### Output Format and Sample Rate
+
+`result.SampleRate` is the rate of the audio ElevenLabs returned, which can
+differ from the `SampleRate` you asked for. Phone-call formats are always
+8 kHz:
+
+| `OutputFormat` | ElevenLabs format | `result.SampleRate` |
+|----------------|-------------------|--------------------:|
+| `mp3` (or empty) | `mp3_44100_128` | 44100 |
+| `pcm` with `SampleRate: 16000` | `pcm_16000` | 16000 |
+| `mulaw`, `ulaw` | `ulaw_8000` | 8000 |
+| `alaw` | `alaw_8000` | 8000 |
+| `ulaw_8000`, `pcm_24000`, … | used as given | rate in the name |
+
+```go
+result, err := provider.Synthesize(ctx, "Hello, caller.", tts.SynthesisConfig{
+    VoiceID:      "21m00Tcm4TlvDq8ikWAM",
+    OutputFormat: "mulaw", // 8 kHz mu-law for a phone call
+})
+// result.SampleRate == 8000
+```
+
 ### Voice Settings
 
 Fine-tune the voice output:
