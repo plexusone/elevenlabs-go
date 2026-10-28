@@ -2,6 +2,8 @@ package omnivoice
 
 import (
 	"fmt"
+	"strconv"
+	"strings"
 	"time"
 
 	"github.com/plexusone/elevenlabs-go/realtime"
@@ -228,6 +230,28 @@ func mapOutputFormat(format string, sampleRate int) string {
 	default:
 		return "mp3_44100_128"
 	}
+}
+
+// defaultOutputFormat is the format ElevenLabs uses when none is requested.
+const defaultOutputFormat = "mp3_44100_128"
+
+// OutputSampleRate returns the sample rate of the audio ElevenLabs returns
+// for config: the rate in the ElevenLabs format the request maps to, such as
+// 8000 for "mulaw" ("ulaw_8000") or 16000 for "pcm_16000". It is not
+// config.SampleRate, which ElevenLabs may not support.
+func OutputSampleRate(config tts.SynthesisConfig) int {
+	name := defaultOutputFormat
+	if config.OutputFormat != "" {
+		name = mapOutputFormat(config.OutputFormat, config.SampleRate)
+	}
+	// ElevenLabs names are <codec>_<rate>[_<bitrate>].
+	parts := strings.Split(name, "_")
+	if len(parts) >= 2 {
+		if rate, err := strconv.Atoi(parts[1]); err == nil && rate > 0 {
+			return rate
+		}
+	}
+	return 44100
 }
 
 // ConfigToWebSocketSTTOptions converts OmniVoice TranscriptionConfig to ElevenLabs WebSocket options.

@@ -153,16 +153,11 @@ func (p *Provider) Synthesize(ctx context.Context, text string, config tts.Synth
 		r := &tts.SynthesisResult{
 			Audio:          audioData,
 			Format:         config.OutputFormat,
-			SampleRate:     config.SampleRate,
+			SampleRate:     omnivoice.OutputSampleRate(config),
 			CharacterCount: len(text),
 		}
-
-		// Set defaults if not specified
 		if r.Format == "" {
 			r.Format = "mp3"
-		}
-		if r.SampleRate == 0 {
-			r.SampleRate = 44100
 		}
 
 		return r, nil
