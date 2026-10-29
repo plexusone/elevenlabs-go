@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -3267,15 +3267,15 @@
 <h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
 <h3 id="error-classifier">Error Classifier<a class="headerlink" href="#error-classifier" title="Permanent link">&para;</a></h3>
 <p>The new <code>omnivoice.Classifier</code> classifies errors using both AX error codes and HTTP status codes:</p>
-<div class="language-go highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="s">"github.com/plexusone/elevenlabs-go/omnivoice"</span>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="s">&quot;github.com/plexusone/elevenlabs-go/omnivoice&quot;</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nx">classifier</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">omnivoice</span><span class="p">.</span><span class="nx">NewClassifier</span><span class="p">()</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nx">info</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">classifier</span><span class="p">.</span><span class="nx">Classify</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1">// info.Category   = "rate_limit"</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1">// info.Category   = &quot;rate_limit&quot;</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1">// info.Retryable  = true</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1">// info.Code       = "RATE_LIMITED"</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1">// info.Suggestion = "Wait and retry the request"</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1">// info.Code       = &quot;RATE_LIMITED&quot;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1">// info.Suggestion = &quot;Wait and retry the request&quot;</span>
 </span></code></pre></div>
 <p>Error categories:</p>
 <table>
@@ -3323,12 +3323,12 @@
 <h3 id="automatic-retry-in-tts-provider">Automatic Retry in TTS Provider<a class="headerlink" href="#automatic-retry-in-tts-provider" title="Permanent link">&para;</a></h3>
 <p>The TTS provider now automatically retries transient errors:</p>
 <div class="language-go highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nx">elevenlabs</span><span class="w"> </span><span class="s">"github.com/plexusone/elevenlabs-go"</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="s">"github.com/plexusone/elevenlabs-go/omnivoice/tts"</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="s">"github.com/plexusone/omnivoice-core/resilience"</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nx">elevenlabs</span><span class="w"> </span><span class="s">&quot;github.com/plexusone/elevenlabs-go&quot;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="s">&quot;github.com/plexusone/elevenlabs-go/omnivoice/tts&quot;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="s">&quot;github.com/plexusone/omnivoice-core/resilience&quot;</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span>
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nx">client</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">elevenlabs</span><span class="p">.</span><span class="nx">NewClient</span><span class="p">(</span><span class="nx">elevenlabs</span><span class="p">.</span><span class="nx">WithAPIKey</span><span class="p">(</span><span class="s">"..."</span><span class="p">))</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nx">client</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">elevenlabs</span><span class="p">.</span><span class="nx">NewClient</span><span class="p">(</span><span class="nx">elevenlabs</span><span class="p">.</span><span class="nx">WithAPIKey</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">))</span>
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nx">provider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tts</span><span class="p">.</span><span class="nx">NewWithClient</span><span class="p">(</span><span class="nx">client</span><span class="p">)</span>
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1">// Configure retry behavior (optional - defaults are sensible)</span>
@@ -3342,12 +3342,12 @@
 </span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="p">},</span>
 </span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="nx">Classifier</span><span class="p">:</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">Classifier</span><span class="p">(),</span>
 </span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="nx">OnRetry</span><span class="p">:</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">attempt</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">,</span><span class="w"> </span><span class="nx">delay</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Retry %d after %v: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">attempt</span><span class="p">,</span><span class="w"> </span><span class="nx">delay</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Retry %d after %v: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">attempt</span><span class="p">,</span><span class="w"> </span><span class="nx">delay</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 </span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="p">},</span>
 </span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="p">})</span>
 </span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
 </span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="c1">// Synthesize with automatic retry</span>
-</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">Synthesize</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">"Hello world"</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">)</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">Synthesize</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello world&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">)</span>
 </span></code></pre></div>
 <p>Default retry behavior:</p>
 <ul>
@@ -3359,7 +3359,7 @@
 </ul>
 <h3 id="omnivoice-helper-functions">OmniVoice Helper Functions<a class="headerlink" href="#omnivoice-helper-functions" title="Permanent link">&para;</a></h3>
 <p>New <code>ax/omnivoice.go</code> provides helper functions for OmniVoice integration:</p>
-<div class="language-go highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="s">"github.com/plexusone/elevenlabs-go/ax"</span>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="s">&quot;github.com/plexusone/elevenlabs-go/ax&quot;</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1">// Map AX code to resilience category</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nx">category</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ax</span><span class="p">.</span><span class="nx">CategoryForCode</span><span class="p">(</span><span class="nx">ax</span><span class="p">.</span><span class="nx">ErrNotLoggedIn</span><span class="p">)</span>
@@ -3371,19 +3371,19 @@
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1">// Get recovery suggestion</span>
 </span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="nx">suggestion</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ax</span><span class="p">.</span><span class="nx">SuggestionForCode</span><span class="p">(</span><span class="nx">ax</span><span class="p">.</span><span class="nx">ErrNeedsAuthorization</span><span class="p">)</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1">// suggestion = "Verify your API key is valid and has required permissions"</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1">// suggestion = &quot;Verify your API key is valid and has required permissions&quot;</span>
 </span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
 </span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="c1">// Get required fields for an operation</span>
 </span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="nx">fields</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ax</span><span class="p">.</span><span class="nx">OperationRequiredFields</span><span class="p">(</span><span class="nx">ax</span><span class="p">.</span><span class="nx">OpTextToSpeech</span><span class="p">)</span>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="c1">// fields = [{Name: "voice_id", Description: "...", Example: "..."},</span>
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="c1">//           {Name: "text", Description: "...", Example: "..."}]</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="c1">// fields = [{Name: &quot;voice_id&quot;, Description: &quot;...&quot;, Example: &quot;...&quot;},</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="c1">//           {Name: &quot;text&quot;, Description: &quot;...&quot;, Example: &quot;...&quot;}]</span>
 </span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
 </span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="c1">// Convert AX code to full ErrorInfo</span>
 </span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="nx">info</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ax</span><span class="p">.</span><span class="nx">ToErrorInfo</span><span class="p">(</span><span class="nx">ax</span><span class="p">.</span><span class="nx">ErrNotLoggedIn</span><span class="p">)</span>
 </span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="c1">// info.Category = CategoryAuth, info.Retryable = false, ...</span>
 </span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>
 </span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="c1">// Classify HTTP status code</span>
-</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="nx">info</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ax</span><span class="p">.</span><span class="nx">ClassifyHTTPStatus</span><span class="p">(</span><span class="mi">429</span><span class="p">,</span><span class="w"> </span><span class="s">"rate limit exceeded"</span><span class="p">)</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="nx">info</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ax</span><span class="p">.</span><span class="nx">ClassifyHTTPStatus</span><span class="p">(</span><span class="mi">429</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rate limit exceeded&quot;</span><span class="p">)</span>
 </span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="c1">// info.Category = CategoryRateLimit, info.Retryable = true</span>
 </span></code></pre></div>
 <h3 id="operations-with-required-fields">Operations with Required Fields<a class="headerlink" href="#operations-with-required-fields" title="Permanent link">&para;</a></h3>
@@ -3442,14 +3442,14 @@
 <p>When used with omnivoice-core v0.8.0+, errors are now properly classified for smart fallback:</p>
 <div class="language-go highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// OmniVoice client only falls back on permanent errors</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nx">client</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tts</span><span class="p">.</span><span class="nx">NewClient</span><span class="p">(</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nx">tts</span><span class="p">.</span><span class="nx">WithProvider</span><span class="p">(</span><span class="s">"elevenlabs"</span><span class="p">,</span><span class="w"> </span><span class="nx">elevenLabsProvider</span><span class="p">),</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nx">tts</span><span class="p">.</span><span class="nx">WithProvider</span><span class="p">(</span><span class="s">"deepgram"</span><span class="p">,</span><span class="w"> </span><span class="nx">deepgramProvider</span><span class="p">),</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nx">tts</span><span class="p">.</span><span class="nx">WithFallbacks</span><span class="p">(</span><span class="s">"deepgram"</span><span class="p">),</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nx">tts</span><span class="p">.</span><span class="nx">WithProvider</span><span class="p">(</span><span class="s">&quot;elevenlabs&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">elevenLabsProvider</span><span class="p">),</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nx">tts</span><span class="p">.</span><span class="nx">WithProvider</span><span class="p">(</span><span class="s">&quot;deepgram&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">deepgramProvider</span><span class="p">),</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nx">tts</span><span class="p">.</span><span class="nx">WithFallbacks</span><span class="p">(</span><span class="s">&quot;deepgram&quot;</span><span class="p">),</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">)</span>
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1">// Rate limit (429) → retry within ElevenLabs → succeed</span>
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c1">// Auth error (401) → no retry → fallback to Deepgram</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">Synthesize</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">"Hello"</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">)</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">Synthesize</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">)</span>
 </span></code></pre></div>
 <h2 id="performance">Performance<a class="headerlink" href="#performance" title="Permanent link">&para;</a></h2>
 <p>Benchmarks confirm minimal overhead:</p>
@@ -3499,7 +3499,7 @@
 </ol>
 <div class="language-go highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nx">provider</span><span class="p">.</span><span class="nx">SetRetryConfig</span><span class="p">(</span><span class="nx">omnivoice</span><span class="p">.</span><span class="nx">RetryConfigWithCallback</span><span class="p">(</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="kd">func</span><span class="p">(</span><span class="nx">attempt</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">,</span><span class="w"> </span><span class="nx">delay</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Retry %d: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">attempt</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Retry %d: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">attempt</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="p">},</span>
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">))</span>
 </span></code></pre></div>
@@ -3564,10 +3564,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
