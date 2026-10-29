@@ -44,3 +44,7 @@ omnivoice/examples/
 
 # Claude Code local settings
 .claude/settings.local.json
+
+# ogen-tools binaries (generate.sh runs them with go run)
+/ogen-fixnull
+/ogen-fixerror
