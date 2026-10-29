@@ -25,12 +25,12 @@
         { "description": "[omnivoice] TTS guide lists output formats and the sample rate each reports", "commit": "ad5f03c" }
       ],
       "dependencies": [
-        { "description": "Bumped `github.com/plexusone/omnivoice-core` from v0.14.0 to v0.16.0", "commit": "089cf8f" },
+        { "description": "Bumped `github.com/plexusone/omnivoice-core` from v0.14.0 to v0.18.1", "commit": "4d09859" },
         { "description": "Bumped `github.com/ogen-go/ogen` from v1.22.0 to v1.24.0", "commit": "85406ba" },
         { "description": "Bumped `github.com/go-faster/errors` from v0.7.1 to v0.8.0", "commit": "8825d3a" },
-        { "description": "Bumped `go.opentelemetry.io/otel`, `otel/metric`, and `otel/trace` from v1.44.0 to v1.46.0", "commit": "d946f23" },
-        { "description": "Bumped `github.com/grokify/mogo` from v0.74.6 to v0.74.9", "commit": "82fabf2" },
-        { "description": "Updated indirect dependencies", "commit": "58a1667" }
+        { "description": "Bumped `go.opentelemetry.io/otel`, `otel/metric`, and `otel/trace` from v1.44.0 to v1.47.0", "commit": "4d09859" },
+        { "description": "Bumped `github.com/grokify/mogo` from v0.74.6 to v0.75.0", "commit": "4d09859" },
+        { "description": "Updated indirect dependencies", "commit": "4d09859" }
       ]
     },
     {
