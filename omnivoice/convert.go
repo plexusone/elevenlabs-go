@@ -118,11 +118,31 @@ func ApplyPronunciations(text string, config tts.SynthesisConfig) string {
 	if len(config.Pronunciations) == 0 {
 		return text
 	}
-	phonemes := ttspkg.SupportsPhonemes(config.Model)
-	if v, ok := config.Extensions[extPhonemes].(bool); ok {
-		phonemes = v
+	return tts.ApplyPronunciations(text, config.Pronunciations, usePhonemes(config))
+}
+
+// SendsPhonemes reports whether ApplyPronunciations can write phoneme tags
+// for config: a pronunciation has IPA and the model honours phonemes. The
+// WebSocket API reads the tags only with SSML parsing enabled.
+func SendsPhonemes(config tts.SynthesisConfig) bool {
+	if !usePhonemes(config) {
+		return false
 	}
-	return tts.ApplyPronunciations(text, config.Pronunciations, phonemes)
+	for _, p := range config.Pronunciations {
+		if p.IPA != "" && strings.TrimSpace(p.Term) != "" {
+			return true
+		}
+	}
+	return false
+}
+
+// usePhonemes reports whether pronunciations are sent as phoneme tags:
+// ttspkg.SupportsPhonemes, overridden by the elevenlabs.phonemes extension.
+func usePhonemes(config tts.SynthesisConfig) bool {
+	if v, ok := config.Extensions[extPhonemes].(bool); ok {
+		return v
+	}
+	return ttspkg.SupportsPhonemes(config.Model)
 }
 
 func stringExtension(extensions map[string]any, key string) string {
