@@ -301,6 +301,25 @@ dict, err := client.Account().CreatePronunciation(ctx, "Tech Terms", map[string]
 dict, err := client.Account().CreatePronunciationFromJSON(ctx, "Terms", "pronunciation.json")
 ```
 
+Use a dictionary in a request, and give the text around it so the delivery
+stays continuous across requests:
+
+```go
+resp, err := client.TTS().Generate(ctx, &tts.Request{
+    VoiceID:                   voiceID,
+    Text:                      "The Miura was shown at Geneva.",
+    PronunciationDictionaries: []tts.PronunciationDictionaryLocator{{ID: dict.ID}},
+    PreviousText:              "With a body by Bertone, it became the Miura.",
+})
+```
+
+Through omnivoice, pass `SynthesisConfig.Pronunciations` instead. Terms with
+IPA are sent as SSML phoneme tags on models that honour them
+(`eleven_flash_v2`, `eleven_turbo_v2`, `eleven_monolingual_v1`; see
+`tts.SupportsPhonemes`), and as respellings on other models.
+`DictionaryRules` in `omnivoice/tts` turns the same pronunciations into
+dictionary rules.
+
 ### Dubbing
 
 ```go

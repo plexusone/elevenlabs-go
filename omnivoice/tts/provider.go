@@ -173,6 +173,10 @@ func (p *Provider) Synthesize(ctx context.Context, text string, config tts.Synth
 // Connection errors are classified using the AX-aware error classifier.
 func (p *Provider) SynthesizeStream(ctx context.Context, text string, config tts.SynthesisConfig) (<-chan tts.StreamChunk, error) {
 	opts := omnivoice.ConfigToWebSocketTTSOptions(config)
+	// Phoneme tags in the text are read only with SSML parsing enabled.
+	if omnivoice.SendsPhonemes(config) {
+		opts.EnableSSMLParsing = true
+	}
 	// Use shorter inactivity timeout - ElevenLabs closes connection on timeout
 	// which signals end of audio stream
 	if opts.InactivityTimeout == 0 {
@@ -193,7 +197,7 @@ func (p *Provider) SynthesizeStream(ctx context.Context, text string, config tts
 		var receivedAudio bool
 
 		// Send the text
-		if err := conn.SendText(text); err != nil {
+		if err := conn.SendText(omnivoice.ApplyPronunciations(text, config)); err != nil {
 			out <- tts.StreamChunk{Error: fmt.Errorf("failed to send text: %w", err)}
 			return
 		}

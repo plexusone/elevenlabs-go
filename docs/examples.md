@@ -283,6 +283,26 @@ dict, _ := client.Pronunciation().Create(ctx, &elevenlabs.CreatePronunciationDic
 })
 ```
 
+Use dictionaries in a request, up to three, and give the text spoken before
+and after it so long narration split across requests keeps a continuous
+delivery:
+
+```go
+resp, _ := client.TTS().Generate(ctx, &tts.Request{
+    VoiceID:      "21m00Tcm4TlvDq8ikWAM",
+    Text:         "The Miura was shown at Geneva.",
+    PreviousText: "With a body by Bertone, it became the Miura.",
+    NextText:     "About seven hundred and sixty were built.",
+    PronunciationDictionaries: []tts.PronunciationDictionaryLocator{
+        {ID: dict.ID}, // the latest version
+    },
+})
+```
+
+Phoneme rules take effect only on models that honour phonemes
+(`eleven_flash_v2`, `eleven_turbo_v2`, `eleven_monolingual_v1`; see
+`tts.SupportsPhonemes`). Alias rules work with every model.
+
 ### Projects (Long-form Content)
 
 ```go

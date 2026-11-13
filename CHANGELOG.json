@@ -7,6 +7,38 @@
   "maintainers": ["johncwang@gmail.com"],
   "releases": [
     {
+      "version": "v0.15.0",
+      "date": "2026-11-13",
+      "highlights": [
+        { "description": "OmniVoice requests carry pronunciations: IPA as SSML phoneme tags on models that honour them, respellings on the rest", "commit": "583616e" },
+        { "description": "Pronunciation dictionaries and the previous and next text now reach the request", "commit": "583616e" }
+      ],
+      "added": [
+        { "description": "[tts] `Request.PronunciationDictionaries` (up to three, latest version by default), `PreviousText` and `NextText`", "commit": "e5799cd" },
+        { "description": "[tts] `SupportsPhonemes` reports the models that honour phoneme tags: `eleven_flash_v2`, `eleven_turbo_v2`, `eleven_monolingual_v1`", "commit": "e5799cd" },
+        { "description": "[omnivoice] `SynthesisConfig.Pronunciations` applied to synchronous text and to `SynthesizeStream`, with `WithPhonemes` to override the model's choice", "commit": "583616e" },
+        { "description": "[omnivoice] `SendsPhonemes` reports whether a request's text carries phoneme tags; `SynthesizeStream` then enables SSML parsing on the WebSocket", "commit": "7e11e0b" },
+        { "description": "[omnivoice] `WithPronunciationDictionaryVersion` pins the dictionary version", "commit": "583616e" },
+        { "description": "[omnivoice] `DictionaryRules` turns pronunciations into dictionary rules: phoneme rules from IPA, alias rules from respellings", "commit": "85e986e" }
+      ],
+      "fixed": [
+        { "description": "[omnivoice] The pronunciation dictionary, previous text and next text extensions were accepted but never sent", "commit": "583616e" }
+      ],
+      "tests": [
+        { "description": "Request body carries dictionaries and context text; dictionary validation; phoneme models", "commit": "e5799cd" },
+        { "description": "[omnivoice] Pronunciations per model, extensions, and dictionary rules", "commit": "85e986e" },
+        { "description": "[omnivoice] The streaming handshake enables SSML parsing only for phoneme tags", "commit": "7e11e0b" }
+      ],
+      "documentation": [
+        { "description": "README and examples show dictionaries in a request and pronunciations through OmniVoice", "commit": "991a6c8" },
+        { "description": "[omnivoice] TTS guide covers pronunciations, dictionaries and surrounding text", "commit": "c5ac914" }
+      ],
+      "dependencies": [
+        { "description": "Requires `github.com/plexusone/omnivoice-core` v0.19.0 for `SynthesisConfig.Pronunciations`", "commit": "72cd262" },
+        { "description": "Indirect dependencies updated", "commit": "48b5447" }
+      ]
+    },
+    {
       "version": "v0.14.0",
       "date": "2026-10-28",
       "highlights": [

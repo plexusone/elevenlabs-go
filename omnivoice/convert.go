@@ -17,8 +17,13 @@ import (
 // Extension keys for ElevenLabs-specific TTS settings.
 // These match the keys defined in the tts sub-package extensions.go.
 const (
-	extStyle        = "elevenlabs.style"
-	extSpeakerBoost = "elevenlabs.speaker_boost"
+	extStyle                       = "elevenlabs.style"
+	extSpeakerBoost                = "elevenlabs.speaker_boost"
+	extPronunciationDictionaryID   = "elevenlabs.pronunciation_dictionary_id"
+	extPronunciationDictionaryVers = "elevenlabs.pronunciation_dictionary_version_id"
+	extPreviousText                = "elevenlabs.previous_text"
+	extNextText                    = "elevenlabs.next_text"
+	extPhonemes                    = "elevenlabs.phonemes"
 )
 
 // VoiceToOmniVoice converts an ElevenLabs Voice to an OmniVoice Voice.
@@ -56,12 +61,20 @@ func VoiceToOmniVoice(v *voice.Voice) tts.Voice {
 // ConfigToTTSRequest converts an OmniVoice SynthesisConfig to an ElevenLabs TTSRequest.
 func ConfigToTTSRequest(text string, config tts.SynthesisConfig) *ttspkg.Request {
 	// Apply pitch adjustment via SSML if specified
-	processedText := applyPitchSSML(text, config.Pitch)
+	processedText := applyPitchSSML(ApplyPronunciations(text, config), config.Pitch)
 
 	req := &ttspkg.Request{
-		VoiceID: config.VoiceID,
-		Text:    processedText,
-		ModelID: config.Model,
+		VoiceID:      config.VoiceID,
+		Text:         processedText,
+		ModelID:      config.Model,
+		PreviousText: stringExtension(config.Extensions, extPreviousText),
+		NextText:     stringExtension(config.Extensions, extNextText),
+	}
+	if id := stringExtension(config.Extensions, extPronunciationDictionaryID); id != "" {
+		req.PronunciationDictionaries = []ttspkg.PronunciationDictionaryLocator{{
+			ID:        id,
+			VersionID: stringExtension(config.Extensions, extPronunciationDictionaryVers),
+		}}
 	}
 
 	// Map output format
@@ -96,6 +109,48 @@ func ConfigToTTSRequest(text string, config tts.SynthesisConfig) *ttspkg.Request
 	}
 
 	return req
+}
+
+// ApplyPronunciations rewrites text with config.Pronunciations: IPA
+// phoneme tags when the model honours them (see ttspkg.SupportsPhonemes,
+// overridden by the elevenlabs.phonemes extension), respellings otherwise.
+func ApplyPronunciations(text string, config tts.SynthesisConfig) string {
+	if len(config.Pronunciations) == 0 {
+		return text
+	}
+	return tts.ApplyPronunciations(text, config.Pronunciations, usePhonemes(config))
+}
+
+// SendsPhonemes reports whether ApplyPronunciations can write phoneme tags
+// for config: a pronunciation has IPA and the model honours phonemes. The
+// WebSocket API reads the tags only with SSML parsing enabled.
+func SendsPhonemes(config tts.SynthesisConfig) bool {
+	if !usePhonemes(config) {
+		return false
+	}
+	for _, p := range config.Pronunciations {
+		if p.IPA != "" && strings.TrimSpace(p.Term) != "" {
+			return true
+		}
+	}
+	return false
+}
+
+// usePhonemes reports whether pronunciations are sent as phoneme tags:
+// ttspkg.SupportsPhonemes, overridden by the elevenlabs.phonemes extension.
+func usePhonemes(config tts.SynthesisConfig) bool {
+	if v, ok := config.Extensions[extPhonemes].(bool); ok {
+		return v
+	}
+	return ttspkg.SupportsPhonemes(config.Model)
+}
+
+func stringExtension(extensions map[string]any, key string) string {
+	v, ok := extensions[key].(string)
+	if !ok {
+		return ""
+	}
+	return v
 }
 
 // getStyleFromExtensions extracts style from extensions map.
