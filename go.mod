@@ -9,7 +9,7 @@ require (
 	github.com/grokify/mogo v0.75.0
 	github.com/ogen-go/ogen v1.24.0
 	github.com/plexusone/ogen-tools v0.3.0
-	github.com/plexusone/omnivoice-core v0.18.1
+	github.com/plexusone/omnivoice-core v0.19.0
 	github.com/spf13/cobra v1.10.2
 	go.opentelemetry.io/otel v1.47.0
 	go.opentelemetry.io/otel/metric v1.47.0
