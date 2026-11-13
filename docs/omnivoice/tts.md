@@ -86,6 +86,49 @@ result, err := provider.Synthesize(ctx, text, tts.SynthesisConfig{
 })
 ```
 
+### Pronunciations
+
+Tell the provider how to say names and terms with
+`SynthesisConfig.Pronunciations`. Each term can carry IPA and a respelling:
+
+```go
+result, err := provider.Synthesize(ctx, "The Miura was shown at Geneva.", tts.SynthesisConfig{
+    VoiceID: "21m00Tcm4TlvDq8ikWAM",
+    Model:   "eleven_flash_v2",
+    Pronunciations: []tts.Pronunciation{
+        {Term: "Miura", IPA: "ˈmjura", Respelling: "mee oora"},
+    },
+})
+```
+
+On models that honour phonemes (`eleven_flash_v2`, `eleven_turbo_v2`,
+`eleven_monolingual_v1`), a term with IPA is sent as an SSML
+`<phoneme alphabet="ipa">` tag. On other models, including the default
+`eleven_multilingual_v2`, the respelling replaces the term, and a term with
+only IPA is spoken as written. Override the choice with
+`eleventts.WithPhonemes(config, true)` or `false`. Streamed text is rewritten
+the same way.
+
+To keep the pronunciations in ElevenLabs instead, turn them into dictionary
+rules with `eleventts.DictionaryRules(ps, phonemes)` and create a dictionary
+from them (see [Pronunciation Dictionary](../examples.md#pronunciation-dictionary)).
+
+### Dictionaries and Surrounding Text
+
+ElevenLabs-specific settings travel in `Extensions`, set with helpers:
+
+```go
+cfg := tts.SynthesisConfig{VoiceID: "21m00Tcm4TlvDq8ikWAM"}
+cfg = eleventts.WithPronunciationDictionary(cfg, dict.ID)
+cfg = eleventts.WithPronunciationDictionaryVersion(cfg, dict.LatestVersionID) // optional; default latest
+cfg = eleventts.WithPreviousText(cfg, "With a body by Bertone, it became the Miura.")
+cfg = eleventts.WithNextText(cfg, "About seven hundred and sixty were built.")
+result, err := provider.Synthesize(ctx, "The Miura was shown at Geneva.", cfg)
+```
+
+The previous and next text are context only: they keep the delivery
+continuous when long narration is split across requests, and aren't spoken.
+
 ## Streaming Synthesis
 
 Get audio chunks in real-time via WebSocket:
