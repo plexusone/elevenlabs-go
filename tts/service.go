@@ -205,6 +205,45 @@ type Request struct {
 
 	// LanguageCode is the ISO 639-1 language code for text normalization.
 	LanguageCode string
+
+	// PronunciationDictionaries are applied in order; ElevenLabs accepts up
+	// to MaxPronunciationDictionaries.
+	PronunciationDictionaries []PronunciationDictionaryLocator
+
+	// PreviousText and NextText are the text spoken before and after this
+	// request, which keep the delivery continuous when long text is split
+	// across requests.
+	PreviousText string
+	NextText     string
+}
+
+// MaxPronunciationDictionaries is the most dictionaries one request takes.
+const MaxPronunciationDictionaries = 3
+
+// PronunciationDictionaryLocator names a pronunciation dictionary.
+type PronunciationDictionaryLocator struct {
+	// ID is the dictionary's ID.
+	ID string
+	// VersionID is the dictionary version; empty means the latest.
+	VersionID string
+}
+
+// phonemeModels are the models that honour SSML phoneme tags and the
+// phoneme rules of pronunciation dictionaries. Other models read the text
+// inside a phoneme tag as written; alias rules work with every model.
+var phonemeModels = map[string]bool{
+	"eleven_flash_v2":       true,
+	"eleven_turbo_v2":       true,
+	"eleven_monolingual_v1": true,
+}
+
+// SupportsPhonemes reports whether a model honours phoneme tags. An empty
+// model means DefaultModelID.
+func SupportsPhonemes(modelID string) bool {
+	if modelID == "" {
+		modelID = DefaultModelID
+	}
+	return phonemeModels[modelID]
 }
 
 // ValidOutputFormats lists the valid audio output formats.
@@ -252,6 +291,14 @@ func (r *Request) Validate() error {
 	if r.OutputFormat != "" && !ValidOutputFormats[r.OutputFormat] {
 		return fmt.Errorf("tts: invalid output format %q", r.OutputFormat)
 	}
+	if len(r.PronunciationDictionaries) > MaxPronunciationDictionaries {
+		return fmt.Errorf("tts: at most %d pronunciation dictionaries, got %d", MaxPronunciationDictionaries, len(r.PronunciationDictionaries))
+	}
+	for _, d := range r.PronunciationDictionaries {
+		if d.ID == "" {
+			return fmt.Errorf("tts: pronunciation dictionary ID is required")
+		}
+	}
 	return nil
 }
 
@@ -295,6 +342,22 @@ func (s *Service) Generate(ctx context.Context, req *Request) (*Response, error)
 	// Set language code if provided
 	if req.LanguageCode != "" {
 		body.LanguageCode = api.NewOptNilString(req.LanguageCode)
+	}
+	if len(req.PronunciationDictionaries) > 0 {
+		locators := make([]api.PronunciationDictionaryVersionLocatorRequestModel, len(req.PronunciationDictionaries))
+		for i, d := range req.PronunciationDictionaries {
+			locators[i] = api.PronunciationDictionaryVersionLocatorRequestModel{PronunciationDictionaryID: d.ID}
+			if d.VersionID != "" {
+				locators[i].VersionID = api.NewOptNilString(d.VersionID)
+			}
+		}
+		body.PronunciationDictionaryLocators = api.NewOptNilPronunciationDictionaryVersionLocatorRequestModelArray(locators)
+	}
+	if req.PreviousText != "" {
+		body.PreviousText = api.NewOptNilString(req.PreviousText)
+	}
+	if req.NextText != "" {
+		body.NextText = api.NewOptNilString(req.NextText)
 	}
 
 	// Build params
