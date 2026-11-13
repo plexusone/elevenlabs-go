@@ -106,8 +106,12 @@ On models that honour phonemes (`eleven_flash_v2`, `eleven_turbo_v2`,
 `<phoneme alphabet="ipa">` tag. On other models, including the default
 `eleven_multilingual_v2`, the respelling replaces the term, and a term with
 only IPA is spoken as written. Override the choice with
-`eleventts.WithPhonemes(config, true)` or `false`. Streamed text is rewritten
-the same way.
+`eleventts.WithPhonemes(config, true)` or `false`.
+
+`SynthesizeStream` rewrites its text the same way, and enables SSML parsing
+on the WebSocket when the text carries phoneme tags. `SynthesizeFromReader`
+sends text as it arrives and doesn't apply pronunciations, since a term can
+be split across reads.
 
 To keep the pronunciations in ElevenLabs instead, turn them into dictionary
 rules with `eleventts.DictionaryRules(ps, phonemes)` and create a dictionary

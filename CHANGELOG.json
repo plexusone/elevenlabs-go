@@ -16,7 +16,8 @@
       "added": [
         { "description": "[tts] `Request.PronunciationDictionaries` (up to three, latest version by default), `PreviousText` and `NextText`", "commit": "e5799cd" },
         { "description": "[tts] `SupportsPhonemes` reports the models that honour phoneme tags: `eleven_flash_v2`, `eleven_turbo_v2`, `eleven_monolingual_v1`", "commit": "e5799cd" },
-        { "description": "[omnivoice] `SynthesisConfig.Pronunciations` applied to synchronous and streamed text, with `WithPhonemes` to override the model's choice", "commit": "583616e" },
+        { "description": "[omnivoice] `SynthesisConfig.Pronunciations` applied to synchronous text and to `SynthesizeStream`, with `WithPhonemes` to override the model's choice", "commit": "583616e" },
+        { "description": "[omnivoice] `SendsPhonemes` reports whether a request's text carries phoneme tags; `SynthesizeStream` then enables SSML parsing on the WebSocket", "commit": "7e11e0b" },
         { "description": "[omnivoice] `WithPronunciationDictionaryVersion` pins the dictionary version", "commit": "583616e" },
         { "description": "[omnivoice] `DictionaryRules` turns pronunciations into dictionary rules: phoneme rules from IPA, alias rules from respellings", "commit": "85e986e" }
       ],
@@ -25,7 +26,8 @@
       ],
       "tests": [
         { "description": "Request body carries dictionaries and context text; dictionary validation; phoneme models", "commit": "e5799cd" },
-        { "description": "[omnivoice] Pronunciations per model, extensions, and dictionary rules", "commit": "85e986e" }
+        { "description": "[omnivoice] Pronunciations per model, extensions, and dictionary rules", "commit": "85e986e" },
+        { "description": "[omnivoice] The streaming handshake enables SSML parsing only for phoneme tags", "commit": "7e11e0b" }
       ],
       "documentation": [
         { "description": "README and examples show dictionaries in a request and pronunciations through OmniVoice", "commit": "991a6c8" },
