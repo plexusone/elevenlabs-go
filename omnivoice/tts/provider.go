@@ -193,7 +193,7 @@ func (p *Provider) SynthesizeStream(ctx context.Context, text string, config tts
 		var receivedAudio bool
 
 		// Send the text
-		if err := conn.SendText(text); err != nil {
+		if err := conn.SendText(omnivoice.ApplyPronunciations(text, config)); err != nil {
 			out <- tts.StreamChunk{Error: fmt.Errorf("failed to send text: %w", err)}
 			return
 		}

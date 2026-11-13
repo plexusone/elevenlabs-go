@@ -33,3 +33,37 @@ func TestOutputSampleRate(t *testing.T) {
 		}
 	}
 }
+
+func TestConfigToTTSRequestPronunciations(t *testing.T) {
+	ps := []tts.Pronunciation{{Term: "Miura", IPA: "ˈmjura", Respelling: "mee oora"}}
+	cases := []struct {
+		name   string
+		config tts.SynthesisConfig
+		want   string
+	}{
+		{"default model reads respellings", tts.SynthesisConfig{Pronunciations: ps}, "The mee oora."},
+		{"flash v2 takes phonemes", tts.SynthesisConfig{Model: "eleven_flash_v2", Pronunciations: ps}, `The <phoneme alphabet="ipa" ph="ˈmjura">Miura</phoneme>.`},
+		{"forced phonemes", tts.SynthesisConfig{Pronunciations: ps, Extensions: map[string]any{extPhonemes: true}}, `The <phoneme alphabet="ipa" ph="ˈmjura">Miura</phoneme>.`},
+		{"forced respellings", tts.SynthesisConfig{Model: "eleven_flash_v2", Pronunciations: ps, Extensions: map[string]any{extPhonemes: false}}, "The mee oora."},
+	}
+	for _, tc := range cases {
+		if got := ConfigToTTSRequest("The Miura.", tc.config).Text; got != tc.want {
+			t.Errorf("%s: %s", tc.name, got)
+		}
+	}
+}
+
+func TestConfigToTTSRequestExtensions(t *testing.T) {
+	req := ConfigToTTSRequest("x", tts.SynthesisConfig{Extensions: map[string]any{
+		extPronunciationDictionaryID:   "d1",
+		extPronunciationDictionaryVers: "v2",
+		extPreviousText:                "before",
+		extNextText:                    "after",
+	}})
+	if len(req.PronunciationDictionaries) != 1 || req.PronunciationDictionaries[0].ID != "d1" || req.PronunciationDictionaries[0].VersionID != "v2" {
+		t.Errorf("dictionaries = %+v", req.PronunciationDictionaries)
+	}
+	if req.PreviousText != "before" || req.NextText != "after" {
+		t.Errorf("context = %q, %q", req.PreviousText, req.NextText)
+	}
+}

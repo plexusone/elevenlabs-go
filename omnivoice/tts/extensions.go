@@ -16,6 +16,16 @@ const (
 	// ExtPronunciationDictionaryID specifies a pronunciation dictionary to use.
 	ExtPronunciationDictionaryID = "elevenlabs.pronunciation_dictionary_id"
 
+	// ExtPronunciationDictionaryVersionID pins the dictionary version;
+	// without it the latest version is used.
+	ExtPronunciationDictionaryVersionID = "elevenlabs.pronunciation_dictionary_version_id"
+
+	// ExtPhonemes overrides whether Pronunciations are sent as IPA phoneme
+	// tags (true) or respellings (false). By default the model decides:
+	// only eleven_flash_v2, eleven_turbo_v2 and eleven_monolingual_v1
+	// honour phoneme tags.
+	ExtPhonemes = "elevenlabs.phonemes"
+
 	// ExtPreviousText provides context from previous text for better prosody.
 	ExtPreviousText = "elevenlabs.previous_text"
 
@@ -130,4 +140,20 @@ func ensureExtensions(config *tts.SynthesisConfig) {
 	if config.Extensions == nil {
 		config.Extensions = make(map[string]any)
 	}
+}
+
+// WithPronunciationDictionaryVersion pins the version of the dictionary set
+// with WithPronunciationDictionary.
+func WithPronunciationDictionaryVersion(config tts.SynthesisConfig, versionID string) tts.SynthesisConfig {
+	ensureExtensions(&config)
+	config.Extensions[ExtPronunciationDictionaryVersionID] = versionID
+	return config
+}
+
+// WithPhonemes overrides whether Pronunciations are sent as IPA phoneme
+// tags or respellings; see ExtPhonemes.
+func WithPhonemes(config tts.SynthesisConfig, phonemes bool) tts.SynthesisConfig {
+	ensureExtensions(&config)
+	config.Extensions[ExtPhonemes] = phonemes
+	return config
 }
