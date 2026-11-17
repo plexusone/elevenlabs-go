@@ -7,6 +7,29 @@
   "maintainers": ["johncwang@gmail.com"],
   "releases": [
     {
+      "version": "v0.15.1",
+      "date": "2026-11-17",
+      "highlights": [
+        { "description": "OmniVoice speech-to-text accepts BCP 47 language tags such as `en-US`, which ElevenLabs rejected" }
+      ],
+      "fixed": [
+        { "description": "OmniVoice STT sends ISO 639-3 language codes for batch and WebSocket transcription: `en-US` is sent as `eng`; it was sent unchanged and rejected as an invalid language code", "commit": "521aa3a" }
+      ],
+      "added": [
+        { "description": "`omnivoice.LanguageCode(tag)` converts a BCP 47 tag to the ISO 639-3 code ElevenLabs expects", "commit": "521aa3a" }
+      ],
+      "dependencies": [
+        { "description": "`golang.org/x/text` v0.44.0, now a direct dependency", "commit": "521aa3a" }
+      ],
+      "documentation": [
+        { "description": "OmniVoice STT guide: language tags", "commit": "ea9d19a" },
+        { "description": "v0.15.1 release notes at `docs/releases/v0.15.1.md`" }
+      ],
+      "tests": [
+        { "description": "Language tag conversion", "commit": "521aa3a" }
+      ]
+    },
+    {
       "version": "v0.15.0",
       "date": "2026-11-13",
       "highlights": [
