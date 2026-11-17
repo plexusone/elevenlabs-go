@@ -69,8 +69,9 @@ result, err := provider.TranscribeURL(ctx, "https://example.com/audio.mp3", stt.
 
 ```go
 config := stt.TranscriptionConfig{
-    // Language code (e.g., "en", "es", "fr")
-    Language: "en",
+    // BCP 47 language tag (e.g., "en-US", "es", "fr"), sent to ElevenLabs
+    // as its ISO 639-3 code ("eng", "spa", "fra"); empty to detect it
+    Language: "en-US",
 
     // Model ID (optional, uses default if empty)
     Model: "scribe_v1",
