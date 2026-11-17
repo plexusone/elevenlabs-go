@@ -20,7 +20,10 @@
         { "description": "`omnivoice.LanguageCode(tag)` converts a BCP 47 tag to the ISO 639-3 code ElevenLabs expects", "commit": "521aa3a" }
       ],
       "dependencies": [
-        { "description": "`golang.org/x/text` v0.44.0, now a direct dependency", "commit": "521aa3a" }
+        { "description": "`golang.org/x/text` v0.44.0, now a direct dependency", "commit": "521aa3a" },
+        { "description": "`github.com/ogen-go/ogen` from v1.24.0 to v1.25.0", "commit": "ca4291b" },
+        { "description": "`github.com/plexusone/omnivoice-core` from v0.19.0 to v0.20.0", "commit": "ca4291b" },
+        { "description": "Indirect dependencies updated", "commit": "ca4291b" }
       ],
       "documentation": [
         { "description": "OmniVoice STT guide: language tags", "commit": "ea9d19a" },
