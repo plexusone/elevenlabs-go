@@ -6,6 +6,8 @@ import (
 	"strings"
 	"time"
 
+	"golang.org/x/text/language"
+
 	"github.com/plexusone/elevenlabs-go/realtime"
 	sttpkg "github.com/plexusone/elevenlabs-go/stt"
 	ttspkg "github.com/plexusone/elevenlabs-go/tts"
@@ -318,7 +320,7 @@ func ConfigToWebSocketSTTOptions(config stt.TranscriptionConfig) *realtime.STTOp
 	}
 
 	if config.Language != "" {
-		opts.LanguageCode = config.Language
+		opts.LanguageCode = LanguageCode(config.Language)
 	}
 
 	// Map sample rate and encoding to AudioFormat
@@ -446,4 +448,29 @@ func TranscriptionResultFromResponse(resp *sttpkg.Response) *stt.TranscriptionRe
 	}
 
 	return result
+}
+
+// LanguageCode converts a BCP 47 tag, as OmniVoice configurations use
+// ("en-US", "fr"), to the ISO 639-3 code ElevenLabs speech-to-text expects
+// ("eng", "fra"). An empty tag stays empty, which asks ElevenLabs to detect
+// the language. A three-letter code is returned as given. A tag that can't
+// be parsed is returned unchanged, so the API reports it.
+func LanguageCode(tag string) string {
+	tag = strings.TrimSpace(tag)
+	if tag == "" {
+		return ""
+	}
+	if len(tag) == 3 && !strings.ContainsAny(tag, "-_") {
+		return strings.ToLower(tag)
+	}
+	t, err := language.Parse(tag)
+	if err != nil {
+		return tag
+	}
+	base, _ := t.Base()
+	iso3 := base.ISO3()
+	if iso3 == "" || iso3 == "und" {
+		return tag
+	}
+	return iso3
 }

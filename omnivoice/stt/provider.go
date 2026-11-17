@@ -125,7 +125,7 @@ func (p *Provider) TranscribeURL(ctx context.Context, url string, config stt.Tra
 // configToTranscriptionRequest converts OmniVoice config to ElevenLabs request.
 func configToTranscriptionRequest(config stt.TranscriptionConfig) *sttpkg.Request {
 	req := &sttpkg.Request{
-		LanguageCode: config.Language,
+		LanguageCode: omnivoice.LanguageCode(config.Language),
 		Diarize:      config.EnableSpeakerDiarization,
 		NumSpeakers:  config.MaxSpeakers,
 		ModelID:      config.Model,
