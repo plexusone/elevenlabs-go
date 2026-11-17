@@ -31,7 +31,8 @@
         { "description": "v0.15.1 release notes at `docs/releases/v0.15.1.md`" }
       ],
       "tests": [
-        { "description": "Language tag conversion, including undetermined tags", "commit": "220d993" }
+        { "description": "Language tag conversion, including undetermined tags", "commit": "220d993" },
+        { "description": "Norwegian codes: Bokmål and `no` as `nor`, Nynorsk as `nno`", "commit": "3f84a74" }
       ]
     },
     {
