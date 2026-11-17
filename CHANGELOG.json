@@ -14,7 +14,8 @@
       ],
       "fixed": [
         { "description": "OmniVoice STT sends ISO 639-3 language codes for batch and WebSocket transcription: `en-US` is sent as `eng`; it was sent unchanged and rejected as an invalid language code", "commit": "521aa3a" },
-        { "description": "An undetermined tag such as `und-US` passes through unchanged instead of being guessed as English", "commit": "220d993" }
+        { "description": "An undetermined tag such as `und-US` passes through unchanged instead of being guessed as English", "commit": "220d993" },
+        { "description": "Individual languages map to the macrolanguage code ElevenLabs lists: `cmn-Hans-CN` and `zh-TW` are sent as `zho`, `arb` as `ara`", "commit": "7b4d6ea" }
       ],
       "added": [
         { "description": "`omnivoice.LanguageCode(tag)` converts a BCP 47 tag to the ISO 639-3 code ElevenLabs expects", "commit": "521aa3a" }
