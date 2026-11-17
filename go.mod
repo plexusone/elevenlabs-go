@@ -7,9 +7,9 @@ require (
 	github.com/go-faster/jx v1.2.0
 	github.com/gorilla/websocket v1.5.3
 	github.com/grokify/mogo v0.75.0
-	github.com/ogen-go/ogen v1.24.0
+	github.com/ogen-go/ogen v1.25.0
 	github.com/plexusone/ogen-tools v0.3.0
-	github.com/plexusone/omnivoice-core v0.19.0
+	github.com/plexusone/omnivoice-core v0.20.0
 	github.com/spf13/cobra v1.10.2
 	go.opentelemetry.io/otel v1.47.0
 	go.opentelemetry.io/otel/metric v1.47.0
@@ -40,7 +40,7 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.28.0 // indirect
 	golang.org/x/exp v0.0.0-20261113113407-e3970619a1a4 // indirect
-	golang.org/x/net v0.62.0 // indirect
+	golang.org/x/net v0.63.0 // indirect
 	golang.org/x/sync v0.25.0 // indirect
 	golang.org/x/sys v0.50.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
