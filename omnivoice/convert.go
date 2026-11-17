@@ -467,7 +467,8 @@ func LanguageCode(tag string) string {
 	if err != nil {
 		return tag
 	}
-	base, _ := t.Base()
+	// Raw, unlike Base, never guesses a language: "und-US" stays undetermined.
+	base, _, _ := t.Raw()
 	iso3 := base.ISO3()
 	if iso3 == "" || iso3 == "und" {
 		return tag

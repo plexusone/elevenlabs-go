@@ -80,6 +80,8 @@ func TestLanguageCode(t *testing.T) {
 		"ENG":       "eng",
 		"pt_BR":     "por",
 		"not a tag": "not a tag", // passed through for the API to report
+		"und-US":    "und-US",    // undetermined: never guessed as English
+		"und":       "und",
 	} {
 		if got := LanguageCode(in); got != want {
 			t.Errorf("LanguageCode(%q) = %q, want %q", in, got, want)
