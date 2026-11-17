@@ -452,22 +452,25 @@ func TranscriptionResultFromResponse(resp *sttpkg.Response) *stt.TranscriptionRe
 
 // LanguageCode converts a BCP 47 tag, as OmniVoice configurations use
 // ("en-US", "fr"), to the ISO 639-3 code ElevenLabs speech-to-text expects
-// ("eng", "fra"). An empty tag stays empty, which asks ElevenLabs to detect
-// the language. A three-letter code is returned as given. A tag that can't
-// be parsed is returned unchanged, so the API reports it.
+// ("eng", "fra"), mapping individual languages to the macrolanguage code
+// ElevenLabs lists ("cmn" to "zho"). An empty tag stays empty, which asks
+// ElevenLabs to detect the language. A tag that can't be parsed, or is
+// undetermined, is returned unchanged, so the API reports it.
 func LanguageCode(tag string) string {
 	tag = strings.TrimSpace(tag)
 	if tag == "" {
 		return ""
 	}
-	if len(tag) == 3 && !strings.ContainsAny(tag, "-_") {
-		return strings.ToLower(tag)
-	}
 	t, err := language.Parse(tag)
 	if err != nil {
 		return tag
 	}
-	// Raw, unlike Base, never guesses a language: "und-US" stays undetermined.
+	// Map individual languages to the macrolanguage code ElevenLabs lists
+	// ("cmn" to "zho", "arb" to "ara"). Raw, unlike Base, never guesses a
+	// language: "und-US" stays undetermined.
+	if mt, err := language.Macro.Canonicalize(t); err == nil {
+		t = mt
+	}
 	base, _, _ := t.Raw()
 	iso3 := base.ISO3()
 	if iso3 == "" || iso3 == "und" {
