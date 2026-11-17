@@ -7,7 +7,7 @@ require (
 	github.com/go-faster/jx v1.2.0
 	github.com/gorilla/websocket v1.5.3
 	github.com/grokify/mogo v0.75.0
-	github.com/ogen-go/ogen v1.24.0
+	github.com/ogen-go/ogen v1.25.0
 	github.com/plexusone/ogen-tools v0.3.0
 	github.com/plexusone/omnivoice-core v0.19.0
 	github.com/spf13/cobra v1.10.2
