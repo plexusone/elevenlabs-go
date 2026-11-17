@@ -67,3 +67,31 @@ func TestConfigToTTSRequestExtensions(t *testing.T) {
 		t.Errorf("context = %q, %q", req.PreviousText, req.NextText)
 	}
 }
+
+func TestLanguageCode(t *testing.T) {
+	for in, want := range map[string]string{
+		"":            "",
+		"en-US":       "eng",
+		"en":          "eng",
+		"fr-CA":       "fra",
+		"de":          "deu",
+		"es-419":      "spa",
+		"eng":         "eng",
+		"ENG":         "eng",
+		"pt_BR":       "por",
+		"not a tag":   "not a tag", // passed through for the API to report
+		"und-US":      "und-US",    // undetermined: never guessed as English
+		"und":         "und",
+		"cmn-Hans-CN": "zho",
+		"cmn":         "zho",
+		"zh-TW":       "zho",
+		"arb":         "ara",
+		"nb-NO":       "nor", // Bokmål, sent as Norwegian; ElevenLabs lists nor, nob and nno
+		"no":          "nor",
+		"nn":          "nno",
+	} {
+		if got := LanguageCode(in); got != want {
+			t.Errorf("LanguageCode(%q) = %q, want %q", in, got, want)
+		}
+	}
+}
