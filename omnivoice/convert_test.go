@@ -86,6 +86,9 @@ func TestLanguageCode(t *testing.T) {
 		"cmn":         "zho",
 		"zh-TW":       "zho",
 		"arb":         "ara",
+		"nb-NO":       "nor", // Bokmål, sent as Norwegian; ElevenLabs lists nor, nob and nno
+		"no":          "nor",
+		"nn":          "nno",
 	} {
 		if got := LanguageCode(in); got != want {
 			t.Errorf("LanguageCode(%q) = %q, want %q", in, got, want)
